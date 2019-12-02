@@ -18,12 +18,12 @@
                         <div class="container-fluid">
                             <div class="row mb-2">
                                 <div class="col-sm-6">
-                                    <h1>Thành Viên</h1>
+                                    <h1>Bài Viết</h1>
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
                                         <li class="breadcrumb-item"><a href="index.htm">Home</a></li>
-                                        <li class="breadcrumb-item active">Tài Khoản</li>
+                                        <li class="breadcrumb-item active">Tin Tức</li>
                                     </ol>
                                 </div>
                             </div>
@@ -34,9 +34,11 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">Danh sách các tài khoản</h3>
+                                        <h3 class="card-title">Danh sách các bài viết</h3>
                                     </div>
-                                    <button type="button" style="font-size: 20px; width: 200px; margin-left: 25px; margin-top: 25px;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Thêm Tài Khoản</button>
+                                    <button type="button" style="font-size: 20px; width: 200px; margin-left: 25px; margin-top: 25px; background-color: black" class="btn btn-info btn-lg" data-toggle="modal">
+                                        <a href="?insert">Thêm bài viết</a>
+                                    </button>
                                     <div class="card-body">
                                     <%@include file="list-user/table.jsp" %>
                                 </div>

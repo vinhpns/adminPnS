@@ -51,7 +51,7 @@ public class NewsDAO {
                 break;
             case NewsConstant.TYPE_FOOTER:
                 sql = "SELECT news.id, news.active, news.title, news.type "
-                        + "FROM " + ConstantManager.DEFAULT_DB_NAME + " WHERE type = 4 "
+                        + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".news WHERE type = 4 "
                         + "ORDER BY id DESC";
                 break;
         }

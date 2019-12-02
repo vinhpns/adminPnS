@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -31,5 +32,10 @@ public class NewsController {
         List<News> n = newService.getListNewsByType(type);
         model.put("newsList", n);
         return "news";
+    }
+    
+    @RequestMapping(params = "insert", method = RequestMethod.GET)
+    public String redirectInsertPage(ModelMap model, HttpSession session){
+        return "insert-news";
     }
 }
