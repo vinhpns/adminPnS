@@ -101,7 +101,7 @@
                                     <h4 class="modal-title">Thêm Footer</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <%@include file="update-modal.jsp" %>
+                                    <%--<%@include file="update-modal.jsp" %>--%>
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-primary btn-lg" type="submit" name="update">Cập Nhật</button>

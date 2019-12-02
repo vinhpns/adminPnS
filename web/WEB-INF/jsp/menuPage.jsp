@@ -8,291 +8,125 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-    <body>
-        <div id="sidebar" class="sidebar responsive ace-save-state">
-            <ul class="nav nav-list">
-                <li class="">
-                    <a href="index.htm">
-                        <i class="menu-icon fa fa-tachometer blue"></i>
-                        <span class="menu-text blue"> Dashboard </span>
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-                <c:if test="${sessionScope.roleiz=='6' || sessionScope.roleiz=='7' || sessionScope.roleiz == '2'}">
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-list"></i>
-                            <span class="menu-text"> Quản Lý Người Dùng</span>
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-                        <b class="arrow"></b>
-                        <ul class="submenu">
-                            <li>
-                                <a href="ListUser.htm?url=customer">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Quản Lý Khách Hàng
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="">
-                                <a href="ListUser.htm?url=admin">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Quản Lý Nhân Viên
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li<c:if test="${sessionScope.roleiz=='7'}">>
-                                    <a href="RankList.htm">
-                                        <i class="menu-icon fa fa-caret-right"></i>
-                                        Quản Lý Danh Hiệu
-                                    </a>
-                                    <b class="arrow"></b>
-                                </c:if>
-                            </li>
-                        </ul>
-                    </li>
-                </c:if>
-                <c:if test="${sessionScope.roleiz=='5' || sessionScope.roleiz == '7' || sessionScope.roleiz == '9'}">
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-pencil-square-o"></i>
-                            <span class="menu-text"> Quản Lý Sản Phẩm </span>
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-                        <b class="arrow"></b>
-                        <ul class="submenu">
-                            <li class="">
-                                <a href="brandpages.htm">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Thương Hiệu
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <c:if test="${sessionScope.roleiz == '9'}">
-                                <li class="">
-                                    <a href="brandpages.htm?deleted">
-                                        <i class="menu-icon fa fa-caret-right"></i>
-                                        Thương Hiệu Đã Xoá
-                                    </a>
-                                    <b class="arrow"></b>
-                                </li>
-                            </c:if>
-                            <li class="">
-                                <a href="category.htm?url=type">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Ngành Hàng
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="">
-                                <a href="category.htm?url=cate">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Danh Mục
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="">
-                                <a href="category.htm?url=deleted">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Danh Mục Đã Xoá
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
-                </c:if>
-                <li>
-                    <a href="" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-list-alt"></i>
-                        <span class="menu-text"> Quản Lý Đấu Giá </span>
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-                    <b class="arrow"></b>
-                    <ul class="submenu">
-                        <li>
-                            <a href="SaleBid.htm">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Danh Sách Đấu Giá
-                            </a>
-                            <b class="arrow"></b>
-                        </li>
-                        <c:if test="${sessionScope.roleiz=='7'}">
-                            <li>
-                                <a href="room.htm">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Phòng Đấu Giá
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </c:if>
-                        <c:if test="${sessionScope.roleiz=='1'|| sessionScope.roleiz=='7'}">
-                            <li>
-                                <a href="Bidding.htm">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Phiên Đang Đấu
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </c:if>
-                        <c:if test="${sessionScope.roleiz=='1'|| sessionScope.roleiz=='7'}">
-                            <li>
-                                <a href="Bidding.htm?bidExpired">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Phiên Bị Hủy & Hết Hạn
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </c:if>
-                    </ul>
-                </li>
-                <li>
-                    <a href="" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-list-alt"></i>
-                        <span class="menu-text"> Quản Lý Mua Bán </span>
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-                    <b class="arrow"></b>
-                    <ul class="submenu">
-                        <li>
-                            <a href="SaleProduct.htm">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Danh Sách Sản Phẩm
-                            </a>
-                            <b class="arrow"></b>
-                        </li>
-                        <li
-                            <c:if test="${sessionScope.roleiz=='2'}">class="hidden"</c:if>
-                            <c:if test="${sessionScope.roleiz=='3'}">class="hidden"</c:if>>
-                                <a href="Selling.htm">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Sản Phẩm Đang Bán
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
-                <c:if test="${sessionScope.roleiz=='4' || sessionScope.roleiz == '5' || sessionScope.roleiz == '7'}">
-                    <li>
-                        <a href="" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-list-alt"></i>
-                            <span class="menu-text"> Quản Lý Bài Viết </span>
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-                        <b class="arrow"></b>
-                        <ul class="submenu">
-                            <li>
-                                <a href="news.htm?url=news">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Danh Sách Bài Viết
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li>
-                                <a href="news.htm?url=typefooter">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Danh Sách Bài Viết Footer
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li>
-                                <a href="video.htm">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Danh Sách Video
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
-                </c:if>
-                <c:if test="${sessionScope.roleiz=='4' || sessionScope.roleiz == '5' || sessionScope.roleiz == '7'}">
-                    <li>
-                        <a href="" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-list-alt"></i>
-                            <span class="menu-text"> Quản Lý Email </span>
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-                        <b class="arrow"></b>
-                        <ul class="submenu">
-                            <li>
-                                <a href="EmailContent.htm">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Danh Sách Email
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
-                </c:if>
-                <c:if test="${sessionScope.roleiz=='3' || sessionScope.roleiz == '7'}">
-                    <li>
-                        <a href="" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-list-alt"></i>
-                            <span class="menu-text">Quản Lý Nội Dung</span>
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-                        <b class="arrow"></b>
-                        <ul class="submenu">
-                            <li>
-                                <a href="banner.htm?url=content">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Ảnh các phần
-                                </a>    
-                            </li>
-                            <li class="">
-                                <a href="banner.htm?url=banner">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Banner
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li>
-                                <a href="news.htm?url=qna">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Danh Sách Q&A
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>    
-                </c:if>
-                <c:if test="${sessionScope.roleiz=='3' || sessionScope.roleiz == '7'}">
-                    <li>
-                        <a href="" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-list-alt"></i>
-                            <span class="menu-text"> Quản Lý Lịch Sử </span>
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-                        <b class="arrow"></b>
-                        <ul class="submenu">
-                            <li>
-                                <a href="payment.htm?HistoryDeposit">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Lịch Sử Đặt Cọc
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li>
-                                <a href="HistoryRefund.htm">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Lịch Sử Hoàn Tiền
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li>
-                                <a href="HistoryWinBid.htm">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Danh sách Thắng Phiên
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
-                </c:if>
-            </ul>
-            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-                <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"
-                   data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="index3.html" class="brand-link">
+            <img src="http://daotaomamnon.com/wp-content/uploads/2019/03/logo-trung-cap-sai-gon.jpeg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
+            <span class="brand-text font-weight-light">Trung cấp Sài Gòn</span>
+        </a>
+        <div class="sidebar">
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">${sessionScope.loginName}</a>
+                </div>
             </div>
-        </div><!-- /.nav-list -->
-    </body>
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-pie-chart"></i>
+                            <p>
+                                Tài Khoản
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="ListUser.htm" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Danh sách tài khoản</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-tree"></i>
+                            <p>
+                                Menu
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/UI/general.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Danh sách Menu</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-edit"></i>
+                            <p>
+                                Bài Viết
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/forms/general.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Menu</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/forms/advanced.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Tin Tức</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/forms/editors.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Sự Kiện</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-table"></i>
+                            <p>
+                                Nội Dung Web
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/tables/simple.html" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Banner</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-header">Comment</li>
+                    <li class="nav-item">
+                        <a href="pages/calendar.html" class="nav-link">
+                            <i class="nav-icon fa fa-calendar"></i>
+                            <p>
+                                Danh sách
+                                <span class="badge badge-info right">2</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header">Học Viên</li>
+                    <li class="nav-item">
+                        <a href="https://adminlte.io/docs" class="nav-link">
+                            <i class="nav-icon fa fa-file"></i>
+                            <p>Danh sách đăng ký
+                                <span class="badge badge-info right">2</span>
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
 </html>

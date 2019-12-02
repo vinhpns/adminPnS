@@ -1,182 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta charset="utf-8"/>
-    <title>500 Error Page - Ace Admin</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AdminLTE 3 | 404 Page not found</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="500 Error Page"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="assets/css/adminlte.min.css">
+        <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    </head>
+    <body class="hold-transition sidebar-mini">
+        <div class="wrapper">
+            <div class="content-wrapper" style="margin-left: 0px; min-height: 540px">
 
-    <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css"/>
+                <!-- Main content -->
+                <section class="content" style="padding: 100px">
+                    <div class="error-page">
+                        <h2 class="headline text-danger">500</h2>
 
-    <!-- page specific plugin styles -->
+                        <div class="error-content">
+                            <h3><i class="fa fa-warning text-warning"></i> Oops! Page not found.</h3>
 
-    <!-- text fonts -->
-    <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css"/>
-
-    <!-- ace styles -->
-    <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style"/>
-
-    <!--[if lte IE 9]>
-            <link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
-    <![endif]-->
-    <link rel="stylesheet" href="assets/css/ace-skins.min.css"/>
-    <link rel="stylesheet" href="assets/css/ace-rtl.min.css"/>
-
-    <!--[if lte IE 9]>
-      <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
-    <![endif]-->
-
-    <!-- inline styles related to this page -->
-
-    <!-- ace settings handler -->
-    <script src="assets/js/ace-extra.min.js"></script>
-
-    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-    <!--[if lte IE 8]>
-    <script src="assets/js/html5shiv.min.js"></script>
-    <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body class="no-skin">
-
-
-<div class="main-container ace-save-state" id="main-container">
-
-
-    <!-- /.nav-list -->
-
-
-</div>
-
-<div class="main-content">
-    <div class="main-content-inner">
-
-
-        <div class="page-content">
-            <!-- /.ace-settings-container -->
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <!-- PAGE CONTENT BEGINS -->
-
-                    <div class="error-container">
-                        <div class="well">
-                            <h1 class="grey lighter smaller">
-                                            <span class="blue bigger-125">
-                                                <i class="ace-icon fa fa-random"></i>
-                                                500
-                                            </span>
-                                Something Went Wrong
-                            </h1>
-
-                            <hr/>
-                            <h3 class="lighter smaller">
-                                But we are working
-                                <i class="ace-icon fa fa-wrench icon-animated-wrench bigger-125"></i>
-                                on it!
-                            </h3>
-
-                            <div class="space"></div>
-
-                            <div>
-                                <h4 class="lighter smaller">Meanwhile, try one of the following:</h4>
-
-                                <ul class="list-unstyled spaced inline bigger-110 margin-15">
-                                    <li>
-                                        <i class="ace-icon fa fa-hand-o-right blue"></i>
-                                        Read the faq
-                                    </li>
-
-                                    <li>
-                                        <i class="ace-icon fa fa-hand-o-right blue"></i>
-                                        Give us more info on how this specific error occurred!
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <hr/>
-                            <div class="space"></div>
-
-                            <div class="center">
-                                <a href="javascript:history.back()" class="btn btn-grey">
-                                    <i class="ace-icon fa fa-arrow-left"></i>
-                                    Go Back
-                                </a>
-
-                                <a href="#" class="btn btn-primary">
-                                    <i class="ace-icon fa fa-tachometer"></i>
-                                    Dashboard
-                                </a>
-                            </div>
+                            <p>
+                                We could not find the page you were looking for.
+                                Meanwhile, you may <a href="index.htm">return to dashboard</a> or try using the search form.
+                            </p>
                         </div>
                     </div>
-
-                    <!-- PAGE CONTENT ENDS -->
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.page-content -->
-    </div>
-</div><!-- /.main-content -->
-
-<div class="footer">
-    <div class="footer-inner">
-        <div class="footer-content">
-                        <span class="bigger-120">
-                            <span class="blue bolder">Ace</span>
-                            Application &copy; 2013-2014
-                        </span>
-
-            &nbsp; &nbsp;
-            <span class="action-buttons">
-                            <a href="#">
-                                <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                            </a>
-
-                            <a href="#">
-                                <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-                            </a>
-
-                            <a href="#">
-                                <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-                            </a>
-                        </span>
+                    <!-- /.error-page -->
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.control-sidebar -->
         </div>
-    </div>
-</div>
+        <jsp:include page="footer.jsp"></jsp:include>
+        <!-- ./wrapper -->
 
-<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-</a>
-</div><!-- /.main-container -->
-
-<!-- basic scripts -->
-
-<!--[if !IE]> -->
-<script src="assets/js/jquery-2.1.4.min.js"></script>
-
-<!-- <![endif]-->
-
-<!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
-<script type="text/javascript">
-    if ('ontouchstart' in document.documentElement)
-        document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
-</script>
-<script src="assets/js/bootstrap.min.js"></script>
-
-<!-- page specific plugin scripts -->
-
-<!-- ace scripts -->
-<script src="assets/js/ace-elements.min.js"></script>
-<script src="assets/js/ace.min.js"></script>
-
-<!-- inline scripts related to this page -->
-</body>
+        <!-- jQuery -->
+        <script src="plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- FastClick -->
+        <script src="plugins/fastclick/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="assets/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="assets/js/demo.js"></script>
+    </body>
 </html>
