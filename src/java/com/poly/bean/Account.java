@@ -11,15 +11,18 @@ package com.poly.bean;
 public class Account {
 
     private String id;
-    private Boolean active;
-    private String address;
-    private String dob;
     private String email;
     private String fullName;
+    private String userName;
     private Boolean gender;
     private String password;
     private String phone;
-    private int roleId;
+    private Boolean active;
+    private String dob;
+    private int role;
+    private Boolean deflg;
+    private String createdBy;
+    private String updatedBy;
 
     public Account() {
     }
@@ -40,22 +43,6 @@ public class Account {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
     public String getFullName() {
         return fullName;
     }
@@ -64,20 +51,12 @@ public class Account {
         this.fullName = fullName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Boolean getGender() {
@@ -88,6 +67,30 @@ public class Account {
         this.gender = gender;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
     public String getDob() {
         return dob;
     }
@@ -96,11 +99,35 @@ public class Account {
         this.dob = dob;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public int getRole() {
+        return role;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    public Boolean getDeflg() {
+        return deflg;
+    }
+
+    public void setDeflg(Boolean deflg) {
+        this.deflg = deflg;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
     }
 }

@@ -25,7 +25,7 @@ public class ConstantManager {
     public static final String OK_POPUP = "okNotification";
 
     //Default Location, DB Name
-    public static final String DEFAULT_DB_NAME = "sgdg_2019";
+    public static final String DEFAULT_DB_NAME = "sgdg_jpa";
     public static final String FOLDER_CONTAIN_IMG = "/opt/tomcat/webapps/picture/";
     public static final String URL_SHOW_IMG = "http://103.1.239.39/picture/";
 

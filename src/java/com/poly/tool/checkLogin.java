@@ -20,7 +20,7 @@ public class checkLogin {
 //        if(session.equals("")){
 //            return false;
 //        }else if(session.get)
-        if (session.getAttribute("email") != null) {
+        if (session.getAttribute("loginName") != null) {
             return true;
         }
         return session.equals("");

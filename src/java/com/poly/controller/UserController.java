@@ -5,10 +5,7 @@
  */
 package com.poly.controller;
 
-import com.poly.bean.Account;
 import com.poly.constant.AccountConstant;
-import com.poly.request.AccountPassword;
-import com.poly.request.AccountRequestEntity;
 import com.poly.service.AccountService;
 import com.poly.tool.ConstantManager;
 
@@ -16,14 +13,9 @@ import java.util.Objects;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = ConstantManager.USER_PAGE)
@@ -36,14 +28,13 @@ public class UserController {
 
     @RequestMapping()
     public String initiate(ModelMap model, HttpSession session) {
-        if (Objects.equals(accSer.checkLogin(session), Boolean.FALSE)) {
-            model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
-            return accController.initiate(model, session);
-        }
+//        if (Objects.equals(accSer.checkLogin(session), Boolean.FALSE)) {
+//            model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
+//            return accController.initiate(model, session);
+//        }
 //        model.put(AccountConstant.ROLE_KEY,
 //                accSer.getListRole(AccountConstant.TYPE_ROLE_ACCESS_SYSTEM));
-//        model.put(AccountConstant.LISTUSER,
-//                accSer.getList(AccountConstant.TYPE_ROLE_ACCESS_SYSTEM));
+        model.put(AccountConstant.LISTUSER, accSer.getListAccount());
         return AccountConstant.LIST_USER_PAGE;
     }
 

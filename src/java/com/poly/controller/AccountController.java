@@ -49,19 +49,8 @@ public class AccountController {
             String errors = AccountConstant.WRONG_PASSWORD;
             return logout(session, model, errors);
         }
-        if (ac.getRoleId() < 0 || ac.getRoleId() == 8) {
-            model.put(ConstantManager.ERROR_POPUP, AccountConstant.EMPLOYEE_ONLY);
-            return AccountConstant.LOGINPAGE;
-        }
-        if (ac.getRoleId() <= 7 || ac.getRoleId() == 9) {
-            session.setAttribute(ConstantManager.EMAIL_SESSION_KEY, ac.getEmail());
-            session.setAttribute(ConstantManager.LOGIN_NAME_SESSION_KEY, ac.getFullName());
-            session.setAttribute(ConstantManager.ROLEIZ_SESSION_KEY, ac.getRoleId());
-            session.setAttribute(ConstantManager.ACCOUNT_ID_SESSION_KEY, ac.getId());
-            return initiate(model, session);
-        }
-        model.put(ConstantManager.ERROR_POPUP, AccountConstant.EMPLOYEE_ONLY);
-        return AccountConstant.LOGINPAGE;
+        session.setAttribute(ConstantManager.LOGIN_NAME_SESSION_KEY, ac.getFullName());
+        return initiate(model, session);
     }
 
     @RequestMapping(params = AccountConstant.BUTTON_LOGOUT)

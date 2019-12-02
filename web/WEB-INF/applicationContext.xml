@@ -21,8 +21,8 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource"
           p:driverClassName="com.mysql.jdbc.Driver"
-          p:url="jdbc:mysql://103.1.239.39:3306/sgdg_2019?useUnicode=yes&amp;characterEncoding=utf8&amp;useSSL=false"
-          p:username="sgdg_test"
+          p:url="jdbc:mysql://103.1.239.39:3306/sgdg_jpa?useUnicode=yes&amp;characterEncoding=utf8&amp;useSSL=false"
+          p:username="sgdg_education"
           p:password="2019S@igon"/>
 
     <bean id="jdbcTemplate"

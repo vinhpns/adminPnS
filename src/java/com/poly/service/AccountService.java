@@ -48,23 +48,31 @@ public class AccountService {
                 || checkLogin.checkLoginRoleAdmin(role) == true);
     }
 
-    public Boolean changeActive(String id, Boolean active) {
-        return !Objects.equals(accDAO.changeActive(active, id), Boolean.FALSE);
+//    public Boolean changeActive(String id, Boolean active) {
+//        return !Objects.equals(accDAO.changeActive(active, id), Boolean.FALSE);
+//    }
+    public Account getAccountLogin(String email) {
+        Account checkByEmail = accDAO.getAccountByEmail(email);
+        Account checkByUserName = accDAO.getAccountByUserName(email);
+        if (checkByEmail == null && checkByUserName == null) {
+            return null;
+        }
+        if (checkByEmail != null) {
+            return checkByEmail;
+        } else {
+            return checkByUserName;
+        }
     }
 
-    public Account getAccountLogin(String email) {
-        Account account = accDAO.getByEmail(email);
-        if (account != null) {
-            return account;
-        }
-        return null;
-    }
-    
     public Boolean checkPassLogin(String password, String passlogin) {
         PasswordEncoder pw = new BCryptPasswordEncoder();
         if (pw.matches(password, passlogin)) {
             return Boolean.TRUE;
         }
         return Boolean.FALSE;
+    }
+
+    public List<Account> getListAccount() {
+        return accDAO.getList();
     }
 }
