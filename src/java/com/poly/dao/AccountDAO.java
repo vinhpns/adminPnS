@@ -6,7 +6,6 @@
 package com.poly.dao;
 
 import com.poly.bean.Account;
-import com.poly.bean.Customer;
 import com.poly.constant.AccountConstant;
 import com.poly.tool.ConstantManager;
 
@@ -32,14 +31,6 @@ public class AccountDAO {
 
     private RowMapper<Account> getRowMapper() {
         return new BeanPropertyRowMapper<>(Account.class);
-    }
-
-    private RowMapper<Customer> getCustomerRowMapper() {
-        return new BeanPropertyRowMapper<>(Customer.class);
-    }
-
-    protected List<Customer> getCustomerBySql(String sql) {
-        return jdbc.query(sql, getCustomerRowMapper());
     }
 
     public List<Account> getList(int type) {
@@ -69,33 +60,12 @@ public class AccountDAO {
         }
     }
 
-    public Customer getCustomerByIdAccount(String id) {
-        try {
-            String sql = "SELECT * FROM customer WHERE account_id = ?";
-            return jdbc.queryForObject(sql, getCustomerRowMapper(), id);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
-
     public Account getByEmail(String email) {
         String sql = "SELECT * FROM " + ConstantManager.DEFAULT_DB_NAME + ".account "
                 + "WHERE delfg = false AND email = ?";
         try {
             return jdbc.queryForObject(sql, getRowMapper(), email);
         } catch (DataAccessException e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
-
-    public Customer getBySocialIdNumber(int socialId) {
-        try {
-            String sql = "SELECT * FROM " + ConstantManager.DEFAULT_DB_NAME + ".customer "
-                    + "WHERE social_id_number = '" + socialId + "'";
-            return jdbc.queryForObject(sql, getCustomerRowMapper(), socialId);
-        } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
         }
@@ -145,32 +115,6 @@ public class AccountDAO {
         }
     }
 
-    public Boolean updateCustomerInfo(Customer customer, int type) {
-        try {
-            if (type == 1) {
-                String sql = "UPDATE customer SET avatar = ?, back_id_card = ?, front_id_card = ?, "
-                        + "social_id_number = ?, bank_branch = ?, bank_name = ?, "
-                        + "bank_name_holder = ?, bank_number = ? "
-                        + "WHERE account_id = ?";
-                jdbc.update(sql, customer.getAvatar(), customer.getBackIdCard(), customer.getFrontIdCard(),
-                        customer.getSocialIdNumber(), customer.getBankBranch(), customer.getBankName(),
-                        customer.getBankNameHolder(), customer.getBankNumber(), customer.getAccountId());
-                return Boolean.TRUE;
-            }
-            String sql = "UPDATE customer SET avatar = ?, back_id_card = ?, front_id_card = ?, "
-                    + "bank_branch = ?, bank_name = ?, "
-                    + "bank_name_holder = ?, bank_number = ? "
-                    + "WHERE account_id = ?";
-            jdbc.update(sql, customer.getAvatar(), customer.getBackIdCard(), customer.getFrontIdCard(),
-                    customer.getBankBranch(), customer.getBankName(),
-                    customer.getBankNameHolder(), customer.getBankNumber(), customer.getAccountId());
-            return Boolean.TRUE;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return Boolean.FALSE;
-        }
-    }
-
     public Boolean deleteAccount(String id) {
         try {
             String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".account "
@@ -197,20 +141,4 @@ public class AccountDAO {
         }
     }
 
-    public Boolean insertCustomer(Customer cust) {
-        try {
-            String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".customer "
-                    + "(account_id, avatar, back_id_card, front_id_card, "
-                    + "social_id_number, point, rank_id, bank_branch, "
-                    + "bank_name, bank_name_holder, bank_number) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-            jdbc.update(sql, cust.getAccountId(), cust.getAvatar(), cust.getBackIdCard(), cust.getFrontIdCard(),
-                    cust.getSocialIdNumber(), cust.getPoint(), cust.getRankId(), cust.getBankBranch(),
-                    cust.getBankName(), cust.getBankNameHolder(), cust.getBankNumber());
-            return Boolean.TRUE;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return Boolean.FALSE;
-        }
-    }
 }

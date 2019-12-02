@@ -40,10 +40,10 @@ public class UserController {
             model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
             return accController.initiate(model, session);
         }
-        model.put(AccountConstant.ROLE_KEY,
-                accSer.getListRole(AccountConstant.TYPE_ROLE_ACCESS_SYSTEM));
-        model.put(AccountConstant.LISTUSER,
-                accSer.getList(AccountConstant.TYPE_ROLE_ACCESS_SYSTEM));
+//        model.put(AccountConstant.ROLE_KEY,
+//                accSer.getListRole(AccountConstant.TYPE_ROLE_ACCESS_SYSTEM));
+//        model.put(AccountConstant.LISTUSER,
+//                accSer.getList(AccountConstant.TYPE_ROLE_ACCESS_SYSTEM));
         return AccountConstant.LIST_USER_PAGE;
     }
 

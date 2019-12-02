@@ -53,7 +53,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/UI/general.html" class="nav-link">
+                                <a href="menu.htm" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Danh sách Menu</p>
                                 </a>
