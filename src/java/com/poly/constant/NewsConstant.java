@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -88,8 +88,9 @@ public class NewsConstant {
     public static final String INSERT_FOOTER_OK = "Thêm footer thành công";
     public static final String UPDATE_FOOTER_FAIL = "Chỉnh sửa footer không thành công";
     public static final String UPDATE_FOOTER_OK = "Chỉnh sửa footer thành công";
-    public static final int TYPE_FOOTER = 1;
+    public static final int TYPE_MENU = 1;
     public static final int TYPE_NEWS = 2;
-    public static final int TYPE_QNA = 3;
+    public static final int TYPE_EVENT = 3;
+    public static final int TYPE_FOOTER = 4;
 
 }
