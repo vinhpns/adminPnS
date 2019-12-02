@@ -5,27 +5,27 @@
  */
 package com.poly.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * @author VinhNT
+ *
+ * @author SGDG Company
  */
 @Controller
-@RequestMapping(value = "menuPage")
-public class menuPage {
+@RequestMapping(value = "menu")
+public class MenuController {
 
     @RequestMapping()
-    public String initiate(ModelMap model, HttpSession session, HttpServletRequest request) {
-//        Object obc = session.getAttribute("id");
-        model.addAttribute("fullname", "Vinh");
-        model.put("activePage", 1);
-        return "customerList";
+    public String initiate(ModelMap model, HttpSession session) {
+        return "menu";
     }
 
+    @RequestMapping(params = "getSubMenu")
+    public String getSubMenu(ModelMap model, HttpSession session, @RequestParam("id") String id) {
+        return "subMenu";
+    }
 }
