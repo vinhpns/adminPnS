@@ -60,11 +60,14 @@ public class UserController {
 //        model.put(ConstantManager.OK_POPUP, "Đổi mật khẩu thành công");
 //        return initiate(model, session);
 //    }
-
     @RequestMapping(params = "insert", method = RequestMethod.POST)
     public String insert(ModelMap model, HttpSession session,
             @ModelAttribute("account") AccountRequestEntity ac) {
-        if (Objects.equals(accSer.insertAccount(ac, (String)session.getAttribute("accountId")), Boolean.FALSE)) {
+        if (Objects.equals(accSer.checkLogin(session), Boolean.FALSE)) {
+            model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
+            return accController.initiate(model, session);
+        }
+        if (Objects.equals(accSer.insertAccount(ac, (String) session.getAttribute("accountId")), Boolean.FALSE)) {
             model.put(ConstantManager.ERROR_POPUP, "Thêm tài khoản không thành công");
             return initiate(model, session);
         }
@@ -80,14 +83,14 @@ public class UserController {
             model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
             return accController.initiate(model, session);
         }
-        if (Objects.equals(accSer.changeActive(id, status), Boolean.FALSE)) {
+        if (Objects.equals(accSer.updateStatus(id, status), Boolean.FALSE)) {
             model.put(ConstantManager.ERROR_POPUP, AccountConstant.LOCK_FAIL);
             return initiate(model, session);
         }
         model.put(ConstantManager.OK_POPUP, AccountConstant.LOCK_SUCCESSFUL);
         return initiate(model, session);
     }
-    
+
 //    @RequestMapping(params = ConstantManager.INSERT_FUNCTION, method = RequestMethod.POST)
 //    public String insert(ModelMap model, HttpSession session,
 //            @ModelAttribute(AccountConstant.ACCOUNT_MODEL_REQUEST_PARAM) AccountRequestEntity ac,

@@ -1,7 +1,5 @@
 package com.poly.controller;
 
-import com.poly.bean.Register;
-import com.poly.service.RegisterService;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +16,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = "register")
 public class RegisterController {
 
-    @Autowired
-    RegisterService registerService;
-
     @RequestMapping()
     public String initiate(ModelMap model, HttpSession session) {
-        List<Register> m = registerService.getFather();
-        model.put("registerList", m);
+//        List<Register> m = registerService.getFather();
+//        model.put("registerList", m);
         return "register";
     }
 
     @RequestMapping(params = "getRegister")
     public String getRegister(ModelMap model, HttpSession session, @RequestParam("id") String id) {
-        List<Register> m = RegisterService.getSon(id);
-        model.put("Register", m);
-        model.put("RegisterName", RegisterService.getRegisterById(id).getName());
+//        List<Register> m = RegisterService.getSon(id);
+//        model.put("Register", m);
+//        model.put("RegisterName", RegisterService.getRegisterById(id).getName());
         return "Register";
     }
+}
