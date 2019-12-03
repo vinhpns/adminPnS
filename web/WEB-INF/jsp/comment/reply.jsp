@@ -13,7 +13,6 @@
                 <div class="widget-main">
                     <div>
                         <input value="${comment.id}" name="id" hidden="">
-                        <input value="${comment.reply}" name="reply" hidden="">
                         <label for="form-field-8">Nội Dung</label>
                         <input  readonly="" id="txt_box" type="text" required="" placeholder="Tên Menu"
                                class="autosize-transition form-control" name="Menuname" value="${comment.content}"
@@ -22,7 +21,7 @@
                     <br>
                     <div>
                         <label for="form-field-8">Trả Lời</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        <textarea class="form-control" name="reply" rows="3" placeholder="Enter ..."></textarea>
                     </div>
                 </div>
             </div>

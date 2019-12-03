@@ -30,9 +30,10 @@ public class CommentService {
         return commentDAO.countNotReply().size();
     }
     public Boolean updateReply(String id, String reply) {
-        Comment cmt = new Comment();
-        cmt.setReply(reply);
-        cmt.setId(id);
-        return !Objects.equals(commentDAO.updateReply(reply, id), Boolean.FALSE);
+        Comment c = new Comment();
+        c.setReply(reply);
+        c.setId(id);
+        c.setIsReply(Boolean.TRUE);
+        return !Objects.equals(commentDAO.updateReply(c), Boolean.FALSE);
     }
 }

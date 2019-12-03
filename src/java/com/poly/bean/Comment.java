@@ -17,6 +17,7 @@ public class Comment {
     private String email;
     private String content;
     private String reply;
+    private Boolean isReply;
 
     public Comment() {
     }
@@ -67,6 +68,14 @@ public class Comment {
 
     public void setReply(String reply) {
         this.reply = reply;
+    }
+
+    public Boolean getIsReply() {
+        return isReply;
+    }
+
+    public void setIsReply(Boolean isReply) {
+        this.isReply = isReply;
     }
 
 }

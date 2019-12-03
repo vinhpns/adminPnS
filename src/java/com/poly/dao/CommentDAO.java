@@ -35,7 +35,7 @@ public class CommentDAO {
     public List<Comment> getListComment() {
         try {
             String sql = "SELECT comment.id, comment.name, comment.phone, "
-                    + "comment.email, comment.content, comment.reply "
+                    + "comment.email, comment.content, comment.reply, comment.is_reply as isReply "
                     + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".comment ";
             return getBySql(sql);
         } catch (Exception e) {
@@ -49,11 +49,12 @@ public class CommentDAO {
         return getBySql(sql);
     }
 
-    public Boolean updateReply(String reply, String id) {
+    public Boolean updateReply(Comment c) {
         try {
-            String sql = "UPDATE comment SET reply = '" + reply + ", is_reply= true "
-                    + "WHERE id = '" + id + "'";
-            jdbc.update(sql, id);
+            String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".comment "
+                    + "SET reply = ?, is_reply = ? "
+                    + "WHERE id = ?";
+            jdbc.update(sql, c.getReply(), c.getIsReply(), c.getId());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());
