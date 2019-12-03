@@ -61,8 +61,8 @@
                                     <%@include file="list-user/insert-modal.jsp" %> 
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-primary btn-lg" type="submit" name="update">Cập Nhật</button>
-                                    <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-primary btn-lg" type="submit" name="update">Thêm</button>
+                                    <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Đóng</button>
                                 </div>
                             </div>
                         </form>
