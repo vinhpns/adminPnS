@@ -44,18 +44,20 @@ public class MenuService {
     public Menu getMenuById(String id) {
         return mDAO.getMenuById(id);
     }
-    public Boolean insertMenu(String name){
+
+    public Boolean insertMenu(String name) {
         Menu menu = new Menu();
         UUID uuid = UUID.randomUUID();
         menu.setId(uuid.toString());
         menu.setParentId("0");
         menu.setName(name);
-        if(Objects.equals(mDAO.insertMenu(menu), Boolean.FALSE)){
+        if (Objects.equals(mDAO.insertMenu(menu), Boolean.FALSE)) {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;
     }
-     public Boolean deleteMenu(int id) {
+
+    public Boolean deleteMenu(int id) {
         List<Menu> pList = mDAO.getFather();
         if (Objects.equals(pList, ConstantManager.NULL) || pList.isEmpty()) {
             mDAO.deleteMenu(id);
@@ -63,18 +65,15 @@ public class MenuService {
         }
         return Boolean.FALSE;
     }
-     public Boolean updateMenu(Menu menu) {
+
+    public Boolean updateMenu(Menu menu) {
         return !Objects.equals(mDAO.updateMenu(menu), Boolean.FALSE);
     }
- public void unLockMenu(String id) {
-        mDAO.setUnlockMenu(id);
-    }
- public void lockMenu(String id) {
-//        List<Menu> getList = mDAO.getFather(id);
-//        int sizeList = getList.size();
-//        for (int i = 0; i <= sizeList; i++) {
-//            System.out.println(getList.get(i).getId());
-//        }
-        mDAO.setLockMenu(id);
+    
+    public Boolean updateStatus(String id, Boolean status) {
+        Menu menu = new Menu();
+        menu.setActive(status);
+        menu.setId(id);
+        return !Objects.equals(mDAO.updateStatus(menu), Boolean.FALSE);
     }
 }

@@ -8,6 +8,7 @@ package com.poly.dao;
 import com.poly.bean.Menu;
 import com.poly.tool.ConstantManager;
 import java.util.List;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -58,7 +59,8 @@ public class MenuDAO {
             return Boolean.FALSE;
         }
     }
-public Boolean deleteMenu(int id) {
+
+    public Boolean deleteMenu(int id) {
         try {
             String sql = "DELETE FROM " + ConstantManager.DEFAULT_DB_NAME + ".menu "
                     + "WHERE id=?";
@@ -69,19 +71,21 @@ public Boolean deleteMenu(int id) {
             return Boolean.FALSE;
         }
     }
-public Boolean updateMenu(Menu menu) {
+
+    public Boolean updateMenu(Menu menu) {
         try {
             String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".menu "
                     + "SET name = ?, parent_id = ? "
                     + "WHERE id = ?";
-            jdbc.update(sql, menu.getName(),  menu.getId());
+            jdbc.update(sql, menu.getName(), menu.getId());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return Boolean.FALSE;
         }
     }
- public void setLockMenu(String id) {
+
+    public void setLockMenu(String id) {
         String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".menu SET active = false where id= ?";
         jdbc.update(sql, id);
     }
@@ -90,5 +94,19 @@ public Boolean updateMenu(Menu menu) {
         String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".menu SET active = true where id= ?";
         jdbc.update(sql, id);
     }
-  
+
+    public Boolean updateStatus(Menu menu) {
+        try {
+            Boolean status = Boolean.TRUE;
+            if (Objects.equals(menu.getActive(), Boolean.TRUE)) {
+                status = Boolean.FALSE;
+            }
+            String sql = "UPDATE menu SET active = " + status + " WHERE id = '" + menu.getId() + "'";
+            jdbc.update(sql);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
+        }
+    }
 }

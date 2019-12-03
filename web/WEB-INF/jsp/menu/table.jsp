@@ -16,12 +16,12 @@
                 <td>${menu.count}</td>
                 <td>
             <c:if test="${menu.active == true}">
-                <a href="?changeStatus&id=${user.id}&status=${user.active}">
+                <a href="?changeStatus&id=${menu.id}&status=${menu.active}">
                     <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa tài khoản"></i>
                 </a>
             </c:if>
             <c:if test="${menu.active == false}">
-                <a href="?id=${user.id}&status=${user.active}">
+                <a href="?changeStatus&id=${menu.id}&status=${menu.active}">
                     <i class="fa fa-lock" style="color: green; font-size: 16px" title="Mở Khóa tài khoản"></i>
                 </a>
             </c:if>
