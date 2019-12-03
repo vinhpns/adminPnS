@@ -9,6 +9,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" src="assets/css/imgcss.css"/>
+        <script src="assets/js/img.js"/>
         <!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">-->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
@@ -33,7 +35,9 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Ảnh Đại Diện</label>
-                        <input type="file" />
+                        <input type="file"  onchange="readURL(this);"/>
+                        <br>
+                        <img id="blah" src="http://placehold.it/180" alt="your image" />
                     </div>
                 </div>
             </div>
