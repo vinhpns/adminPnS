@@ -91,7 +91,7 @@ public class MenuController {
             return initiate(model, session);
         }
         
-        menu.setParentId(fatherId);
+        menu.setParentid(fatherId);
         menu.setName(name);
         
         model.put(ConstantManager.OK_POPUP, MenuConstant.UPDATE_MENU_OK);
