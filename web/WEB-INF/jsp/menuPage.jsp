@@ -112,12 +112,21 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-header">Comment</li>
+                    <li class="nav-item">Comment</li>
                     <li class="nav-item">
                         <a href="pages/calendar.html" class="nav-link">
                             <i class="nav-icon fa fa-calendar"></i>
                             <p>
                                 Danh sách
+                                <span class="badge badge-info right">2</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="comment.html" class="nav-link">
+                            <i class="nav-icon fa fa-calendar"></i>
+                            <p>
+                                Comment
                                 <span class="badge badge-info right">2</span>
                             </p>
                         </a>
