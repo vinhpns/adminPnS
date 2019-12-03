@@ -11,6 +11,7 @@ import com.poly.tool.ConstantManager;
 import com.poly.tool.checkLogin;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,24 +44,37 @@ public class MenuService {
     public Menu getMenuById(String id) {
         return mDAO.getMenuById(id);
     }
-//    public Boolean insertMenu(String name, int father){
-//        Menu menu = new Menu();
-//        menu.setActive(Boolean.TRUE);
-//        menu.setParentid(father);
-//        if(Objects.equals(mDAO.insertMenu(menu), Boolean.FALSE)){
-//            return Boolean.FALSE;
+    public Boolean insertMenu(String name){
+        Menu menu = new Menu();
+        UUID uuid = UUID.randomUUID();
+        menu.setId(uuid.toString());
+        menu.setParentId("0");
+        menu.setName(name);
+        if(Objects.equals(mDAO.insertMenu(menu), Boolean.FALSE)){
+            return Boolean.FALSE;
+        }
+        return Boolean.TRUE;
+    }
+     public Boolean deleteMenu(int id) {
+        List<Menu> pList = mDAO.getFather();
+        if (Objects.equals(pList, ConstantManager.NULL) || pList.isEmpty()) {
+            mDAO.deleteMenu(id);
+            return !Objects.equals(mDAO.deleteMenu(id), Boolean.FALSE);
+        }
+        return Boolean.FALSE;
+    }
+     public Boolean updateMenu(Menu menu) {
+        return !Objects.equals(mDAO.updateMenu(menu), Boolean.FALSE);
+    }
+ public void unLockMenu(String id) {
+        mDAO.setUnlockMenu(id);
+    }
+ public void lockMenu(String id) {
+//        List<Menu> getList = mDAO.getFather(id);
+//        int sizeList = getList.size();
+//        for (int i = 0; i <= sizeList; i++) {
+//            System.out.println(getList.get(i).getId());
 //        }
-//        return null;
-//    }
-//     public Boolean deleteMenu(int id) {
-//        List<Menu> pList = mDAO.getFather();
-//        if (Objects.equals(pList, ConstantManager.NULL) || pList.isEmpty()) {
-//            mDAO.deleteMenu(id);
-//            return !Objects.equals(mDAO.deleteMenu(id), Boolean.FALSE);
-//        }
-//        return Boolean.FALSE;
-//    }
-//     public Boolean updateMenu(Menu menu) {
-//        return !Objects.equals(mDAO.updateMenu(menu), Boolean.FALSE);
-//    }
+        mDAO.setLockMenu(id);
+    }
 }

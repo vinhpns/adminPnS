@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Ảnh Đại Diện</label>
-                        <input type="file"/>
+                        <input type="file" />
                     </div>
                 </div>
             </div>

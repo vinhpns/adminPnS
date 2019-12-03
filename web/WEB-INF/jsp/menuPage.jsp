@@ -124,7 +124,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="comment.htm" class="nav-link">
-                            <i class="nav-icon fa fa-edit"></i>
+                            <i class="nav-icon fa fa-calendar"></i>
                             <p>
                                 Comment
                                 <span class="badge badge-info right">2</span>
@@ -133,7 +133,7 @@
                     </li>
                     <li class="nav-header" style="font-size: 18px">Học Viên</li>
                     <li class="nav-item">
-                        <a href="https://adminlte.io/docs" class="nav-link">
+                        <a href="register.htm" class="nav-link">
                             <i class="nav-icon fa fa-file"></i>
                             <p>Danh sách đăng ký
                                 <span class="badge badge-info right">2</span>
