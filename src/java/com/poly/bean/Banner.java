@@ -10,30 +10,48 @@ package com.poly.bean;
  */
 public class Banner {
 
-    private int id;
+    private String id;
     private Boolean active;
-    private String image;
+    private String img;
     private String link;
     private int type;
-    private String typename;
+
+    private String createdBy;
+    private String updatedBy;
 
     public Banner() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getImage() {
-        return image;
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public int getType() {
@@ -60,11 +78,4 @@ public class Banner {
         this.link = link;
     }
 
-    public String getTypename() {
-        return typename;
-    }
-
-    public void setTypename(String typename) {
-        this.typename = typename;
-    }
 }

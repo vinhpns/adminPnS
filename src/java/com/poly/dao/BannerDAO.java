@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.poly.dao;
 
 import com.poly.bean.Banner;
@@ -22,7 +18,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BannerDAO {
 
-    @Autowired
+    @Autowired 
     protected JdbcTemplate jdbc;
 
     protected List<Banner> getBySql(String sql) {
@@ -85,8 +81,8 @@ public class BannerDAO {
 
     public Boolean insert(Banner banner) {
         try {
-            String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".banner (image, type, active, link) VALUES (?,?,?,?)";
-            jdbc.update(sql, banner.getImage(), banner.getType(),
+            String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".banner (img, type, active, link) VALUES (?,?,?,?)";
+            jdbc.update(sql, banner.getImg(), banner.getType(),
                     banner.getActive(), banner.getLink());
             return true;
         } catch (Exception e) {
@@ -98,7 +94,7 @@ public class BannerDAO {
     public Boolean update(Banner banner) {
         try {
             String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".banner SET image=?, type=?, active=?, link=? WHERE id=?";
-            jdbc.update(sql, banner.getImage(), banner.getType(),
+            jdbc.update(sql, banner.getImg(), banner.getType(),
                     banner.getActive(), banner.getLink(), banner.getId());
             return true;
         } catch (Exception e) {
