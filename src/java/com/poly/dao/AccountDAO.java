@@ -62,6 +62,17 @@ public class AccountDAO {
             return null;
         }
     }
+    
+    public Account getAccountById(String id) {
+        try {
+            String sql = "SELECT * from " + ConstantManager.DEFAULT_DB_NAME + ".account "
+                    + "WHERE account.id = '" + id + "'";
+            return jdbc.queryForObject(sql, getRowMapper(), id);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 
     public Boolean updatePassword(AccountPassword ap) {
         try {

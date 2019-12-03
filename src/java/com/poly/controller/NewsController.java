@@ -6,6 +6,7 @@
 package com.poly.controller;
 
 import com.poly.bean.News;
+import com.poly.service.AccountService;
 import com.poly.service.NewService;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -27,9 +28,13 @@ public class NewsController {
     @Autowired
     NewService newService;
     
+    @Autowired
+    AccountService accountService;
+    
     @RequestMapping()
     public String initiate(ModelMap model, HttpSession session, @RequestParam("type") int type) {
         List<News> n = newService.getListNewsByType(type);
+//        model.put("author", accountService.getAccountById())
         model.put("newsList", n);
         return "news";
     }

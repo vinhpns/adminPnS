@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,29 +14,31 @@
             </tr>
         </thead>
         <tbody>
-            <td><a href="?getnews&id=${news.id}">${news.count}</a></td>
+            <c:forEach var="news" items="${newsList}">
+            <td>${news.title}</td>
             <td>1</td>
             <td>1</td>
             <td>1</td>
-            <td>1</td>
+            <td>${news.view}</td>
             <td>
-            <c:if test="${news.active == true}">
-                <a href="?changeStatus&id=${news.id}&status=${news.active}">
-                    <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa tài khoản"></i>
+                <c:if test="${news.active == true}">
+                    <a href="?changeStatus&id=${news.id}&status=${news.active}">
+                        <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa tài khoản"></i>
+                    </a>
+                </c:if>
+                <c:if test="${news.active == false}">
+                    <a href="?id=${news.id}&status=${news.active}">
+                        <i class="fa fa-lock" style="color: green; font-size: 16px" title="Mở Khóa tài khoản"></i>
+                    </a>
+                </c:if>
+                <a href="?edit&id=${news.id}">
+                    <i class="fa fa-edit" style="color: blue; font-size: 16px" title="Chỉnh sửa"></i>
                 </a>
-            </c:if>
-            <c:if test="${news.active == false}">
-                <a href="?id=${news.id}&status=${news.active}">
-                    <i class="fa fa-lock" style="color: green; font-size: 16px" title="Mở Khóa tài khoản"></i>
+                <a href="?delete&id=${news.id}">
+                    <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa tài khoản"></i>
                 </a>
-            </c:if>
-            <a href="?edit&id=${news.id}">
-                <i class="fa fa-edit" style="color: blue; font-size: 16px" title="Chỉnh sửa"></i>
-            </a>
-            <a href="?delete&id=${news.id}">
-                <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa tài khoản"></i>
-            </a>
             </td>
+        </c:forEach>
     </tbody>
 </table>
 </html>

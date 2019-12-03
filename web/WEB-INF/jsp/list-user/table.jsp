@@ -15,7 +15,7 @@
         <tbody>
         <c:forEach var="user" items="${listUser}">
             <tr>
-                <td class="d-none d-md-block">${user.email}</td>
+                <td class="d-none d-md-block">${user.userName}</td>
                 <td>${user.fullName}</td>
                 <td>${user.email}</td>
                 <td>

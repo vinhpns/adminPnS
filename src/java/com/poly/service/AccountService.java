@@ -107,11 +107,15 @@ public class AccountService {
         }
         return Boolean.TRUE;
     }
-    
-    public Boolean updateStatus (String id, Boolean status) {
+
+    public Boolean updateStatus(String id, Boolean status) {
         Account ac = new Account();
         ac.setActive(status);
         ac.setId(id);
         return !Objects.equals(accDAO.updateStatus(ac), Boolean.FALSE);
+    }
+
+    public Account getAccountById(String id) {
+        return accDAO.getAccountById(id);
     }
 }
