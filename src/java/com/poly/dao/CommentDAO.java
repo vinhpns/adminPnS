@@ -45,7 +45,7 @@ public class CommentDAO {
     }
 
     public List<Comment> countNotReply() {
-        String sql = "SELECT count(id) FROM comment WHERE is_reply = false ";
+        String sql = "SELECT * FROM comment WHERE is_reply = false ";
         return getBySql(sql);
     }
 }

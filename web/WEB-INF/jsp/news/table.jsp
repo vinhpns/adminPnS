@@ -15,30 +15,32 @@
         </thead>
         <tbody>
             <c:forEach var="news" items="${newsList}">
-            <td>${news.title}</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>${news.view}</td>
-            <td>
-                <c:if test="${news.active == true}">
-                    <a href="?changeStatus&id=${news.id}&status=${news.active}">
-                        <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa tài khoản"></i>
-                    </a>
-                </c:if>
-                <c:if test="${news.active == false}">
-                    <a href="?id=${news.id}&status=${news.active}">
-                        <i class="fa fa-lock" style="color: green; font-size: 16px" title="Mở Khóa tài khoản"></i>
-                    </a>
-                </c:if>
-                <a href="?edit&id=${news.id}">
-                    <i class="fa fa-edit" style="color: blue; font-size: 16px" title="Chỉnh sửa"></i>
-                </a>
-                <a href="?delete&id=${news.id}">
-                    <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa tài khoản"></i>
-                </a>
-            </td>
-        </c:forEach>
-    </tbody>
-</table>
+                <tr>
+                    <td>${news.title}</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>${news.view}</td>
+                    <td>
+                        <c:if test="${news.active == true}">
+                            <a href="?changeStatus&id=${news.id}&status=${news.active}">
+                                <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa tài khoản"></i>
+                            </a>
+                        </c:if>
+                        <c:if test="${news.active == false}">
+                            <a href="?id=${news.id}&status=${news.active}">
+                                <i class="fa fa-lock" style="color: green; font-size: 16px" title="Mở Khóa tài khoản"></i>
+                            </a>
+                        </c:if>
+                        <a href="?edit&id=${news.id}">
+                            <i class="fa fa-edit" style="color: blue; font-size: 16px" title="Chỉnh sửa"></i>
+                        </a>
+                        <a href="?delete&id=${news.id}">
+                            <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa tài khoản"></i>
+                        </a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </html>

@@ -19,7 +19,7 @@
                     </div>
                     <br>
                     <div>
-                        <label for="form-field-8">Nội Dung</label>
+                        <label for="form-field-8">Trả Lời</label>
                         <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
                     </div>
                 </div>

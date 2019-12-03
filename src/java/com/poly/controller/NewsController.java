@@ -34,7 +34,6 @@ public class NewsController {
     @RequestMapping()
     public String initiate(ModelMap model, HttpSession session, @RequestParam("type") int type) {
         List<News> n = newService.getListNewsByType(type);
-//        model.put("author", accountService.getAccountById())
         model.put("newsList", n);
         return "news";
     }
