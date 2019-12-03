@@ -1,7 +1,7 @@
- <%-- 
-    Document   : fixReply
-    Created on : Dec 3, 2019, 12:42:55 PM
-    Author     : SGDG Company
+<%-- 
+   Document   : fixReply
+   Created on : Dec 3, 2019, 12:42:55 PM
+   Author     : SGDG Company
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,7 +13,6 @@
                 <div class="widget-main">
                     <div>
                         <input value="${comment.id}" name="id" hidden="">
-                         <input value="${comment.reply}" name="reply" hidden="">
                         <label for="form-field-8">Nội Dung</label>
                         <input readonly="" id="txt_box" type="text" required="" placeholder="Nội dung"
                                class="autosize-transition form-control" name="comment" value="${comment.content}"
@@ -22,13 +21,12 @@
                     <br>
                     <div>
                         <label for="form-field-8">Câu Trả Lời</label>
-                        <textarea readonly="" value="${comment.reply}" class="form-control" rows="3" 
-                                  placeholder="Enter ..."></textarea>
+                        <input readonly="" value="${comment.reply}" class="form-control" rows="5"></textarea>
                     </div>
                     <br>
                     <div>
                         <label for="form-field-8">Câu Trả Lời Mới</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        <textarea class="form-control" name="reply" rows="3" placeholder="Enter ..."></textarea>
                     </div>
                 </div>
             </div>
