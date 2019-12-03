@@ -16,52 +16,58 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
     </head>
     <body>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tiêu Đề</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nhập tiêu đề">
+        <form action="news.htm" method="post" modelAttribute="ban" class="form-horizontal"
+              role="form" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tiêu Đề</label>
+                            <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tiêu đề">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mô tả</label>
+                            <textarea name="description" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ảnh Đại Diện</label>
+                            <input type="file" name="avatar" />
+                        </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Mô tả</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tiêu Đề SEO</label>
+                            <input type="text" name="titleWeb" class="form-control" id="exampleInputEmail1" placeholder="Nhập tiêu đề">
+                        </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Ảnh Đại Diện</label>
-                        <input type="file" />
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Từ Khóa</label>
+                            <textarea class="form-control" name="meta" rows="3" placeholder="Enter ..."></textarea>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mô tả SEO</label>
+                            <textarea class="form-control" name="metaDescription" rows="3" placeholder="Enter ..."></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tiêu Đề SEO</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nhập tiêu đề">
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Từ Khóa</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Mô tả SEO</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                    </div>
-                </div>
+            <div>
+                <input name="type" value="${type}" hidden="">
+                <textarea id="summernote" name="content" style=""></textarea>
             </div>
-        </div>
-        <div class="col-12" id="summernote"></div>
-        <div class="col-12">
-            <button type="button" style="float: right;" class="btn btn-primary">Thêm Mới</button>
-        </div>
+            <div class="col-12">
+                <button type="submit" name="insertNews" style="float: right;" class="btn btn-primary">Thêm Mới</button>
+            </div>
+        </form>
         <script>
             $('#summernote').summernote({
                 height: 300, // set editor height
