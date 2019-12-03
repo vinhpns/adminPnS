@@ -60,6 +60,5 @@ public class CommentDAO {
             System.out.println(e.getMessage());
             return Boolean.FALSE;
         }
-
     }
 }
