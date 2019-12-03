@@ -6,24 +6,16 @@
 package com.poly.service;
 
 import com.poly.bean.Account;
-import com.poly.constant.AccountConstant;
 import com.poly.dao.AccountDAO;
-import com.poly.request.AccountPassword;
-import com.poly.request.AccountRequestEntity;
-import com.poly.tool.Utils;
 import com.poly.tool.checkLogin;
-import java.util.ArrayList;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Vinh
@@ -32,7 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class AccountService {
 
     @Autowired
-    private AccountDAO accDAO;
+    AccountDAO accDAO;
 
     public Boolean checkLogin(HttpSession session) {
         if (checkLogin.checkLogin(session) == false) {

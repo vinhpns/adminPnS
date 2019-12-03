@@ -70,21 +70,27 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/forms/general.html" class="nav-link">
+                                <a href="news.htm?type=1" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Menu</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/forms/advanced.html" class="nav-link">
+                                <a href="news.htm?type=2" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Tin Tức</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/forms/editors.html" class="nav-link">
+                                <a href="news.htm?type=3" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Sự Kiện</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="news.htm?type=4" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Footer</p>
                                 </a>
                             </li>
                         </ul>

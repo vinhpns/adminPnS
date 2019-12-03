@@ -12,56 +12,24 @@ import java.io.Serializable;
  */
 public class News implements Serializable {
 
-    private int id;
+    private String id;
     private Boolean active;
-    private String avatar;
-    private String content;
-    private Boolean hot;
     private String title;
+    private String meta;
+    private String content;
     private int type;
+    private String createdBy;
+    private String updatedBy;
 
     public News() {
-
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
     }
 
     public Boolean getActive() {
@@ -72,11 +40,52 @@ public class News implements Serializable {
         this.active = active;
     }
 
-    public Boolean getHot() {
-        return hot;
+    public String getTitle() {
+        return title;
     }
 
-    public void setHot(Boolean hot) {
-        this.hot = hot;
+    public void setTitle(String title) {
+        this.title = title;
     }
+
+    public String getMeta() {
+        return meta;
+    }
+
+    public void setMeta(String meta) {
+        this.meta = meta;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
 }

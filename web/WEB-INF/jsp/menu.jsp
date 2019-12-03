@@ -27,7 +27,7 @@
                                     </ol>
                                 </div>
                             </div>
-                        </div><!-- /.container-fluid -->
+                        </div>
                     </section>
                     <section class="content">
                         <div class="row">
