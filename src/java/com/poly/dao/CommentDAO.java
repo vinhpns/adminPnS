@@ -48,4 +48,17 @@ public class CommentDAO {
         String sql = "SELECT * FROM comment WHERE is_reply = false ";
         return getBySql(sql);
     }
+
+    public Boolean updateReply(String reply, String id) {
+        try {
+            String sql = "UPDATE comment SET reply = '" + reply + ", is_reply= true "
+                    + "WHERE id = '" + id + "'";
+            jdbc.update(sql, id);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
+        }
+
+    }
 }
