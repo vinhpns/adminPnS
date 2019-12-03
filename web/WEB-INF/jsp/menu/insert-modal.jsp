@@ -14,7 +14,7 @@
                     <div>
                         <label for="form-field-8">Tên Menu</label>
                         <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                               class="autosize-transition form-control" name="Menuname"
+                               class="autosize-transition form-control" name="name"
                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                     </div>
                 </div>

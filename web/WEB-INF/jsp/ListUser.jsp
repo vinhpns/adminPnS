@@ -50,7 +50,7 @@
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
                         <!-- Modal content-->
-                        <form action="ListUser.htm" method="post" modelAttribute="account" class="form-horizontal"
+                        <form action="ListUser.htm" method="post" class="form-horizontal"
                               role="form" enctype="multipart/form-data">
                             <div class="modal-content">
                                 <div class="modal-header" style="display: inline">

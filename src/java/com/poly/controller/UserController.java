@@ -5,7 +5,6 @@
  */
 package com.poly.controller;
 
-import com.poly.bean.Account;
 import com.poly.constant.AccountConstant;
 import com.poly.request.AccountPassword;
 import com.poly.request.AccountRequestEntity;
@@ -21,6 +20,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = ConstantManager.USER_PAGE)
@@ -42,27 +42,28 @@ public class UserController {
         return AccountConstant.LIST_USER_PAGE;
     }
 
-    @RequestMapping(params = "password", method = RequestMethod.POST)
-    public String updatePassword(ModelMap model, HttpSession session,
-            @ModelAttribute("account") AccountPassword ap) {
-        if (Objects.equals(accSer.checkLogin(session), Boolean.FALSE)) {
-            model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
-            return accController.initiate(model, session);
-        }
-        if (ap.getNewPassword().equalsIgnoreCase(ap.getOldPassword())) {
-            model.put(ConstantManager.ERROR_POPUP, "Mật khẩu mới không được trùng mật khẩu cũ");
-            return initiate(model, session);
-        }
-        if (Objects.equals(accSer.updatePass(ap), Boolean.FALSE)) {
-            model.put(ConstantManager.ERROR_POPUP, "Đổi mật khẩu không thành công");
-            return initiate(model, session);
-        }
-        model.put(ConstantManager.OK_POPUP, "Đổi mật khẩu thành công");
-        return initiate(model, session);
-    }
+//    @RequestMapping(params = "password", method = RequestMethod.POST)
+//    public String updatePassword(ModelMap model, HttpSession session,
+//            @ModelAttribute("account") AccountPassword ap) {
+//        if (Objects.equals(accSer.checkLogin(session), Boolean.FALSE)) {
+//            model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
+//            return accController.initiate(model, session);
+//        }
+//        if (ap.getNewPassword().equalsIgnoreCase(ap.getOldPassword())) {
+//            model.put(ConstantManager.ERROR_POPUP, "Mật khẩu mới không được trùng mật khẩu cũ");
+//            return initiate(model, session);
+//        }
+//        if (Objects.equals(accSer.updatePass(ap), Boolean.FALSE)) {
+//            model.put(ConstantManager.ERROR_POPUP, "Đổi mật khẩu không thành công");
+//            return initiate(model, session);
+//        }
+//        model.put(ConstantManager.OK_POPUP, "Đổi mật khẩu thành công");
+//        return initiate(model, session);
+//    }
 
     @RequestMapping(params = "insert", method = RequestMethod.POST)
-    public String insert(ModelMap model, HttpSession session, @ModelAttribute("account") AccountRequestEntity ac) {
+    public String insert(ModelMap model, HttpSession session,
+            @ModelAttribute("account") AccountRequestEntity ac) {
 //        if (Objects.equals(accSer.insertAccount(ac), Boolean.FALSE)) {
 //            model.put(ConstantManager.ERROR_POPUP, "Thêm tài khoản không thành công");
 //            return initiate(model, session);

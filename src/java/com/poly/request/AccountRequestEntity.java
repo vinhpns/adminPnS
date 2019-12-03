@@ -5,14 +5,14 @@
  */
 package com.poly.request;
 
-import org.springframework.web.multipart.MultipartFile;
-
 /**
  *
  * @author SGDG Company
  */
 public class AccountRequestEntity {
 
+    public AccountRequestEntity() {
+    }
     private String fullName;
     private String email;
     private String userName;
@@ -22,9 +22,6 @@ public class AccountRequestEntity {
     private String phone;
     private String address;
     private String dob;
-
-    public AccountRequestEntity() {
-    }
 
     public String getFullName() {
         return fullName;

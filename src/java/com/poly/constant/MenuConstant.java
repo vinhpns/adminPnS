@@ -17,10 +17,17 @@ public class MenuConstant {
     public static final String NAME_PARAM = "name";
     public static final String ID_PARAM = "id";
     public static final String FATHER_ID_PARAM = "fatherId";
+    public static final String STATUS_PARAM = "status";
     //Message Erro
     public static final String DELETE_MENU_FAIL = "Xoá danh mục không thành công ";
-    public static final String DELETE_MENU_OK = "Xoá danh mục  thành công ";
+
     public static final String UPDATE_MENU_FAIL = "Chỉnh sửa danh mục không thành công";
 
     public static final String UPDATE_MENU_OK = "Chỉnh sửa danh mục thành công";
+    //Message
+    public static final String LOCK_MENU_CLOSE = "Khóa thành công";
+
+    public static final String LOCK_MENU_OPEN = "Mở khóa thành công";
+
+    public static final String DELETE_MENU_OK = "Xoá danh mục  thành công ";
 }
