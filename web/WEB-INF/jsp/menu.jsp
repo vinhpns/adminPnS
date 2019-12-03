@@ -40,17 +40,17 @@
                                             class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Thêm Menu
                                     </button>
                                     <div class="modal fade" id="myModal" role="dialog">
-                                    <div class="modal-dialog">
-                                        <!-- Modal content-->
-                                        <form action="Menu.htm" method="post" modelAttribute="ban" class="form-horizontal"
-                                              role="form" enctype="multipart/form-data">
-                                            <div class="modal-content">
-                                                <div class="modal-header" style="display: inline">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h3 class="modal-title">Thêm Menu</h3>
-                                                </div>
-                                                <div class="modal-body">
-                                                <%@include file="menu/insert-modal.jsp" %> 
+                                        <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                            <form action="Menu.htm" method="post" modelAttribute="ban" class="form-horizontal"
+                                                  role="form" enctype="multipart/form-data">
+                                                <div class="modal-content">
+                                                    <div class="modal-header" style="display: inline">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h3 class="modal-title">Thêm Menu</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <%@include file="menu/insert-modal.jsp" %> 
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-primary btn-lg" type="submit" name="update">Cập Nhật</button>

@@ -6,10 +6,14 @@
 package com.poly.service;
 
 import com.poly.bean.Account;
+import com.poly.bean.Role;
 import com.poly.dao.AccountDAO;
+import com.poly.request.AccountPassword;
 import com.poly.tool.checkLogin;
+import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Objects;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +39,10 @@ public class AccountService {
 
     public Boolean checkLoginRole(HttpSession session) {
         int role = Integer.parseInt(String.valueOf(session.getAttribute("roleiz")));
-        return (checkLogin.checkLoginRoleHr(role) == true
-                || checkLogin.checkLoginRoleIt(role) == true
-                || checkLogin.checkLoginRoleAdmin(role) == true);
+        return (checkLogin.checkLoginRoleAdmin(role) == true
+                || checkLogin.checkLoginRoleSuperAdmin(role));
     }
 
-//    public Boolean changeActive(String id, Boolean active) {
-//        return !Objects.equals(accDAO.changeActive(active, id), Boolean.FALSE);
-//    }
     public Account getAccountLogin(String email) {
         Account checkByEmail = accDAO.getAccountByEmail(email);
         Account checkByUserName = accDAO.getAccountByUserName(email);
@@ -66,5 +66,22 @@ public class AccountService {
 
     public List<Account> getListAccount() {
         return accDAO.getList();
+    }
+
+    public List<Role> initListRole() {
+        ArrayList<Role> role = new ArrayList<>();
+        Role r = new Role(1, "Writer");
+        Role r1 = new Role(2, "Mod");
+        Role r2 = new Role(3, "Admin");
+        Role r3 = new Role(4, "Super");
+        role.add(r);
+        role.add(r1);
+        role.add(r2);
+        role.add(r3);
+        return role;
+    }
+
+    public Boolean updatePass(AccountPassword ap) {
+        return !Objects.equals(accDAO.updatePassword(ap), Boolean.FALSE);
     }
 }

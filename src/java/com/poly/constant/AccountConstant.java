@@ -63,15 +63,10 @@ public class AccountConstant {
     public static final String NOT_LIKE_IN_PASSWORD = "Mật khẩu nhập 2 lần không trùng nhau";
     public static final String URL_PARAM = "url";
 
-    public static final int ROLE_SALE = 1;
-    public static final int ROLE_HR = 2;
-    public static final int ROLE_ACC = 3;
-    public static final int ROLE_WRITER = 4;
-    public static final int ROLE_MOD = 5;
-    public static final int ROLE_IT = 6;
-    public static final int ROLE_ADMIN = 7;
-    public static final int ROLE_CUSTOMER = 8;
-    public static final int ROLE_SUPER_ADMIN = 9;
+    public static final int ROLE_WRITER = 1;
+    public static final int ROLE_MOD = 2;
+    public static final int ROLE_ADMIN = 3;
+    public static final int ROLE_SUPER_ADMIN = 4;
 
     public static final int ACCOUNT_MEMBER = 1;
     public static final int ACCOUNT_BRONZE = 2;

@@ -14,7 +14,6 @@ public class AccountPassword {
     public String id;
     public String oldPassword;
     public String newPassword;
-    public String reNewPassword;
 
     public AccountPassword() {
     }
@@ -42,13 +41,4 @@ public class AccountPassword {
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
     }
-
-    public String getReNewPassword() {
-        return reNewPassword;
-    }
-
-    public void setReNewPassword(String reNewPassword) {
-        this.reNewPassword = reNewPassword;
-    }
-
 }

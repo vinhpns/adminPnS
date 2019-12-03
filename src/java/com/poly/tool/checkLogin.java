@@ -30,28 +30,12 @@ public class checkLogin {
         return role == AccountConstant.ROLE_ADMIN;
     }
 
-    public static Boolean checkLoginRoleSale(int role) {
-        return role == AccountConstant.ROLE_SALE;
-    }
-
-    public static Boolean checkLoginRoleHr(int role) {
-        return role == AccountConstant.ROLE_HR;
-    }
-
-    public static Boolean checkLoginRoleAcc(int role) {
-        return role == AccountConstant.ROLE_ACC;
-    }
-
     public static Boolean checkLoginRoleWriter(int role) {
         return role == AccountConstant.ROLE_WRITER;
     }
 
     public static Boolean checkLoginRoleMod(int role) {
         return role == AccountConstant.ROLE_MOD;
-    }
-
-    public static Boolean checkLoginRoleIt(int role) {
-        return role == AccountConstant.ROLE_IT;
     }
     
     public static Boolean checkLoginRoleSuperAdmin (int role) {

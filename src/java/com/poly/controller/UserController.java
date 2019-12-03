@@ -6,16 +6,19 @@
 package com.poly.controller;
 
 import com.poly.constant.AccountConstant;
+import com.poly.request.AccountPassword;
 import com.poly.service.AccountService;
 import com.poly.tool.ConstantManager;
-
 import java.util.Objects;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = ConstantManager.USER_PAGE)
@@ -28,14 +31,32 @@ public class UserController {
 
     @RequestMapping()
     public String initiate(ModelMap model, HttpSession session) {
-//        if (Objects.equals(accSer.checkLogin(session), Boolean.FALSE)) {
-//            model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
-//            return accController.initiate(model, session);
-//        }
-//        model.put(AccountConstant.ROLE_KEY,
-//                accSer.getListRole(AccountConstant.TYPE_ROLE_ACCESS_SYSTEM));
+        if (Objects.equals(accSer.checkLogin(session), Boolean.FALSE)) {
+            model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
+            return accController.initiate(model, session);
+        }
+        model.put(AccountConstant.ROLE_KEY, accSer.initListRole());
         model.put(AccountConstant.LISTUSER, accSer.getListAccount());
         return AccountConstant.LIST_USER_PAGE;
+    }
+
+    @RequestMapping(params = "password", method = RequestMethod.POST)
+    public String updatePassword(ModelMap model, HttpSession session,
+            @ModelAttribute("account") AccountPassword ap) {
+        if (Objects.equals(accSer.checkLogin(session), Boolean.FALSE)) {
+            model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
+            return accController.initiate(model, session);
+        }
+        if (ap.getNewPassword().equalsIgnoreCase(ap.getOldPassword())) {
+            model.put(ConstantManager.ERROR_POPUP, "Mật khẩu mới không được trùng mật khẩu cũ");
+            return initiate(model, session);
+        }
+        if (Objects.equals(accSer.updatePass(ap), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, "Đổi mật khẩu không thành công");
+            return initiate(model, session);
+        }
+        model.put(ConstantManager.OK_POPUP, "Đổi mật khẩu thành công");
+        return initiate(model, session);
     }
 
 //    @RequestMapping(params = ConstantManager.LOCK_FUNCTION)

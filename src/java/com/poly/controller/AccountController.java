@@ -49,6 +49,7 @@ public class AccountController {
             String errors = AccountConstant.WRONG_PASSWORD;
             return logout(session, model, errors);
         }
+        session.setAttribute(ConstantManager.ROLEID, ac.getRole());
         session.setAttribute(ConstantManager.LOGIN_NAME_SESSION_KEY, ac.getFullName());
         return initiate(model, session);
     }

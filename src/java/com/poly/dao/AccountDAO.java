@@ -6,14 +6,12 @@
 package com.poly.dao;
 
 import com.poly.bean.Account;
-import com.poly.constant.AccountConstant;
+import com.poly.request.AccountPassword;
 import com.poly.tool.ConstantManager;
 
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -52,7 +50,7 @@ public class AccountDAO {
             return null;
         }
     }
-    
+
     public Account getAccountByUserName(String userName) {
         try {
             String sql = "SELECT * from " + ConstantManager.DEFAULT_DB_NAME + ".account "
@@ -61,6 +59,18 @@ public class AccountDAO {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+
+    public Boolean updatePassword(AccountPassword ap) {
+        try {
+            String sql = "UPDATE account SET password = '" + ap.getNewPassword() + "' "
+                    + "WHERE id = '" + ap.getId() + '"';
+            jdbc.update(sql);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
         }
     }
 }

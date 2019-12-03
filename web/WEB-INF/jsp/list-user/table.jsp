@@ -20,7 +20,7 @@
                 <td>${user.email}</td>
                 <td>
             <c:forEach var="role" items="${listRole}">
-                <c:if test="${role.id == user.roleId}">${role.name}</c:if>
+                <c:if test="${role.id == user.role}">${role.name}</c:if>
             </c:forEach>
             </td>
             <td><a href="news.htm?viewById&userId=${user.id}">3</a></td>

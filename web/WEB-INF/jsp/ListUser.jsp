@@ -36,7 +36,10 @@
                                     <div class="card-header">
                                         <h3 class="card-title">Danh sách các tài khoản</h3>
                                     </div>
-                                    <button type="button" style="font-size: 20px; width: 200px; margin-left: 25px; margin-top: 25px;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Thêm Tài Khoản</button>
+                                    <button type="button" style="font-size: 20px; width: 200px; margin-left: 25px; margin-top: 25px;" 
+                                            class="btn btn-info btn-lg" data-toggle="modal" 
+                                            data-target="#myModal">Thêm Tài Khoản
+                                    </button>
                                     <div class="card-body">
                                     <%@include file="list-user/table.jsp" %>
                                 </div>
@@ -44,6 +47,27 @@
                         </div>
                     </div>
                 </section>
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <form action="Menu.htm" method="post" modelAttribute="ban" class="form-horizontal"
+                              role="form" enctype="multipart/form-data">
+                            <div class="modal-content">
+                                <div class="modal-header" style="display: inline">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h3 class="modal-title">Thêm Tài Khoản</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <%@include file="list-user/insert-modal.jsp" %> 
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary btn-lg" type="submit" name="update">Cập Nhật</button>
+                                    <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <jsp:include page="footer.jsp"></jsp:include>
             </div>
