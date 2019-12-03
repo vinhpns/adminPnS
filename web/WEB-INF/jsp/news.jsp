@@ -40,7 +40,7 @@
                                         <a href="?insert">Thêm bài viết</a>
                                     </button>
                                     <div class="card-body">
-                                    <%@include file="list-user/table.jsp" %>
+                                    <%@include file="news/table.jsp" %>
                                 </div>
                             </div>
                         </div>

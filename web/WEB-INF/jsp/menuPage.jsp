@@ -112,7 +112,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">Comment</li>
+                    <li class="nav-header" style="font-size: 18px">Comment</li>
                     <li class="nav-item">
                         <a href="pages/calendar.html" class="nav-link">
                             <i class="nav-icon fa fa-calendar"></i>
@@ -124,14 +124,14 @@
                     </li>
                     <li class="nav-item">
                         <a href="comment.htm" class="nav-link">
-                            <i class="nav-icon fa fa-calendar"></i>
+                            <i class="nav-icon fa fa-edit"></i>
                             <p>
                                 Comment
                                 <span class="badge badge-info right">2</span>
                             </p>
                         </a>
                     </li>
-                    <li class="nav-header">Học Viên</li>
+                    <li class="nav-header" style="font-size: 18px">Học Viên</li>
                     <li class="nav-item">
                         <a href="https://adminlte.io/docs" class="nav-link">
                             <i class="nav-icon fa fa-file"></i>
