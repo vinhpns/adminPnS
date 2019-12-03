@@ -4,16 +4,16 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr style="color: #fff; background-color: #17a2b8">
-                <th>Tên Menu</th>
+                <th>Tên Danh Mục</th>
                 <th>Thuộc Menu</th>
                 <th>Số bài viết</th>
                 <th>Thao tác</th>
             </tr>
         </thead>
         <tbody>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
+        <td>Ngành A</td>
+        <td>Ngành Đào Tako</td>
+        <td><a href="news.htm?type=1">3</a></td>
         <td>
         <c:if test="${menu.active == true}">
             <a href="?changeStatus&id=${menu.id}&status=${menu.active}">
