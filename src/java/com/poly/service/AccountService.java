@@ -9,6 +9,7 @@ import com.poly.bean.Account;
 import com.poly.bean.Role;
 import com.poly.dao.AccountDAO;
 import com.poly.request.AccountPassword;
+import com.poly.request.AccountRequestEntity;
 import com.poly.tool.checkLogin;
 import java.util.ArrayList;
 
@@ -86,12 +87,22 @@ public class AccountService {
         return !Objects.equals(accDAO.updatePassword(ap), Boolean.FALSE);
     }
 
-    public Boolean insertAccount(Account ac) {
+    public Boolean insertAccount(AccountRequestEntity ac, String createdBy) {
         UUID uuid = UUID.randomUUID();
-        ac.setId(uuid.toString());
         PasswordEncoder pw = new BCryptPasswordEncoder();
-        ac.setPassword(pw.encode(ac.getPassword()));
-        if (Objects.equals(accDAO.insert(ac), Boolean.FALSE)) {
+        Account account = new Account();
+        account.setId(uuid.toString());
+        account.setEmail(ac.getEmail());
+        account.setFullName(ac.getFullName());
+        account.setUserName(ac.getUserName());
+        account.setGender(ac.getGender());
+        account.setPhone(ac.getPhone());
+        account.setAddress(ac.getAddress());
+        account.setDob(ac.getDob());
+        account.setPassword(pw.encode(ac.getPassword()));
+        account.setRole(ac.getRole());
+        account.setCreatedBy(createdBy);
+        if (Objects.equals(accDAO.insert(account), Boolean.FALSE)) {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;

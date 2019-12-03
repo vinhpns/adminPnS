@@ -64,31 +64,30 @@ public class UserController {
     @RequestMapping(params = "insert", method = RequestMethod.POST)
     public String insert(ModelMap model, HttpSession session,
             @ModelAttribute("account") AccountRequestEntity ac) {
-//        if (Objects.equals(accSer.insertAccount(ac), Boolean.FALSE)) {
-//            model.put(ConstantManager.ERROR_POPUP, "Thêm tài khoản không thành công");
-//            return initiate(model, session);
-//        }
+        if (Objects.equals(accSer.insertAccount(ac, (String)session.getAttribute("accountId")), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, "Thêm tài khoản không thành công");
+            return initiate(model, session);
+        }
         model.put(ConstantManager.OK_POPUP, "Thêm tài khoản thành công");
         return initiate(model, session);
     }
 
-//    @RequestMapping(params = ConstantManager.LOCK_FUNCTION)
-//    public String delete(ModelMap model, HttpSession session,
-//            @RequestParam(AccountConstant.ID_REQUEST_PARAM) String id,
-//            @RequestParam(AccountConstant.STATUS_REQUEST_PARAM) Boolean status,
-//            @RequestParam("url") String url) {
-//        if (Objects.equals(accSer.checkLogin(session), Boolean.FALSE)) {
-//            model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
-//            return accController.initiate(model, session);
-//        }
-//        if (Objects.equals(accSer.changeActive(id, status), Boolean.FALSE)) {
-//            model.put(ConstantManager.ERROR_POPUP, AccountConstant.LOCK_FAIL);
-//            return initiate(model, session, url);
-//        }
-//        model.put(ConstantManager.OK_POPUP, AccountConstant.LOCK_SUCCESSFUL);
-//        return initiate(model, session, url);
-//    }
-//
+    @RequestMapping(params = ConstantManager.LOCK_FUNCTION)
+    public String delete(ModelMap model, HttpSession session,
+            @RequestParam(AccountConstant.ID_REQUEST_PARAM) String id,
+            @RequestParam(AccountConstant.STATUS_REQUEST_PARAM) Boolean status) {
+        if (Objects.equals(accSer.checkLogin(session), Boolean.FALSE)) {
+            model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
+            return accController.initiate(model, session);
+        }
+        if (Objects.equals(accSer.changeActive(id, status), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, AccountConstant.LOCK_FAIL);
+            return initiate(model, session);
+        }
+        model.put(ConstantManager.OK_POPUP, AccountConstant.LOCK_SUCCESSFUL);
+        return initiate(model, session);
+    }
+    
 //    @RequestMapping(params = ConstantManager.INSERT_FUNCTION, method = RequestMethod.POST)
 //    public String insert(ModelMap model, HttpSession session,
 //            @ModelAttribute(AccountConstant.ACCOUNT_MODEL_REQUEST_PARAM) AccountRequestEntity ac,

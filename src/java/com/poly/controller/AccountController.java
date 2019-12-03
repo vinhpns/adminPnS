@@ -51,6 +51,7 @@ public class AccountController {
         }
         session.setAttribute(ConstantManager.ROLEID, ac.getRole());
         session.setAttribute(ConstantManager.LOGIN_NAME_SESSION_KEY, ac.getFullName());
+        session.setAttribute(ConstantManager.ACCOUNT_ID_SESSION_KEY, ac.getId());
         return initiate(model, session);
     }
 

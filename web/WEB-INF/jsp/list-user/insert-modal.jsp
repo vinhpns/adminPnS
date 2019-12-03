@@ -54,9 +54,9 @@
                          <select id="txt_box" type="select" placeholder="Vai Trò"
                                 class="autosize-transition form-control" name="role"
                                 style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
-                            <option value="Admin">Admin</option>
-                            <option value="Writer">Writer</option>
-                            <option value="Moder">Moder</option>
+                            <option value="3">Admin</option>
+                            <option value="1">Writer</option>
+                            <option value="2">Mod</option>
                         </select>
                     </div>
                     <br>

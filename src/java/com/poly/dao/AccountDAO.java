@@ -10,6 +10,7 @@ import com.poly.request.AccountPassword;
 import com.poly.tool.ConstantManager;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -77,10 +78,25 @@ public class AccountDAO {
     public Boolean insert(Account ac) {
         try {
             String sql = "INSERT INTO account (id, email, full_name, user_name, gender, password, phone, address, "
-                    + "dob, role, created_by, updated_by ) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "dob, role, created_by ) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             jdbc.update(sql, ac.getId(), ac.getEmail(), ac.getFullName(), ac.getUserName(), ac.getGender(),
-                    ac.getPassword(), ac.getPhone(), ac.getAddress(), ac.getDob(), ac.getRole(), ac.getCreatedBy(), ac.getUpdatedBy());
+                    ac.getPassword(), ac.getPhone(), ac.getAddress(), ac.getDob(), ac.getRole(), ac.getCreatedBy());
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
+        }
+    }
+
+    public Boolean updateStatus(Account ac) {
+        try {
+            Boolean status = Boolean.FALSE;
+            if (Objects.equals(ac.getActive(), Boolean.TRUE)) {
+                status = Boolean.TRUE;
+            }
+            String sql = "UPDATE account SET active = " + status + "WHERE id = '" + ac.getId() + "'";
+            jdbc.update(sql);
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());
