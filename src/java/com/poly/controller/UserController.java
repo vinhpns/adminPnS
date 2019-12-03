@@ -8,6 +8,7 @@ package com.poly.controller;
 import com.poly.bean.Account;
 import com.poly.constant.AccountConstant;
 import com.poly.request.AccountPassword;
+import com.poly.request.AccountRequestEntity;
 import com.poly.service.AccountService;
 import com.poly.tool.ConstantManager;
 import java.util.Objects;
@@ -61,11 +62,11 @@ public class UserController {
     }
 
     @RequestMapping(params = "insert", method = RequestMethod.POST)
-    public String insert(ModelMap model, HttpSession session, @ModelAttribute("account") Account ac) {
-        if (Objects.equals(accSer.insertAccount(ac), Boolean.FALSE)) {
-            model.put(ConstantManager.ERROR_POPUP, "Thêm tài khoản không thành công");
-            return initiate(model, session);
-        }
+    public String insert(ModelMap model, HttpSession session, @ModelAttribute("account") AccountRequestEntity ac) {
+//        if (Objects.equals(accSer.insertAccount(ac), Boolean.FALSE)) {
+//            model.put(ConstantManager.ERROR_POPUP, "Thêm tài khoản không thành công");
+//            return initiate(model, session);
+//        }
         model.put(ConstantManager.OK_POPUP, "Thêm tài khoản thành công");
         return initiate(model, session);
     }

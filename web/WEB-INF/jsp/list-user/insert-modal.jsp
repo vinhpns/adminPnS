@@ -35,7 +35,7 @@
                     <div>
                         <label for="form-field-8">Mật Khẩu *</label>
                         <input id="txt_box" type="password" required="" placeholder="Mật Khẩu"
-                               class="autosize-transition form-control" name="Password"
+                               class="autosize-transition form-control" name="password"
                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;" requires>
                     </div>
                     <br>

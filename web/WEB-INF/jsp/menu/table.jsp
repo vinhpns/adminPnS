@@ -4,18 +4,17 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr style="color: #fff; background-color: #17a2b8">
-                <th>STT</th>
                 <th>Tên Menu</th>
                 <th>Sub Menu</th>
-                <th>Thao tác</th>
+                <th>Thao Tác</th>
             </tr>
         </thead>
         <tbody>
-        <c:forEach var="menu" items="${menuList}" varStatus="counter">
-            <td>${counter.index + 1}</td>
-            <td>${menu.name}</td>
-            <td><a href="?getSubMenu&id=${menu.id}">${menu.count}</a></td>
-            <td>
+        <c:forEach var="menu" items="${menuList}">
+            <tr>
+                <td>${menu.name}</td>
+                <td>${menu.count}</td>
+                <td>
             <c:if test="${menu.active == true}">
                 <a href="?changeStatus&id=${user.id}&status=${user.active}">
                     <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa tài khoản"></i>
@@ -33,6 +32,7 @@
                 <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa tài khoản"></i>
             </a>
             </td>
+            </tr>
         </c:forEach>
     </tbody>
 </table>
