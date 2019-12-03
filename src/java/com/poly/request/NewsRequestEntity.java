@@ -3,31 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.poly.bean;
-
-import java.io.Serializable;
+package com.poly.request;
 
 /**
- * @author Administrator
+ *
+ * @author SGDG Company
  */
-public class News implements Serializable {
+public class NewsRequestEntity {
 
     private String id;
-    private Boolean active;
     private String title;
     private String meta;
     private String content;
-    private int type;
-    private String createdBy;
-    private String updatedBy;
     private String description;
     private String titleWeb;
     private String metaDescription;
-    private String menuId;
-    private int view;
-    private String avatar;
 
-    public News() {
+    public NewsRequestEntity() {
     }
 
     public String getId() {
@@ -36,14 +28,6 @@ public class News implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
     }
 
     public String getTitle() {
@@ -70,30 +54,6 @@ public class News implements Serializable {
         this.content = content;
     }
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -117,29 +77,4 @@ public class News implements Serializable {
     public void setMetaDescription(String metaDescription) {
         this.metaDescription = metaDescription;
     }
-
-    public String getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(String menuId) {
-        this.menuId = menuId;
-    }
-
-    public int getView() {
-        return view;
-    }
-
-    public void setView(int view) {
-        this.view = view;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
 }

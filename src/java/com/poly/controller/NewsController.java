@@ -44,7 +44,11 @@ public class NewsController {
     }
 
     @RequestMapping(params = "viewById", method = RequestMethod.GET)
-    public String viewByIdUser(ModelMap model, HttpSession session, @RequestParam("userId") String id) {
+    public String viewByIdUser(ModelMap model, HttpSession session,
+            @RequestParam("type") int type,
+            @RequestParam("id") String id) {
+        List<News> n = newService.getNewsByMenuId(id);
+        model.put("newsList", n);
         return "news";
     }
 }

@@ -15,7 +15,7 @@
             <tr>
                 <td>${menu.name}</td>
                 <td>${menuName}</td>
-                <td><a href="news.htm?type=1&id=${menu.id}">${menu.news}</a></td>
+                <td><a href="news.htm?viewById&type=1&id=${menu.id}">${menu.news}</a></td>
                 <td>
             <c:if test="${menu.active == true}">
                 <a href="?changeStatus&id=${menu.id}&status=${menu.active}">

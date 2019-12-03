@@ -8,7 +8,7 @@
                 <th>Tiêu Đề</th>
                 <th>Tác Giả</th>
                 <th>Chuyên Mục</th>
-                <th>Thời Gian</th>
+                <th style="max-width: 200px">Ảnh Đại Diện</th>
                 <th>Lượt Xem</th>
                 <th>Thao tác</th>
             </tr>
@@ -17,9 +17,14 @@
             <c:forEach var="news" items="${newsList}">
                 <tr>
                     <td>${news.title}</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
+                    <td>${news.createdBy}</td>
+                    <td>
+                        <c:if test="${news.type == 1}">Menu</c:if>
+                        <c:if test="${news.type == 2}">Tin Tức</c:if>
+                        <c:if test="${news.type == 3}">Event</c:if>
+                        <c:if test="${news.type == 4}">Footer</c:if>
+                    </td>
+                    <td style="text-align: center"><img src="${news.avatar}" style="width: 20%"></td>
                     <td>${news.view}</td>
                     <td>
                         <c:if test="${news.active == true}">

@@ -35,23 +35,51 @@ public class NewsDAO {
         String sql = "";
         switch (type) {
             case NewsConstant.TYPE_MENU:
-                sql = "SELECT news.id, news.active, news.title, news.type "
-                        + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".news WHERE type = 1 "
+                sql = "SELECT news.id, news.active, news.title, news.type, "
+                        + "account.full_name as createdBy, "
+                        + "news_image.link as avatar "
+                        + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".news, "
+                        + ConstantManager.DEFAULT_DB_NAME + ".account, "
+                        + ConstantManager.DEFAULT_DB_NAME + ".news_image "
+                        + "WHERE news.type = 1 "
+                        + "AND news.created_by = account.id "
+                        + "AND news.id = news_image.news_id "
                         + "ORDER BY id DESC";
                 break;
             case NewsConstant.TYPE_NEWS:
-                sql = "SELECT news.id, news.active, news.title, news.type "
-                        + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".news WHERE type = 2 "
+                sql = "SELECT news.id, news.active, news.title, news.type, "
+                        + "account.full_name as createdBy, "
+                        + "news_image.link as avatar "
+                        + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".news, "
+                        + ConstantManager.DEFAULT_DB_NAME + ".account, "
+                        + ConstantManager.DEFAULT_DB_NAME + ".news_image "
+                        + "WHERE news.type = 2 "
+                        + "AND news.created_by = account.id "
+                        + "AND news.id = news_image.news_id "
                         + "ORDER BY id DESC";
                 break;
             case NewsConstant.TYPE_EVENT:
-                sql = "SELECT news.id, news.active, news.title, news.type "
-                        + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".news WHERE type = 3 "
+                sql = "SELECT news.id, news.active, news.title, news.type, "
+                        + "account.full_name as createdBy, "
+                        + "news_image.link as avatar "
+                        + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".news, "
+                        + ConstantManager.DEFAULT_DB_NAME + ".account, "
+                        + ConstantManager.DEFAULT_DB_NAME + ".news_image "
+                        + "WHERE news.type = 3 "
+                        + "AND news.created_by = account.id "
+                        + "AND news.id = news_image.news_id "
                         + "ORDER BY id DESC";
                 break;
             case NewsConstant.TYPE_FOOTER:
-                sql = "SELECT news.id, news.active, news.title, news.type "
-                        + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".news WHERE type = 4 "
+                sql = "SELECT news.id, news.active, news.title, news.type, "
+                        + "account.full_name as createdBy, "
+                        + "news_image.link as avatar "
+                        + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".news, "
+                        + ConstantManager.DEFAULT_DB_NAME + ".account, "
+                        + ConstantManager.DEFAULT_DB_NAME + ".news_image "
+                        + "WHERE news.type = 4 "
+                        + "AND news.created_by = account.id "
+                        + "AND news.id = news_image.news_id "
                         + "ORDER BY id DESC";
                 break;
         }
@@ -67,6 +95,21 @@ public class NewsDAO {
         try {
             String sql = "UPDATE news SET type = 2, menu_id = 0 WHERE id = '" + id + "'";
             jdbc.update(sql, id);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
+        }
+    }
+
+    public Boolean insert(News n) {
+        try {
+            String sql = "INSERT INTO news (id, title, meta, content, type, created_by, "
+                    + "updated_by, description, title_web, meta_description, menu_id ) "
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+            jdbc.update(sql, n.getId(), n.getTitle(), n.getMeta(), n.getContent(),
+                    n.getType(), n.getCreatedBy(), n.getUpdatedBy(), n.getDescription(), n.getTitleWeb(),
+                    n.getMetaDescription(), n.getMenuId());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());
