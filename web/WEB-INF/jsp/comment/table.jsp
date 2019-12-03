@@ -34,7 +34,7 @@
                     <!-- Modal content-->
                     <div class="modal-dialog">
                         <!-- Modal content-->
-                        <form action="Menu.htm" method="post" modelAttribute="ban" class="form-horizontal"
+                        <form action="comment.htm" method="post" modelAttribute="ban" class="form-horizontal"
                               role="form" enctype="multipart/form-data">
                             <div class="modal-content">
                                 <div class="modal-header" style="display: inline">
@@ -58,7 +58,7 @@
                     <!-- Modal content-->
                     <div class="modal-dialog">
                         <!-- Modal content-->
-                        <form action="Menu.htm" method="post" modelAttribute="ban" class="form-horizontal"
+                        <form action="comment.htm" method="post" modelAttribute="ban" class="form-horizontal"
                               role="form" enctype="multipart/form-data">
                             <div class="modal-content">
                                 <div class="modal-header" style="display: inline">

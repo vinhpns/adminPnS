@@ -8,6 +8,7 @@ package com.poly.service;
 import com.poly.bean.Comment;
 import com.poly.dao.CommentDAO;
 import java.util.List;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,11 @@ public class CommentService {
     
     public int countNotReply() {
         return commentDAO.countNotReply().size();
+    }
+    public Boolean updateReply(String id, String reply) {
+        Comment cmt = new Comment();
+        cmt.setReply(reply);
+        cmt.setId(id);
+        return !Objects.equals(commentDAO.updateReply(reply, id), Boolean.FALSE);
     }
 }
