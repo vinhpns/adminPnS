@@ -123,7 +123,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="comment.html" class="nav-link">
+                        <a href="comment.htm" class="nav-link">
                             <i class="nav-icon fa fa-calendar"></i>
                             <p>
                                 Comment
