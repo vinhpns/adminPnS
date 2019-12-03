@@ -37,7 +37,7 @@
                                         <h3 class="card-title">Danh sách các bài viết</h3>
                                     </div>
                                     <button type="button" style="font-size: 20px; width: 200px; margin-left: 25px; margin-top: 25px; background-color: black" class="btn btn-info btn-lg" data-toggle="modal">
-                                        <a href="?insert">Thêm bài viết</a>
+                                        <a href="?insert&type=${type}">Thêm bài viết</a>
                                     </button>
                                     <div class="card-body">
                                     <%@include file="news/table.jsp" %>
