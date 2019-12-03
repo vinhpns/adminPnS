@@ -44,8 +44,8 @@
                         <select id="txt_box" type="select" required="" placeholder="Giới Tính"
                                 class="autosize-transition form-control" name="gender"
                                 style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
-                            <option value="Male">Nam</option>
-                            <option value="Female">Nữ</option>
+                            <option value="true">Nam</option>
+                            <option value="false">Nữ</option>
                         </select>
                     </div>
                     <br>
