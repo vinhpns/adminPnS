@@ -14,19 +14,21 @@
         </thead>
         <tbody>
             <c:forEach var="comment" items="${commentList}" varStatus="counter">
-            <td>${counter.index + 1}</td>
-            <td>${comment.name}</td>
-            <td>${comment.phone}</td>
-            <td>${comment.email}</td>
-            <td>
-                <i class="fa fa-eye" data-toggle="modal" data-target="#myModalUpdate_${comment.id}" style="color: blue"></i>
-                <a data-toggle="modal" data-target="#edit_${comment.id}">
-                    <i class="fa fa-edit" style="color: orange; font-size: 16px" title="Chỉnh sửa nội dung câu trả lời"></i>
-                </a>
-                <a href="?delete&id=${comment.id}">
-                    <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa Menu"></i>
-                </a>
-            </td>
+                <tr>
+                    <td>${counter.index + 1}</td>
+                    <td>${comment.name}</td>
+                    <td>${comment.phone}</td>
+                    <td>${comment.email}</td>
+                    <td>
+                        <i class="fa fa-eye" data-toggle="modal" data-target="#myModalUpdate_${comment.id}" style="color: blue"></i>
+                        <a data-toggle="modal" data-target="#edit_${comment.id}">
+                            <i class="fa fa-edit" style="color: orange; font-size: 16px" title="Chỉnh sửa nội dung câu trả lời"></i>
+                        </a>
+                        <a href="?delete&id=${comment.id}">
+                            <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa Menu"></i>
+                        </a>
+                    </td>
+                </tr>
             <div class="modal fade" id="myModalUpdate_${comment.id}" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->

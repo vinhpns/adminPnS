@@ -114,20 +114,11 @@
                     </li>
                     <li class="nav-header" style="font-size: 18px">Comment</li>
                     <li class="nav-item">
-                        <a href="pages/calendar.html" class="nav-link">
-                            <i class="nav-icon fa fa-calendar"></i>
-                            <p>
-                                Danh sách
-                                <span class="badge badge-info right">2</span>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="comment.htm" class="nav-link">
                             <i class="nav-icon fa fa-calendar"></i>
                             <p>
                                 Comment
-                                <span class="badge badge-info right">2</span>
+                                <span class="badge badge-info right">${sessionScope.commentNotRead}</span>
                             </p>
                         </a>
                     </li>

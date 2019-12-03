@@ -27,20 +27,24 @@ public class NewsController {
 
     @Autowired
     NewService newService;
-    
+
     @Autowired
     AccountService accountService;
-    
+
     @RequestMapping()
     public String initiate(ModelMap model, HttpSession session, @RequestParam("type") int type) {
         List<News> n = newService.getListNewsByType(type);
-//        model.put("author", accountService.getAccountById())
         model.put("newsList", n);
         return "news";
     }
-    
+
     @RequestMapping(params = "insert", method = RequestMethod.GET)
-    public String redirectInsertPage(ModelMap model, HttpSession session){
+    public String redirectInsertPage(ModelMap model, HttpSession session) {
         return "insert-news";
+    }
+
+    @RequestMapping(params = "viewById", method = RequestMethod.GET)
+    public String viewByIdUser(ModelMap model, HttpSession session, @RequestParam("userId") String id) {
+        return "news";
     }
 }
