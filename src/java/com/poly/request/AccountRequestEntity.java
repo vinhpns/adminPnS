@@ -17,8 +17,8 @@ public class AccountRequestEntity {
     private String email;
     private String userName;
     private String password;
-//    private Boolean gender;
-//    private int role;
+    private Boolean gender;
+    private int role;
 //    private String phone;
 //    private String address;
 //    private String dob;
@@ -54,22 +54,22 @@ public class AccountRequestEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-//
-//    public Boolean getGender() {
-//        return gender;
-//    }
-//
-//    public void setGender(Boolean gender) {
-//        this.gender = gender;
-//    }
-//
-//    public int getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(int role) {
-//        this.role = role;
-//    }
+
+    public Boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(Boolean gender) {
+        this.gender = gender;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
 //
 //    public String getPhone() {
 //        return phone;
