@@ -75,7 +75,7 @@ public class UserController {
         return initiate(model, session);
     }
 
-    @RequestMapping(params = ConstantManager.LOCK_FUNCTION)
+    @RequestMapping(params = "changeStatus")
     public String delete(ModelMap model, HttpSession session,
             @RequestParam(AccountConstant.ID_REQUEST_PARAM) String id,
             @RequestParam(AccountConstant.STATUS_REQUEST_PARAM) Boolean status) {

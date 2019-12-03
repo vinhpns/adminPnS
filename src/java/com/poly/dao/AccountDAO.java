@@ -91,11 +91,11 @@ public class AccountDAO {
 
     public Boolean updateStatus(Account ac) {
         try {
-            Boolean status = Boolean.FALSE;
+            Boolean status = Boolean.TRUE;
             if (Objects.equals(ac.getActive(), Boolean.TRUE)) {
-                status = Boolean.TRUE;
+                status = Boolean.FALSE;
             }
-            String sql = "UPDATE account SET active = " + status + "WHERE id = '" + ac.getId() + "'";
+            String sql = "UPDATE account SET active = " + status + " WHERE id = '" + ac.getId() + "'";
             jdbc.update(sql);
             return Boolean.TRUE;
         } catch (Exception e) {
