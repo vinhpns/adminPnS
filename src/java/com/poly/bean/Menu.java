@@ -15,7 +15,7 @@ public class Menu {
     private Boolean active;
     private String name;
     private Boolean deflg;
-    private int parentId;
+    private String parentId;
     private String createdBy;
     private String updatedBy;
     private int count;
@@ -57,11 +57,11 @@ public class Menu {
         this.deflg = deflg;
     }
 
-    public int getParentId() {
+    public String getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(String parentId) {
         this.parentId = parentId;
     }
 
