@@ -14,15 +14,6 @@
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
         <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $.uploadPreview({
-                    input_field: "#image-upload",
-                    preview_box: "#image-preview",
-                    label_field: "#image-label"
-                });
-            });
-        </script>
     </head>
     <body>
         <div class="row">
