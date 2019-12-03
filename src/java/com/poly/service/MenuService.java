@@ -36,27 +36,31 @@ public class MenuService {
         return mDAO.getFather();
     }
 
-    public List<Menu> getSon() {
-        return mDAO.getSon();
+    public List<Menu> getSon(String id) {
+        return mDAO.getSon(id);
     }
-    public Boolean insertMenu(String name, int father){
-        Menu menu = new Menu();
-        menu.setActive(Boolean.TRUE);
-        menu.setParentid(father);
-        if(Objects.equals(mDAO.insertMenu(menu), Boolean.FALSE)){
-            return Boolean.FALSE;
-        }
-        return null;
+
+    public Menu getMenuById(String id) {
+        return mDAO.getMenuById(id);
     }
-     public Boolean deleteMenu(int id) {
-        List<Menu> pList = mDAO.getFather();
-        if (Objects.equals(pList, ConstantManager.NULL) || pList.isEmpty()) {
-            mDAO.deleteMenu(id);
-            return !Objects.equals(mDAO.deleteMenu(id), Boolean.FALSE);
-        }
-        return Boolean.FALSE;
-    }
-     public Boolean updateMenu(Menu menu) {
-        return !Objects.equals(mDAO.updateMenu(menu), Boolean.FALSE);
-    }
+//    public Boolean insertMenu(String name, int father){
+//        Menu menu = new Menu();
+//        menu.setActive(Boolean.TRUE);
+//        menu.setParentid(father);
+//        if(Objects.equals(mDAO.insertMenu(menu), Boolean.FALSE)){
+//            return Boolean.FALSE;
+//        }
+//        return null;
+//    }
+//     public Boolean deleteMenu(int id) {
+//        List<Menu> pList = mDAO.getFather();
+//        if (Objects.equals(pList, ConstantManager.NULL) || pList.isEmpty()) {
+//            mDAO.deleteMenu(id);
+//            return !Objects.equals(mDAO.deleteMenu(id), Boolean.FALSE);
+//        }
+//        return Boolean.FALSE;
+//    }
+//     public Boolean updateMenu(Menu menu) {
+//        return !Objects.equals(mDAO.updateMenu(menu), Boolean.FALSE);
+//    }
 }

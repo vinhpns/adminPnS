@@ -37,45 +37,48 @@ public class MenuDAO {
         return getBySql(sql);
     }
 
-    public List<Menu> getSon() {
-        String sql = "SELECT *FROM menu parent_id >0 ";
+    public List<Menu> getSon(String id) {
+        String sql = "SELECT *FROM menu WHERE parent_id = '" + id + "'";
         return getBySql(sql);
     }
 
-    public Boolean insertMenu(Menu menu) {
-        try {
-            String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".menu "
-                    + "(name, active, parent_id) VALUES (?,?,?)";
-            jdbc.update(sql, menu.getName(), menu.getActive(), menu.getParentid());
-            return Boolean.TRUE;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return Boolean.FALSE;
-        }
-    }
-public Boolean deleteMenu(int id) {
-        try {
-            String sql = "DELETE FROM " + ConstantManager.DEFAULT_DB_NAME + ".menu "
-                    + "WHERE id=?";
-            jdbc.update(sql, id);
-            return Boolean.TRUE;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return Boolean.FALSE;
-        }
-    }
-public Boolean updateMenu(Menu menu) {
-        try {
-            String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".menu "
-                    + "SET name = ?, parent_id = ? "
-                    + "WHERE id = ?";
-            jdbc.update(sql, menu.getName(),  menu.getId());
-            return Boolean.TRUE;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return Boolean.FALSE;
-        }
+    public Menu getMenuById(String id) {
+        String sql = "SELECT * FROM menu WHERE id = ?";
+        return jdbc.queryForObject(sql, getRowMapper(), id);
     }
 
-   
+//    public Boolean insertMenu(Menu menu) {
+//        try {
+//            String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".menu "
+//                    + "(name, active, parent_id) VALUES (?,?,?)";
+//            jdbc.update(sql, menu.getName(), menu.getActive(), menu.getParentid());
+//            return Boolean.TRUE;
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            return Boolean.FALSE;
+//        }
+//    }
+//public Boolean deleteMenu(int id) {
+//        try {
+//            String sql = "DELETE FROM " + ConstantManager.DEFAULT_DB_NAME + ".menu "
+//                    + "WHERE id=?";
+//            jdbc.update(sql, id);
+//            return Boolean.TRUE;
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            return Boolean.FALSE;
+//        }
+//    }
+//public Boolean updateMenu(Menu menu) {
+//        try {
+//            String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".menu "
+//                    + "SET name = ?, parent_id = ? "
+//                    + "WHERE id = ?";
+//            jdbc.update(sql, menu.getName(),  menu.getId());
+//            return Boolean.TRUE;
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            return Boolean.FALSE;
+//        }
+//    }
 }

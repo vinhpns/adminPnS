@@ -15,9 +15,11 @@ public class Menu {
     private Boolean active;
     private String name;
     private Boolean deflg;
-    private int parentid;
+    private int parentId;
     private String createdBy;
     private String updatedBy;
+    private int count;
+    private int news;
 
     public Menu() {
 
@@ -55,12 +57,12 @@ public class Menu {
         this.deflg = deflg;
     }
 
-    public int getParentid() {
-        return parentid;
+    public int getParentId() {
+        return parentId;
     }
 
-    public void setParentid(int parent_id) {
-        this.parentid = parent_id;
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
     }
 
     public String getCreatedBy() {
@@ -78,4 +80,21 @@ public class Menu {
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getNews() {
+        return news;
+    }
+
+    public void setNews(int news) {
+        this.news = news;
+    }
+
 }
