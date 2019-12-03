@@ -43,6 +43,11 @@ public class MenuDAO {
         return getBySql(sql);
     }
 
+    public List<Menu> getSonOfFather(String id) {
+        String sql = "SELECT * FROM menu WHERE parent_id = '" + id + "'";
+        return getBySql(sql);
+    }
+
     public Menu getMenuById(String id) {
         String sql = "SELECT * FROM menu WHERE id = ?";
         return jdbc.queryForObject(sql, getRowMapper(), id);

@@ -56,7 +56,8 @@ public class MenuController {
         model.put(ConstantManager.OK_POPUP, MenuConstant.INSERT_MENU_OK);
         return initiate(model, Session);
     }
-@RequestMapping(params ="delete", method = RequestMethod.GET)
+
+    @RequestMapping(params = "delete", method = RequestMethod.GET)
     public String delete(ModelMap model, HttpSession session,
             @RequestParam(MenuConstant.ID_PARAM) String id) {
         if (Objects.equals(menuService.deleteMenu(id), Boolean.FALSE)) {
@@ -66,7 +67,8 @@ public class MenuController {
         model.addAttribute(ConstantManager.OK_POPUP, MenuConstant.DELETE_MENU_OK);
         return initiate(model, session);
     }
-@RequestMapping(params ="edit", method = RequestMethod.GET)
+
+    @RequestMapping(params = "edit", method = RequestMethod.GET)
     public String update(ModelMap model, HttpSession session,
             @RequestParam(MenuConstant.ID_PARAM) String id,
             @RequestParam(MenuConstant.NAME_PARAM) String name,
@@ -84,12 +86,12 @@ public class MenuController {
         model.put(ConstantManager.OK_POPUP, MenuConstant.UPDATE_MENU_OK);
         return initiate(model, session);
     }
-    
-    @RequestMapping(params = "changeStatus", method=RequestMethod.GET )
+
+    @RequestMapping(params = "changeStatus", method = RequestMethod.GET)
     public String lock(@RequestParam(MenuConstant.ID_PARAM) String id,
             @RequestParam(MenuConstant.STATUS_PARAM) Boolean status,
             ModelMap model, HttpSession session) {
-        if(Objects.equals(menuService.updateStatus(id, status), Boolean.FALSE)){
+        if (Objects.equals(menuService.updateStatus(id, status), Boolean.FALSE)) {
             model.put(ConstantManager.ERROR_POPUP, "Thay đổi trạng thái không thành công");
             return initiate(model, session);
         }

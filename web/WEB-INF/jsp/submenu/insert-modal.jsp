@@ -19,7 +19,7 @@
                         <br>
                         <label for="form-field-8">Loại Menu</label>
                         <input id="txt_box" type="text" required="" placeholder="Loại Menu"
-                               class="autosize-transition form-control" name="Menu Type"
+                               class="autosize-transition form-control" name="Menu Type" value="${menuName}"
                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px; " readonly>
                     </div>
                 </div>

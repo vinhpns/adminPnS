@@ -6,7 +6,9 @@
 package com.poly.service;
 
 import com.poly.bean.Menu;
+import com.poly.bean.News;
 import com.poly.dao.MenuDAO;
+import com.poly.dao.NewsDAO;
 import com.poly.tool.ConstantManager;
 import com.poly.tool.checkLogin;
 import java.util.List;
@@ -25,6 +27,9 @@ public class MenuService {
 
     @Autowired
     private MenuDAO mDAO;
+
+    @Autowired
+    private NewsDAO ndao;
 
     public Boolean checkLogin(HttpSession session) {
         if (Objects.equals(checkLogin.checkLogin(session), Boolean.FALSE)) {
@@ -58,18 +63,39 @@ public class MenuService {
     }
 
     public Boolean deleteMenu(String id) {
-        List<Menu> pList = mDAO.getFather();
-        if (Objects.equals(pList, ConstantManager.NULL) || pList.isEmpty()) {
-            mDAO.deleteMenu(id);
-            return !Objects.equals(mDAO.deleteMenu(id), Boolean.FALSE);
+        Menu m = mDAO.getMenuById(id);
+        if (m == null) {
+            return Boolean.FALSE;
         }
-        return Boolean.FALSE;
+        if (!m.getParentId().equals("0")) {
+            deleteNewFollowMenu(id);
+        } else {
+            List<Menu> sub = mDAO.getSonOfFather(id);
+            if (sub.size() > 0) {
+                for (int i = 0; i < sub.size(); i++) {
+                    deleteNewFollowMenu(sub.get(i).getId());
+                }
+            }
+        }
+        if (Objects.equals(mDAO.deleteMenu(id), Boolean.FALSE)) {
+            return Boolean.FALSE;
+        }
+        return Boolean.TRUE;
+    }
+
+    public void deleteNewFollowMenu(String id) {
+        List<News> n = ndao.getNewsByMenuId(id);
+        if (n.size() > 0) {
+            for (int i = 0; i < n.size(); i++) {
+                ndao.updateTypeNews(n.get(i).getId());
+            }
+        }
     }
 
     public Boolean updateMenu(Menu menu) {
         return !Objects.equals(mDAO.updateMenu(menu), Boolean.FALSE);
     }
-    
+
     public Boolean updateStatus(String id, Boolean status) {
         Menu menu = new Menu();
         menu.setActive(status);

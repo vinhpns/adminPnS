@@ -57,4 +57,20 @@ public class NewsDAO {
         }
         return getBySql(sql);
     }
+
+    public List<News> getNewsByMenuId(String id) {
+        String sql = "SELECT * FROM news WHERE menu_id = '" + id + "'";
+        return getBySql(sql);
+    }
+
+    public Boolean updateTypeNews(String id) {
+        try {
+            String sql = "UPDATE news SET type = 2, menu_id = 0 WHERE id = '" + id + "'";
+            jdbc.update(sql, id);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
+        }
+    }
 }

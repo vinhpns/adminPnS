@@ -13,7 +13,7 @@
         <c:forEach var="menu" items="${menuList}">
             <tr>
                 <td>${menu.name}</td>
-                <td>${menu.count}</td>
+                <td><a href="?getSubMenu&id=${menu.id}">${menu.count}</a></td>
                 <td>
             <c:if test="${menu.active == true}">
                 <a href="?changeStatus&id=${menu.id}&status=${menu.active}">
