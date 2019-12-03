@@ -18,6 +18,7 @@ public class Account {
     private String password;
     private String phone;
     private Boolean active;
+    private String address;
     private String dob;
     private int role;
     private Boolean deflg;
@@ -130,4 +131,13 @@ public class Account {
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
 }
