@@ -5,26 +5,23 @@
  */
 package com.poly.request;
 
-import org.springframework.web.multipart.MultipartFile;
-
 /**
  *
  * @author SGDG Company
  */
 public class AccountRequestEntity {
 
+    public AccountRequestEntity() {
+    }
     private String fullName;
     private String email;
     private String userName;
     private String password;
-    private Boolean gender;
-    private int role;
-    private String phone;
-    private String address;
-    private String dob;
-
-    public AccountRequestEntity() {
-    }
+//    private Boolean gender;
+//    private int role;
+//    private String phone;
+//    private String address;
+//    private String dob;
 
     public String getFullName() {
         return fullName;
@@ -57,45 +54,45 @@ public class AccountRequestEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public Boolean getGender() {
-        return gender;
-    }
-
-    public void setGender(Boolean gender) {
-        this.gender = gender;
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
+//
+//    public Boolean getGender() {
+//        return gender;
+//    }
+//
+//    public void setGender(Boolean gender) {
+//        this.gender = gender;
+//    }
+//
+//    public int getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(int role) {
+//        this.role = role;
+//    }
+//
+//    public String getPhone() {
+//        return phone;
+//    }
+//
+//    public void setPhone(String phone) {
+//        this.phone = phone;
+//    }
+//
+//    public String getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(String address) {
+//        this.address = address;
+//    }
+//
+//    public String getDob() {
+//        return dob;
+//    }
+//
+//    public void setDob(String dob) {
+//        this.dob = dob;
+//    }
 
 }
