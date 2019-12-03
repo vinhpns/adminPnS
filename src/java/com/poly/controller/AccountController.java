@@ -3,6 +3,7 @@ package com.poly.controller;
 import com.poly.bean.Account;
 import com.poly.constant.AccountConstant;
 import com.poly.service.AccountService;
+import com.poly.service.CommentService;
 import com.poly.tool.ConstantManager;
 import com.poly.tool.checkLogin;
 
@@ -22,6 +23,9 @@ public class AccountController {
 
     @Autowired
     AccountService accService;
+    
+    @Autowired
+    CommentService commentService;
 
     @RequestMapping()
     public String initiate(ModelMap model, HttpSession session) {
@@ -29,6 +33,7 @@ public class AccountController {
             String errors = ConstantManager.NO_ACCEPTED_LOGIN;
             return logout(session, model, errors);
         }
+        session.setAttribute("commentNotRead", commentService.countNotReply());
         return AccountConstant.INDEXPAGE;
     }
 

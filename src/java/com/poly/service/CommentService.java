@@ -24,4 +24,8 @@ public class CommentService {
     public List<Comment> getListComment() {
         return commentDAO.getListComment();
     }
+    
+    public int countNotReply() {
+        return commentDAO.countNotReply().size();
+    }
 }

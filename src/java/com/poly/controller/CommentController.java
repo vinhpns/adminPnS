@@ -29,6 +29,7 @@ public class CommentController {
     public String initiate(ModelMap model, HttpSession session) {
         List<Comment> list = commentService.getListComment();
         model.put("commentList", list);
+        session.setAttribute("commentNotRead", commentService.countNotReply());
         return "comment";
     }
 }
