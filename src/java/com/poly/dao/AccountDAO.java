@@ -73,4 +73,18 @@ public class AccountDAO {
             return Boolean.FALSE;
         }
     }
+
+    public Boolean insert(Account ac) {
+        try {
+            String sql = "INSERT INTO account (id, email, full_name, user_name, gender, password, phone, address, "
+                    + "dob, role, created_by, updated_by ) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            jdbc.update(sql, ac.getId(), ac.getEmail(), ac.getFullName(), ac.getUserName(), ac.getGender(),
+                    ac.getPassword(), ac.getPhone(), ac.getAddress(), ac.getDob(), ac.getRole(), ac.getCreatedBy(), ac.getUpdatedBy());
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
+        }
+    }
 }

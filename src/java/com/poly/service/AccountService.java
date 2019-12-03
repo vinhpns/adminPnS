@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,5 +84,16 @@ public class AccountService {
 
     public Boolean updatePass(AccountPassword ap) {
         return !Objects.equals(accDAO.updatePassword(ap), Boolean.FALSE);
+    }
+
+    public Boolean insertAccount(Account ac) {
+        UUID uuid = UUID.randomUUID();
+        ac.setId(uuid.toString());
+        PasswordEncoder pw = new BCryptPasswordEncoder();
+        ac.setPassword(pw.encode(ac.getPassword()));
+        if (Objects.equals(accDAO.insert(ac), Boolean.FALSE)) {
+            return Boolean.FALSE;
+        }
+        return Boolean.TRUE;
     }
 }

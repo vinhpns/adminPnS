@@ -59,9 +59,14 @@ public class UserController {
         model.put(ConstantManager.OK_POPUP, "Đổi mật khẩu thành công");
         return initiate(model, session);
     }
-    
+
     @RequestMapping(params = "insert", method = RequestMethod.POST)
     public String insert(ModelMap model, HttpSession session, @ModelAttribute("account") Account ac) {
+        if (Objects.equals(accSer.insertAccount(ac), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, "Thêm tài khoản không thành công");
+            return initiate(model, session);
+        }
+        model.put(ConstantManager.OK_POPUP, "Thêm tài khoản thành công");
         return initiate(model, session);
     }
 
