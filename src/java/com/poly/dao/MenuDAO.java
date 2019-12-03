@@ -60,7 +60,7 @@ public class MenuDAO {
         }
     }
 
-    public Boolean deleteMenu(int id) {
+    public Boolean deleteMenu(String id) {
         try {
             String sql = "DELETE FROM " + ConstantManager.DEFAULT_DB_NAME + ".menu "
                     + "WHERE id=?";

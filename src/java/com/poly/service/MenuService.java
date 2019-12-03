@@ -57,7 +57,7 @@ public class MenuService {
         return Boolean.TRUE;
     }
 
-    public Boolean deleteMenu(int id) {
+    public Boolean deleteMenu(String id) {
         List<Menu> pList = mDAO.getFather();
         if (Objects.equals(pList, ConstantManager.NULL) || pList.isEmpty()) {
             mDAO.deleteMenu(id);

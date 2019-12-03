@@ -56,10 +56,9 @@ public class MenuController {
         model.put(ConstantManager.OK_POPUP, MenuConstant.INSERT_MENU_OK);
         return initiate(model, Session);
     }
-
+@RequestMapping(params ="delete", method = RequestMethod.GET)
     public String delete(ModelMap model, HttpSession session,
-            @RequestParam(MenuConstant.ID_PARAM) int id) {
-
+            @RequestParam(MenuConstant.ID_PARAM) String id) {
         if (Objects.equals(menuService.deleteMenu(id), Boolean.FALSE)) {
             model.put(ConstantManager.ERROR_POPUP, MenuConstant.DELETE_MENU_FAIL);
             return initiate(model, session);
@@ -67,7 +66,7 @@ public class MenuController {
         model.addAttribute(ConstantManager.OK_POPUP, MenuConstant.DELETE_MENU_OK);
         return initiate(model, session);
     }
-
+@RequestMapping(params ="edit", method = RequestMethod.GET)
     public String update(ModelMap model, HttpSession session,
             @RequestParam(MenuConstant.ID_PARAM) String id,
             @RequestParam(MenuConstant.NAME_PARAM) String name,
