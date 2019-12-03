@@ -5,6 +5,7 @@
  */
 package com.poly.controller;
 
+import com.poly.bean.Account;
 import com.poly.constant.AccountConstant;
 import com.poly.request.AccountPassword;
 import com.poly.service.AccountService;
@@ -56,6 +57,11 @@ public class UserController {
             return initiate(model, session);
         }
         model.put(ConstantManager.OK_POPUP, "Đổi mật khẩu thành công");
+        return initiate(model, session);
+    }
+    
+    @RequestMapping(params = "insert", method = RequestMethod.POST)
+    public String insert(ModelMap model, HttpSession session, @ModelAttribute("account") Account ac) {
         return initiate(model, session);
     }
 
