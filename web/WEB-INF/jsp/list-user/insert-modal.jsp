@@ -13,64 +13,71 @@
                 <div class="widget-main">
                     <div>
                         <label for="form-field-8">Họ Và Tên</label>
-                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                               class="autosize-transition form-control" name="Menuname"
-                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                        <input id="txt_box" type="text" required="" placeholder="Họ và Tên"
+                               class="autosize-transition form-control" name="Name"
+                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;" requires>
                     </div>
                     <br>
                     <div>
                         <label for="form-field-8">Email</label>
-                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                               class="autosize-transition form-control" name="Menuname"
-                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                        <input id="txt_box" type="Email" required="" placeholder="Email"
+                               class="autosize-transition form-control" name="Email"
+                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;" requires>
                     </div>
                     <br>
                     <div>
                         <label for="form-field-8">Tên Đăng Nhập</label>
-                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                               class="autosize-transition form-control" name="Menuname"
-                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                        <input id="txt_box" type="text" required="" placeholder="UserName"
+                               class="autosize-transition form-control" name="UserName"
+                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;" requires>
                     </div>
                     <br>
                     <div>
                         <label for="form-field-8">Mật Khẩu</label>
-                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                               class="autosize-transition form-control" name="Menuname"
-                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                        <input id="txt_box" type="password" required="" placeholder="Mật Khẩu"
+                               class="autosize-transition form-control" name="Password"
+                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;" requires>
                     </div>
                     <br>
                     <div>
                         <label for="form-field-8">Giới Tinh</label>
-                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                               class="autosize-transition form-control" name="Menuname"
-                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                        <select id="txt_box" type="select" required="" placeholder="Giới Tính"
+                                class="autosize-transition form-control" name="gender"
+                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                            <option value="Male">Nam</option>
+                            <option value="Female">Nữ</option>
+                        </select>
                     </div>
                     <br>
                     <div>
                         <label for="form-field-8">Vai Trò</label>
-                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                               class="autosize-transition form-control" name="Menuname"
-                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                         <select id="txt_box" type="select" required="" placeholder="Vai Trò"
+                                class="autosize-transition form-control" name="role"
+                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                            <option value="Admin">Admin</option>
+                            <option value="Writer">Writer</option>
+                            <option value="Moder">Moder</option>
+                        </select>
                     </div>
                     <br>
                     <div>
                         <label for="form-field-8">Số Điện Thoại</label>
-                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                               class="autosize-transition form-control" name="Menuname"
+                        <input id="number" type="number" required="" placeholder="Số Điện Thoại"
+                               class="autosize-transition form-control" name="Phone Number"
                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                     </div>
                     <br>
                     <div>
                         <label for="form-field-8">Địa Chỉ</label>
-                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                               class="autosize-transition form-control" name="Menuname"
+                        <input id="txt_box" type="text" required="" placeholder="Địa Chỉ"
+                               class="autosize-transition form-control" name="Address"
                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                     </div>
                     <br>
                     <div>
                         <label for="form-field-8">Ngày Tháng Năm Sinh</label>
-                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                               class="autosize-transition form-control" name="Menuname"
+                        <input id="start" type="date" required="" placeholder="Ngày Tháng Năm Sinh" value="2020-12-31"  min="1990-01-01" max="2020-12-31"
+                               class="autosize-transition form-control" name="Date Of Birth"
                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                     </div>
                 </div>
