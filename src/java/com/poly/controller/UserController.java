@@ -67,6 +67,11 @@ public class UserController {
             model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
             return accController.initiate(model, session);
         }
+        if (!Objects.equals(accSer.getAccountLogin(ac.getEmail()), null)
+                || !Objects.equals(accSer.getAccountLogin(ac.getUserName()), null)) {
+            model.put(ConstantManager.ERROR_POPUP, "Tài khoản đã có trong hệ thống");
+            return initiate(model, session);
+        }
         if (Objects.equals(accSer.insertAccount(ac, (String) session.getAttribute("accountId")), Boolean.FALSE)) {
             model.put(ConstantManager.ERROR_POPUP, "Thêm tài khoản không thành công");
             return initiate(model, session);

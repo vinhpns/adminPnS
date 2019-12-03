@@ -20,6 +20,7 @@ public class News implements Serializable {
     private int type;
     private String createdBy;
     private String updatedBy;
+    private int view;
 
     public News() {
     }
@@ -86,6 +87,14 @@ public class News implements Serializable {
 
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    public int getView() {
+        return view;
+    }
+
+    public void setView(int view) {
+        this.view = view;
     }
 
 }
