@@ -35,6 +35,8 @@
             </a>
             </td>
             </tr>
+            <input value="yes" name="sub" />
+            <input value="${menuId}" name="id" />
             <div class="modal fade" id="changPass_${menu.id}" role="dialog">
                 <div class="modal-dialog">
                     Modal content

@@ -7,6 +7,7 @@ package com.poly.controller;
 
 import com.poly.bean.Menu;
 import com.poly.constant.MenuConstant;
+import com.poly.request.MenuRequest;
 import com.poly.service.MenuService;
 import com.poly.tool.ConstantManager;
 import java.util.List;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,14 +44,14 @@ public class MenuController {
         List<Menu> m = menuService.getSon(id);
         model.put("subMenu", m);
         model.put("menuName", menuService.getMenuById(id).getName());
+        model.put("menuId", id);
         return "subMenu";
     }
 
     @RequestMapping(params = "insert", method = RequestMethod.POST)
     public String insert(ModelMap model, HttpSession Session,
-            @RequestParam("name") String name) {
-
-        if (Objects.equals(menuService.insertMenu(name), Boolean.FALSE)) {
+            @ModelAttribute("menu") MenuRequest menuRequest) {
+        if (Objects.equals(menuService.insertMenu(menuRequest.getName()), Boolean.FALSE)) {
             model.put(ConstantManager.ERROR_POPUP, MenuConstant.INSERT_MENU_FAIL);
             return initiate(model, Session);
         }

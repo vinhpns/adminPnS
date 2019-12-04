@@ -31,6 +31,8 @@
             <a href="?delete&id=${menu.id}">
                 <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa tài khoản"></i>
             </a>
+            <input value="no" name="sub"/>
+            <input value="no" name="id"/>
             </td>
             </tr>
         </c:forEach>
