@@ -5,6 +5,7 @@
  */
 package com.poly.dao;
 
+import com.poly.request.AccountPassword;
 import com.poly.tool.ConstantManager;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,17 @@ public class RegisterDAO {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
+        }
+ }
+ public Boolean updatePassword(AccountPassword ap) {
+        try {
+            String sql = "UPDATE register SET password = '" + ap.getNewPassword() + "' "
+                    + "WHERE id = '" + ap.getId() + '"';
+            jdbc.update(sql);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
         }
     }
 }

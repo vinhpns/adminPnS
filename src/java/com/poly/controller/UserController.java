@@ -6,7 +6,6 @@
 package com.poly.controller;
 
 import com.poly.constant.AccountConstant;
-import com.poly.request.AccountPassword;
 import com.poly.request.AccountRequestEntity;
 import com.poly.service.AccountService;
 import com.poly.tool.ConstantManager;
@@ -81,7 +80,7 @@ public class UserController {
     }
 
     @RequestMapping(params = "changeStatus")
-    public String delete(ModelMap model, HttpSession session,
+    public String updateStatus(ModelMap model, HttpSession session,
             @RequestParam(AccountConstant.ID_REQUEST_PARAM) String id,
             @RequestParam(AccountConstant.STATUS_REQUEST_PARAM) Boolean status) {
         if (Objects.equals(accSer.checkLogin(session), Boolean.FALSE)) {

@@ -118,4 +118,9 @@ public class AccountService {
     public Account getAccountById(String id) {
         return accDAO.getAccountById(id);
     }
+
+    public Boolean delete(String id) {
+        return !Objects.equals(accDAO.delete(id), Boolean.FALSE);
+    }
+
 }

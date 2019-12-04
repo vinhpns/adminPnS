@@ -60,5 +60,5 @@ public class Register {
     public void setCreated_time(String created_time) {
         this.created_time = created_time;
     }
-    
+
 }

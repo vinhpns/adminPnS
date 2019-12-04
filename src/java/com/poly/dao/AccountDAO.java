@@ -78,7 +78,7 @@ public class AccountDAO {
         try {
             String sql = "UPDATE account SET password = '" + ap.getNewPassword() + "' "
                     + "WHERE id = '" + ap.getId() + '"';
-            jdbc.update(sql);
+            jdbc.update(sql, ap.getId());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -113,5 +113,18 @@ public class AccountDAO {
             System.out.println(e.getMessage());
             return Boolean.FALSE;
         }
+    }
+    public Boolean delete(String id){
+        try {
+            String sql = "DELETE FROM " + ConstantManager.DEFAULT_DB_NAME + ".account "
+                    + "WHERE id=?";
+            jdbc.update(sql, id);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
+        }
+            
+        
     }
 }

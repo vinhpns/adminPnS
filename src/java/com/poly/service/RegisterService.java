@@ -5,10 +5,22 @@
  */
 package com.poly.service;
 
+import com.poly.dao.RegisterDAO;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author HP
  */
+@Service
 public class RegisterService {
+     @Autowired
+    RegisterDAO registerDAO;
+    
+    public List<RegisterDAO> getListComment() {
+        return registerDAO.getListRegister();
+    }
     
 }
