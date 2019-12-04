@@ -62,7 +62,7 @@ public class AccountDAO {
             return null;
         }
     }
-    
+
     public Account getAccountById(String id) {
         try {
             String sql = "SELECT * from " + ConstantManager.DEFAULT_DB_NAME + ".account "
@@ -88,7 +88,8 @@ public class AccountDAO {
 
     public Boolean insert(Account ac) {
         try {
-            String sql = "INSERT INTO account (id, email, full_name, user_name, gender, password, phone, address, "
+            String sql = "INSERT INTO account (id, email, full_name, user_name, gender, "
+                    + "password, phone, address, "
                     + "dob, role, created_by ) "
                     + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             jdbc.update(sql, ac.getId(), ac.getEmail(), ac.getFullName(), ac.getUserName(), ac.getGender(),
@@ -114,7 +115,8 @@ public class AccountDAO {
             return Boolean.FALSE;
         }
     }
-    public Boolean delete(String id){
+
+    public Boolean delete(String id) {
         try {
             String sql = "DELETE FROM " + ConstantManager.DEFAULT_DB_NAME + ".account "
                     + "WHERE id=?";
@@ -124,7 +126,6 @@ public class AccountDAO {
             System.out.println(e.getMessage());
             return Boolean.FALSE;
         }
-            
-        
+
     }
 }

@@ -94,17 +94,6 @@ public class MenuDAO {
             return Boolean.FALSE;
         }
     }
-
-    public void setLockMenu(String id) {
-        String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".menu SET active = false where id= ?";
-        jdbc.update(sql, id);
-    }
-
-    public void setUnlockMenu(String id) {
-        String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".menu SET active = true where id= ?";
-        jdbc.update(sql, id);
-    }
-
     public Boolean updateStatus(Menu menu) {
         try {
             Boolean status = Boolean.TRUE;
