@@ -53,5 +53,5 @@ public class ConstantManager {
     public static final String LOGIN_PAGE = "login";
     public static final String NO_ACCEPTED_LOGIN = "Bạn không có quyền truy cập trang này!";
     public static final String IMAGE_MUST_BE_IN = "Mỗi thương hiệu cần có hình ảnh";
-    
+    public static final String UPDATE_FAIL = "Cập nhật không thành công";
 }
