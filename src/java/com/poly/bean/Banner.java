@@ -15,7 +15,6 @@ public class Banner {
     private String img;
     private String link;
     private int type;
-
     private String createdBy;
     private String updatedBy;
 

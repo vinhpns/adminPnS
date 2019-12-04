@@ -53,6 +53,11 @@ public class MenuDAO {
         return jdbc.queryForObject(sql, getRowMapper(), id);
     }
 
+    public Menu getMenuByName(String name) {
+        String sql = "SELECT * FROM menu WHERE name = ?";
+        return jdbc.queryForObject(sql, getRowMapper(), name);
+    }
+
     public Boolean insertMenu(Menu menu) {
         try {
             String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".menu "
@@ -82,7 +87,7 @@ public class MenuDAO {
             String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".menu "
                     + "SET name = ?, parent_id = ? "
                     + "WHERE id = ?";
-            jdbc.update(sql, menu.getName(), menu.getId());
+            jdbc.update(sql, menu.getName(), menu.getParentId(), menu.getId());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());

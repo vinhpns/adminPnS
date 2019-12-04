@@ -80,18 +80,18 @@ public class AccountController {
         return initiate(model, session);
     }
 
-    @RequestMapping(params = "password", method = RequestMethod.POST)
-    public String updatePassword(ModelMap model, HttpSession session,
-            @ModelAttribute("account") AccountPassword ap) {
-        if (ap.getNewPassword().equalsIgnoreCase(ap.getOldPassword())) {
-            model.put(ConstantManager.ERROR_POPUP, "Mật khẩu mới không được trùng mật khẩu cũ");
-            return initiate(model, session);
-        }
-        if (Objects.equals(accService.updatePass(ap), Boolean.FALSE)) {
-            model.put(ConstantManager.ERROR_POPUP, "Đổi mật khẩu không thành công");
-            return initiate(model, session);
-        }
-        model.put(ConstantManager.OK_POPUP, "Đổi mật khẩu thành công");
-        return initiate(model, session);
-    }
+//    @RequestMapping(params = "password", method = RequestMethod.POST)
+//    public String updatePassword(ModelMap model, HttpSession session,
+//            @ModelAttribute("account") AccountPassword ap) {
+//        if (ap.getNewPassword().equalsIgnoreCase(ap.getOldPassword())) {
+//            model.put(ConstantManager.ERROR_POPUP, "Mật khẩu mới không được trùng mật khẩu cũ");
+//            return initiate(model, session);
+//        }
+//        if (Objects.equals(accService.updatePass(ap), Boolean.FALSE)) {
+//            model.put(ConstantManager.ERROR_POPUP, "Đổi mật khẩu không thành công");
+//            return initiate(model, session);
+//        }
+//        model.put(ConstantManager.OK_POPUP, "Đổi mật khẩu thành công");
+//        return initiate(model, session);
+//    }
 }

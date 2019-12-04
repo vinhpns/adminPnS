@@ -49,6 +49,9 @@ public class MenuService {
     public Menu getMenuById(String id) {
         return mDAO.getMenuById(id);
     }
+    public Menu getMenuByName(String name){
+        return mDAO.getMenuByName(name);
+    }
 
     public Boolean insertMenu(String name) {
         Menu menu = new Menu();

@@ -3,6 +3,7 @@ package com.poly.controller;
 import com.poly.bean.Register;
 import com.poly.constant.AccountConstant;
 import com.poly.request.AccountRequestEntity;
+import com.poly.service.RegisterService;
 import com.poly.tool.ConstantManager;
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RegisterController {
 
     @Autowired
-    Register reSer;
+    RegisterService reSer;
 
     @RequestMapping()
     public String initiate(ModelMap model, HttpSession session) {

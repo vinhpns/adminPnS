@@ -61,4 +61,15 @@ public class CommentDAO {
             return Boolean.FALSE;
         }
     }
+    public Boolean deleteComment(String id) {
+        try {
+            String sql = "DELETE FROM " + ConstantManager.DEFAULT_DB_NAME + ".comment "
+                    + "WHERE id=?";
+            jdbc.update(sql, id);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
+        }
+    }
 }

@@ -49,4 +49,14 @@ public class CommentController {
         model.put(ConstantManager.ERROR_POPUP, "Cập nhật không thành công");
         return initiate(model, session);
     }
+   @RequestMapping(params = "delete", method = RequestMethod.GET)
+    public String delete(ModelMap model, HttpSession session,
+            @RequestParam("id") String id) {
+        if (Objects.equals(commentService.deleteComment(id), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, "Xóa không thành công");
+            return initiate(model, session);
+        }
+        model.addAttribute(ConstantManager.OK_POPUP, "Xóa thành công");
+        return initiate(model, session);
+    }
 }

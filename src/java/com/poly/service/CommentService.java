@@ -36,4 +36,7 @@ public class CommentService {
         c.setIsReply(Boolean.TRUE);
         return !Objects.equals(commentDAO.updateReply(c), Boolean.FALSE);
     }
+    public Boolean deleteComment(String id){
+         return !Objects.equals(commentDAO.deleteComment(id), Boolean.FALSE);
+    }
 }

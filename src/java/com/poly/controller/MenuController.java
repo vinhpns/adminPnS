@@ -68,22 +68,30 @@ public class MenuController {
         return initiate(model, session);
     }
 
-    @RequestMapping(params = "edit", method = RequestMethod.GET)
+    @RequestMapping(params = "edit", method = RequestMethod.POST)
     public String update(ModelMap model, HttpSession session,
             @RequestParam(MenuConstant.ID_PARAM) String id,
             @RequestParam(MenuConstant.NAME_PARAM) String name,
             @RequestParam(MenuConstant.FATHER_ID_PARAM) int fatherId) {
 
-        Menu menu = menuService.getMenuById(id);
-        if (menu.getName().equalsIgnoreCase(name)) {
+        Menu menu = menuService.getMenuByName(name);
+        if (menu == null) {
+            Objects.equals(menuService.updateMenu(menu), Boolean.FALSE);
             model.put(ConstantManager.OK_POPUP, MenuConstant.UPDATE_MENU_OK);
             return initiate(model, session);
         }
+        if (menu.getName().equals(name) && menu.getId().equals(id)) {
+            Objects.equals(menuService.updateMenu(menu), Boolean.TRUE);
+            model.put(ConstantManager.OK_POPUP, MenuConstant.UPDATE_MENU_OK);
+            return initiate(model, session);
+        }
+        if (menu.getName().equals(name) && !menu.getId().equals(id)) {
+            Objects.equals(menuService.updateMenu(menu), Boolean.FALSE);
+            model.put(ConstantManager.ERROR_POPUP, "Đã tồn tại Menu trong hệ thống");
+            return initiate(model, session);
+        }
 
-        menu.setParentId(name);
-        menu.setName(name);
-
-        model.put(ConstantManager.OK_POPUP, MenuConstant.UPDATE_MENU_OK);
+        model.put(ConstantManager.ERROR_POPUP, MenuConstant.UPDATE_MENU_FAIL);
         return initiate(model, session);
     }
 
