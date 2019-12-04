@@ -103,4 +103,13 @@ public class UserController {
         model.put(ConstantManager.OK_POPUP, "Đổi mật khẩu thành công");
         return initiate(model, session);
     }
+    public String updateInfo(HttpSession session , ModelMap model,
+            @RequestParam("id") String id){
+        if (Objects.equals(accSer.updateInfo(acc, id), Boolean.TRUE)) {
+            model.put(ConstantManager.OK_POPUP, "Cập nhật thành công");
+            return initiate(model, session);
+        }
+        model.put(ConstantManager.ERROR_POPUP, "Cập nhật không thành công");
+        return initiate(model, session);
+    }
 }
