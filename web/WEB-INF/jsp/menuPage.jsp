@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="index3.html" class="brand-link">
+        <a href="index.htm" class="brand-link">
             <img src="http://daotaomamnon.com/wp-content/uploads/2019/03/logo-trung-cap-sai-gon.jpeg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">Trung cấp Sài Gòn</span>
