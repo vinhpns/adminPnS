@@ -6,6 +6,7 @@
 package com.poly.dao;
 
 import com.poly.bean.Menu;
+import com.poly.request.MenuRequest;
 import com.poly.tool.ConstantManager;
 import java.util.List;
 import java.util.Objects;
@@ -34,12 +35,12 @@ public class MenuDAO {
     }
 
     public List<Menu> getFather() {
-        String sql = "SELECT *FROM menu WHERE parent_id = 0";
+        String sql = "SELECT * FROM menu WHERE parent_id = 0 ORDER BY position DESC";
         return getBySql(sql);
     }
 
     public List<Menu> getSon(String id) {
-        String sql = "SELECT *FROM menu WHERE parent_id = '" + id + "'";
+        String sql = "SELECT * FROM menu WHERE parent_id = '" + id + "'";
         return getBySql(sql);
     }
 
@@ -58,11 +59,11 @@ public class MenuDAO {
         return jdbc.queryForObject(sql, getRowMapper(), name);
     }
 
-    public Boolean insertMenu(Menu menu) {
+    public Boolean insertMenu(MenuRequest menu, String uuid) {
         try {
             String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".menu "
-                    + "(id,name, parent_id) VALUES (?,?,?)";
-            jdbc.update(sql, menu.getId(), menu.getName(), menu.getParentId());
+                    + "(id,name, parent_id, created_by, position) VALUES (?,?,?,?,?)";
+            jdbc.update(sql, uuid, menu.getName(), menu.getParentId(), menu.getCreatedBy(), menu.getPosition());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -94,6 +95,7 @@ public class MenuDAO {
             return Boolean.FALSE;
         }
     }
+
     public Boolean updateStatus(Menu menu) {
         try {
             Boolean status = Boolean.TRUE;
@@ -102,6 +104,22 @@ public class MenuDAO {
             }
             String sql = "UPDATE menu SET active = " + status + " WHERE id = '" + menu.getId() + "'";
             jdbc.update(sql);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
+        }
+    }
+
+    public List<Menu> getLastInsert() {
+        String sql = "SELECT * FROM sgdg_jpa.menu order by created_time DESC LIMIT 1;";
+        return getBySql(sql);
+    }
+
+    public Boolean updateCount(Menu m) {
+        try {
+            String sql = "UPDATE menu SET count = ? WHERE id = ?";
+            jdbc.update(sql, m.getCount(), m.getId());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());

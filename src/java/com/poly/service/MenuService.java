@@ -9,6 +9,7 @@ import com.poly.bean.Menu;
 import com.poly.bean.News;
 import com.poly.dao.MenuDAO;
 import com.poly.dao.NewsDAO;
+import com.poly.request.MenuRequest;
 import com.poly.tool.ConstantManager;
 import com.poly.tool.checkLogin;
 import java.util.List;
@@ -49,20 +50,20 @@ public class MenuService {
     public Menu getMenuById(String id) {
         return mDAO.getMenuById(id);
     }
-    public Menu getMenuByName(String name){
+
+    public Menu getMenuByName(String name) {
         return mDAO.getMenuByName(name);
     }
 
-    public Boolean insertMenu(String name) {
-        Menu menu = new Menu();
-        UUID uuid = UUID.randomUUID();
-        menu.setId(uuid.toString());
-        menu.setParentId("0");
-        menu.setName(name);
-        if (Objects.equals(mDAO.insertMenu(menu), Boolean.FALSE)) {
-            return Boolean.FALSE;
+    public Boolean insertMenu(MenuRequest m) {
+        Boolean status = mDAO.insertMenu(m, UUID.randomUUID().toString());
+        if (m.getParentId().equals("0")) {
+            return status;
         }
-        return Boolean.TRUE;
+        Menu menu = mDAO.getMenuById(m.getParentId());
+        menu.setCount(menu.getCount() + 1);
+        mDAO.updateCount(menu);
+        return !Objects.equals(mDAO.updateCount(menu), Boolean.FALSE);
     }
 
     public Boolean deleteMenu(String id) {
@@ -77,6 +78,7 @@ public class MenuService {
             if (sub.size() > 0) {
                 for (int i = 0; i < sub.size(); i++) {
                     deleteNewFollowMenu(sub.get(i).getId());
+                    mDAO.deleteMenu(sub.get(i).getId());
                 }
             }
         }
@@ -104,5 +106,9 @@ public class MenuService {
         menu.setActive(status);
         menu.setId(id);
         return !Objects.equals(mDAO.updateStatus(menu), Boolean.FALSE);
+    }
+
+    public List<Menu> checkLastInsert() {
+        return mDAO.getLastInsert();
     }
 }

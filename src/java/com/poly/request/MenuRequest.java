@@ -10,26 +10,22 @@ package com.poly.request;
  * @author hieuh
  */
 public class MenuRequest {
-    private String id;
-    private String sub;
+
+    private String parentId;
     private String name;
-    
-    public MenuRequest() {}
+    private int position;
+    private String createdBy;
+    private String url;
 
-    public String getId() {
-        return id;
+    public MenuRequest() {
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getParentId() {
+        return parentId;
     }
 
-    public String getSub() {
-        return sub;
-    }
-
-    public void setSub(String sub) {
-        this.sub = sub;
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
     public String getName() {
@@ -39,6 +35,29 @@ public class MenuRequest {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
 }

@@ -20,6 +20,7 @@ public class Menu {
     private String updatedBy;
     private int count;
     private int news;
+    private int position;
 
     public Menu() {
 
@@ -95,6 +96,14 @@ public class Menu {
 
     public void setNews(int news) {
         this.news = news;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
 }

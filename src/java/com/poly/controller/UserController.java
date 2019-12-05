@@ -107,10 +107,10 @@ public class UserController {
     public String updateInfo(HttpSession session , ModelMap model,
             @RequestParam("id") String id,
             @ModelAttribute("account") AccountPassword ap){
-        if (Objects.equals(accSer.updateInfo(ap, id), Boolean.TRUE)) {
-            model.put(ConstantManager.OK_POPUP, "Cập nhật thành công");
-            return initiate(model, session);
-        }
+//        if (Objects.equals(accSer.updateInfo(ap, id), Boolean.TRUE)) {
+//            model.put(ConstantManager.OK_POPUP, "Cập nhật thành công");
+//            return initiate(model, session);
+//        }
         model.put(ConstantManager.ERROR_POPUP, "Cập nhật không thành công");
         return initiate(model, session);
     }

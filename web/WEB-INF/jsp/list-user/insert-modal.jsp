@@ -51,7 +51,7 @@
                     <br>
                     <div>
                         <label for="form-field-8">Vai Trò *</label>
-                         <select id="txt_box" type="select" placeholder="Vai Trò"
+                        <select id="txt_box" type="select" placeholder="Vai Trò"
                                 class="autosize-transition form-control" name="role"
                                 style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                             <option value="3">Admin</option>

@@ -44,19 +44,30 @@ public class MenuController {
         List<Menu> m = menuService.getSon(id);
         model.put("subMenu", m);
         model.put("menuName", menuService.getMenuById(id).getName());
-        model.put("menuId", id);
+        model.put("menuFatherId", id);
         return "subMenu";
     }
 
     @RequestMapping(params = "insert", method = RequestMethod.POST)
-    public String insert(ModelMap model, HttpSession Session,
+    public String insert(ModelMap model, HttpSession session,
             @ModelAttribute("menu") MenuRequest menuRequest) {
-        if (Objects.equals(menuService.insertMenu(menuRequest.getName()), Boolean.FALSE)) {
-            model.put(ConstantManager.ERROR_POPUP, MenuConstant.INSERT_MENU_FAIL);
-            return initiate(model, Session);
+        List<Menu> m = menuService.checkLastInsert();
+        if (m.get(0).getName().equals(menuRequest.getName()) && m.get(0).getParentId().equals(menuRequest.getParentId())) {
+            if (menuRequest.getUrl() == null) {
+                return getSubMenu(model, session, menuRequest.getParentId());
+            }
+            return initiate(model, session);
         }
-        model.put(ConstantManager.OK_POPUP, MenuConstant.INSERT_MENU_OK);
-        return initiate(model, Session);
+        menuRequest.setCreatedBy((String) (session.getAttribute("accountId")));
+        if (Objects.equals(menuService.insertMenu(menuRequest), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, MenuConstant.INSERT_MENU_FAIL);
+        } else {
+            model.put(ConstantManager.OK_POPUP, MenuConstant.INSERT_MENU_OK);
+        }
+        if (menuRequest.getUrl() == null) {
+            return getSubMenu(model, session, menuRequest.getParentId());
+        }
+        return initiate(model, session);
     }
 
     @RequestMapping(params = "delete", method = RequestMethod.GET)

@@ -12,15 +12,21 @@
             <div class="widget-body">
                 <div class="widget-main">
                     <div>
-                        <label for="form-field-8">Tên Menu</label>
-                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                               class="autosize-transition form-control" name="Menuname"
-                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                        <div>
+                            <label for="form-field-8">Tên Menu</label>
+                            <input id="txt_box" type="text" required="" placeholder="Tên Menu"
+                                   class="autosize-transition form-control" name="name"
+                                   style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                        </div>
                         <br>
-                        <label for="form-field-8">Loại Menu</label>
-                        <input id="txt_box" type="text" required="" placeholder="Loại Menu"
-                               class="autosize-transition form-control" name="Menu Type" value="${menuName}"
-                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px; " readonly>
+                        <div>
+                            <label for="form-field-8">Thuộc Menu</label>
+                            <input id="txt_box" type="text" required="" placeholder="Tên Menu"
+                                   class="autosize-transition form-control" readonly="" value="${menuName}"
+                                   style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                            <input hidden="" value="0" name="postion">
+                            <input hidden="" value="${menuFatherId}" name="parentId">
+                        </div>
                     </div>
                 </div>
             </div>

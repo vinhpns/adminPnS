@@ -19,12 +19,12 @@
                 <td>
             <c:if test="${menu.active == true}">
                 <a href="?changeStatus&id=${menu.id}&status=${menu.active}">
-                    <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa Menu"></i>
+                    <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa tài khoản"></i>
                 </a>
             </c:if>
             <c:if test="${menu.active == false}">
-                <a href="?id=${menu.id}&status=${menu.active}">
-                    <i class="fa fa-lock" style="color: green; font-size: 16px" title="Mở Khóa Menu"></i>
+                <a href="?changeStatus&id=${menu.id}&status=${menu.active}">
+                    <i class="fa fa-lock" style="color: green; font-size: 16px" title="Mở Khóa tài khoản"></i>
                 </a>
             </c:if>
             <a data-toggle="modal" data-target="#changeMenuInfo_${menu.id}">
@@ -35,8 +35,8 @@
             </a>
             </td>
             </tr>
-            <input value="yes" name="sub" />
-            <input value="${menuId}" name="id" />
+            <input value="yes" name="sub" hidden=""/>
+            <input value="${menuFatherId}" name="id" hidden=""/>
             <div class="modal fade" id="changPass_${menu.id}" role="dialog">
                 <div class="modal-dialog">
                     Modal content
