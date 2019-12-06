@@ -35,7 +35,7 @@ public class AccountDAO {
     public List<Account> getList() {
         String sql = "SELECT account.id, account.email, account.full_name, account.user_name, account.gender,"
                 + "account.password, account.phone, account.active, account.address, account.dob, "
-                + "account.role, account.post"
+                + "account.role, account.post "
                 + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".account "
                 + "WHERE deflg = false ";
         return getBySql(sql);
