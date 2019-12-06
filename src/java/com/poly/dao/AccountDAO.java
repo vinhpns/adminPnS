@@ -66,7 +66,7 @@ public class AccountDAO {
     public Account getAccountById(String id) {
         try {
             String sql = "SELECT * from " + ConstantManager.DEFAULT_DB_NAME + ".account "
-                    + "WHERE account.id = '" + id + "'";
+                    + "WHERE account.id = ?";
             return jdbc.queryForObject(sql, getRowMapper(), id);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -76,9 +76,9 @@ public class AccountDAO {
 
     public Boolean updatePassword(AccountPassword ap) {
         try {
-            String sql = "UPDATE account SET password = '" + ap.getNewPassword() + "' "
-                    + "WHERE id = '" + ap.getId() + '"';
-            jdbc.update(sql, ap.getId());
+            String sql = "UPDATE account SET password = ? "
+                    + "WHERE id = ?";
+            jdbc.update(sql, ap.getNewPassword(), ap.getId());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -132,7 +132,7 @@ public class AccountDAO {
          try {
             String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".account "
                     + "SET email = ?, full_name = ?, user_name = ?, gender =?, phone =?, "
-                    + "address =?, dob = ?, role=? , update_by=? "
+                    + "address =?, dob = ?, role=? , updated_by=? "
                     + "WHERE id = ?";
             jdbc.update(sql, ac.getEmail(), ac.getFullName(), ac.getUserName(), ac.getGender(),
                     ac.getPhone(), ac.getAddress(), ac.getDob(), 

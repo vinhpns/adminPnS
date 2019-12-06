@@ -84,6 +84,8 @@ public class AccountService {
     }
 
     public Boolean updatePass(AccountPassword ap) {
+        PasswordEncoder pw = new BCryptPasswordEncoder();
+        ap.setNewPassword(pw.encode(ap.getNewPassword()));
         return !Objects.equals(accDAO.updatePassword(ap), Boolean.FALSE);
     }
 

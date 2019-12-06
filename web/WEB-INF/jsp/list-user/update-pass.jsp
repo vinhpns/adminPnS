@@ -24,10 +24,10 @@
                                     <div>
                                         <label for="form-field-8">Mật Khẩu Mới</label>
                                         <input id="txt_box" type="password" required="" placeholder="Nhập Mật Khẩu Mới"
-                                               class="autosize-transition form-control" name="oldPassword"
+                                               class="autosize-transition form-control" name="newPassword"
                                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                                         <input id="txt_box" type="text" required="" placeholder="Nhập Mật Khẩu Mới" value="${user.password}"
-                                               class="autosize-transition form-control" name="newPassword" hidden=""
+                                               class="autosize-transition form-control" name="oldPassword" hidden=""
                                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                                         <input id="txt_box" type="text" required="" placeholder="Nhập Mật Khẩu Mới"
                                                class="autosize-transition form-control" name="id" hidden="" value="${user.id}"
