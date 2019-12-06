@@ -82,6 +82,17 @@ public class NewsDAO {
                         + "AND news.id = news_image.news_id "
                         + "ORDER BY id DESC";
                 break;
+            default:
+                sql = "SELECT news.id, news.active, news.title, news.type, "
+                        + "account.full_name as createdBy, "
+                        + "news_image.link as avatar "
+                        + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".news, "
+                        + ConstantManager.DEFAULT_DB_NAME + ".account, "
+                        + ConstantManager.DEFAULT_DB_NAME + ".news_image "
+                        + "WHERE news.created_by = account.id "
+                        + "AND news.id = news_image.news_id "
+                        + "ORDER BY id DESC";
+                break;
         }
         return getBySql(sql);
     }

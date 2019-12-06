@@ -5,12 +5,12 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr style="color: #fff; background-color: #17a2b8">
-                <th>Tiêu Đề</th>
-                <th>Tác Giả</th>
-                <th>Chuyên Mục</th>
+                <th style="width:80px">Tiêu Đề</th>
+                <th style="width:80px">Tác Giả</th>
+                <th style="width:125px">Chuyên Mục</th>
                 <th style="max-width: 200px">Ảnh Đại Diện</th>
-                <th>Lượt Xem</th>
-                <th>Thao tác</th>
+                <th style="width:80px">Lượt Xem</th>
+                <th style="width:80px">Thao tác</th>
             </tr>
         </thead>
         <tbody>
@@ -23,8 +23,8 @@
                         <c:if test="${news.type == 2}">Tin Tức</c:if>
                         <c:if test="${news.type == 3}">Event</c:if>
                         <c:if test="${news.type == 4}">Footer</c:if>
-                    </td>
-                    <td style="text-align: center"><img src="${news.avatar}" style="width: 20%"></td>
+                        </td>
+                        <td style="text-align: center"><img src="${news.avatar}" style="width: 20%"></td>
                     <td>${news.view}</td>
                     <td>
                         <c:if test="${news.active == true}">

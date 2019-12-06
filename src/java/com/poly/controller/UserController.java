@@ -5,6 +5,7 @@
  */
 package com.poly.controller;
 
+import com.poly.bean.Account;
 import com.poly.constant.AccountConstant;
 import com.poly.request.AccountPassword;
 import com.poly.request.AccountRequestEntity;
@@ -88,7 +89,7 @@ public class UserController {
         model.put(ConstantManager.OK_POPUP, AccountConstant.DELETE_OK);
         return initiate(model, session);
     }
-    
+
     @RequestMapping(params = "password", method = RequestMethod.POST)
     public String updatePassword(ModelMap model, HttpSession session,
             @ModelAttribute("account") AccountPassword ap) {
@@ -103,14 +104,22 @@ public class UserController {
         model.put(ConstantManager.OK_POPUP, "Đổi mật khẩu thành công");
         return initiate(model, session);
     }
-    @RequestMapping(params = "edit", method = RequestMethod.POST )
-    public String updateInfo(HttpSession session , ModelMap model,
-            @RequestParam("id") String id,
-            @ModelAttribute("account") AccountPassword ap){
-//        if (Objects.equals(accSer.updateInfo(ap, id), Boolean.TRUE)) {
-//            model.put(ConstantManager.OK_POPUP, "Cập nhật thành công");
-//            return initiate(model, session);
-//        }
+
+    @RequestMapping(params = "edit", method = RequestMethod.POST)
+    public String updateInfo(HttpSession session, ModelMap model,
+            @ModelAttribute("account") AccountRequestEntity ap,
+            @RequestParam("id") String id) {
+        ap.setCreatedBy((String) session.getAttribute("accountId"));
+        Account account = accSer.getAccountById(id);
+        if (account.getEmail().equals(ap.getEmail())
+                && !account.getId().equals(id)) {
+            model.put(ConstantManager.ERROR_POPUP, "Email vừa nhập đã tồn tại trong hệ thống!");
+            return initiate(model, session);
+        }
+        if (Objects.equals(accSer.updateInfo(ap, id), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, "Update tài khoản không thành công");
+            return initiate(model, session);
+        }
         model.put(ConstantManager.ERROR_POPUP, "Cập nhật không thành công");
         return initiate(model, session);
     }

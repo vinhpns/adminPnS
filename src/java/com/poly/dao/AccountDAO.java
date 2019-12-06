@@ -131,12 +131,12 @@ public class AccountDAO {
     public Boolean updateInfo(Account ac ){
          try {
             String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".account "
-                    + "SET email = ?, full_name = ?, user_name = ?, gender =?, password =?, phone =?, "
-                    + "active =?, address =?, dob = ?, role=? , update_by=? "
+                    + "SET email = ?, full_name = ?, user_name = ?, gender =?, phone =?, "
+                    + "address =?, dob = ?, role=? , update_by=? "
                     + "WHERE id = ?";
             jdbc.update(sql, ac.getEmail(), ac.getFullName(), ac.getUserName(), ac.getGender(),
-                    ac.getPassword(), ac.getPhone(), ac.getActive(), ac.getAddress(), ac.getDob(), 
-                    ac.getRole(),ac.getUpdatedBy());
+                    ac.getPhone(), ac.getAddress(), ac.getDob(), 
+                    ac.getRole(),ac.getUpdatedBy(), ac.getId());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());

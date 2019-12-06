@@ -4,6 +4,8 @@ import com.poly.bean.Account;
 import com.poly.constant.AccountConstant;
 import com.poly.service.AccountService;
 import com.poly.service.CommentService;
+import com.poly.service.NewsService;
+import com.poly.service.RegisterService;
 import com.poly.tool.ConstantManager;
 import com.poly.tool.checkLogin;
 
@@ -26,6 +28,12 @@ public class AccountController {
 
     @Autowired
     CommentService commentService;
+    
+    @Autowired
+    NewsService newService;
+    
+    @Autowired
+    RegisterService registerService;
 
     @RequestMapping()
     public String initiate(ModelMap model, HttpSession session) {
@@ -34,6 +42,10 @@ public class AccountController {
             return logout(session, model, errors);
         }
         session.setAttribute("commentNotRead", commentService.countNotReply());
+        model.put("newsCount", newService.getListNewsByType(0).size());
+        model.put("commentCount", commentService.getListComment().size());
+        model.put("registerCount", registerService.getListRegister().size());
+        model.put("accountCount", accService.getListAccount().size());
         return AccountConstant.INDEXPAGE;
     }
 

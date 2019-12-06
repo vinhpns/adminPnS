@@ -19,7 +19,7 @@ public class RegisterService {
      @Autowired
     RegisterDAO registerDAO;
     
-    public List<RegisterDAO> getListComment() {
+    public List<RegisterDAO> getListRegister() {
         return registerDAO.getListRegister();
     }
     

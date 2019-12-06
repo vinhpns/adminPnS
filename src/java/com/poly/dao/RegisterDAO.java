@@ -32,7 +32,7 @@ public class RegisterDAO {
     }
  public List<RegisterDAO> getListRegister() {
         try {
-            String sql = "SELECT register.id, register.fullname,register.email  "
+            String sql = "SELECT register.id, register.full_name, register.email,  "
                     + "register.phone, register.speciaization, register.created_time "
                     + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".register ";
             return getBySql(sql);

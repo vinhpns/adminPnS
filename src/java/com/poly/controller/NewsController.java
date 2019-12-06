@@ -9,7 +9,7 @@ import com.poly.bean.News;
 import com.poly.constant.NewsConstant;
 import com.poly.request.NewsRequestEntity;
 import com.poly.service.AccountService;
-import com.poly.service.NewService;
+import com.poly.service.NewsService;
 import com.poly.tool.ConstantManager;
 import com.poly.tool.Utils;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class NewsController {
 
     @Autowired
-    NewService newService;
+    NewsService newService;
 
     @Autowired
     AccountService accountService;
@@ -81,5 +81,11 @@ public class NewsController {
         String userId = (String) session.getAttribute("accountId");
         newService.insert(n, type, userId, menuId, link);
         return initiate(model, session, 1);
+    }
+    
+    @RequestMapping(params = "fullNews", method = RequestMethod.GET)
+    public String getFullNews (ModelMap model, HttpSession session){
+        model.put("newsList", newService.getListNewsByType(0));
+        return "newsList";
     }
 }

@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
  * @author SGDG Company
  */
 @Service
-public class NewService {
+public class NewsService {
 
     @Autowired
     NewsDAO ndao;
