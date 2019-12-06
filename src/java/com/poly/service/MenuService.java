@@ -61,30 +61,34 @@ public class MenuService {
         }
         Menu menu = mDAO.getMenuById(m.getParentId());
         menu.setCount(menu.getCount() + 1);
-        mDAO.updateCount(menu);
         return !Objects.equals(mDAO.updateCount(menu), Boolean.FALSE);
+    }
+
+    public void deleteSon(String id, String parentId) {
+        mDAO.deleteMenu(id);
+        Menu menu = mDAO.getMenuById(parentId);
+        menu.setCount(menu.getCount() - 1);
+        mDAO.updateCount(menu);
     }
 
     public Boolean deleteMenu(String id) {
         Menu m = mDAO.getMenuById(id);
-        if (m == null) {
-            return Boolean.FALSE;
-        }
+        Boolean status;
         if (!m.getParentId().equals("0")) {
-            deleteNewFollowMenu(id);
+            mDAO.deleteMenu(id);
+            Menu menu = mDAO.getMenuById(m.getParentId());
+            menu.setCount(menu.getCount() - 1);
+            status = mDAO.updateCount(menu);
         } else {
-            List<Menu> sub = mDAO.getSonOfFather(id);
-            if (sub.size() > 0) {
-                for (int i = 0; i < sub.size(); i++) {
-                    deleteNewFollowMenu(sub.get(i).getId());
-                    mDAO.deleteMenu(sub.get(i).getId());
+            List<Menu> menu = mDAO.getSon(id);
+            if (menu.size() > 0) {
+                for (int i = 0; i < menu.size(); i++) {
+                    deleteSon(menu.get(i).getId(), menu.get(i).getParentId());
                 }
             }
+            status = mDAO.deleteMenu(id);
         }
-        if (Objects.equals(mDAO.deleteMenu(id), Boolean.FALSE)) {
-            return Boolean.FALSE;
-        }
-        return Boolean.TRUE;
+        return status;
     }
 
     public void deleteNewFollowMenu(String id) {
@@ -96,8 +100,13 @@ public class MenuService {
         }
     }
 
-    public Boolean updateMenu(Menu menu) {
-        return !Objects.equals(mDAO.updateMenu(menu), Boolean.FALSE);
+    public Boolean updateMenu(MenuRequest menu, int count) {
+        Menu m = mDAO.getMenuById(menu.getId());
+        m.setName(menu.getName());
+        m.setParentId(menu.getParentId());
+        m.setUpdatedBy(menu.getCreatedBy());
+        m.setCount(count);
+        return !Objects.equals(mDAO.updateMenu(m), Boolean.FALSE);
     }
 
     public Boolean updateStatus(String id, Boolean status) {

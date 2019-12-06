@@ -86,9 +86,9 @@ public class MenuDAO {
     public Boolean updateMenu(Menu menu) {
         try {
             String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".menu "
-                    + "SET name = ?, parent_id = ? "
+                    + "SET name = ?, parent_id = ?, updated_by = ?, count = ?, position = ? "
                     + "WHERE id = ?";
-            jdbc.update(sql, menu.getName(), menu.getParentId(), menu.getId());
+            jdbc.update(sql, menu.getName(), menu.getParentId(), menu.getUpdatedBy(), menu.getCount(), menu.getPosition(), menu.getId());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());

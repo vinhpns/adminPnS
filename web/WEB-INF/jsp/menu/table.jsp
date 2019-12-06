@@ -19,19 +19,19 @@
                 <td>
             <c:if test="${menu.active == true}">
                 <a href="?changeStatus&id=${menu.id}&status=${menu.active}">
-                    <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa tài khoản"></i>
+                    <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa Menu"></i>
                 </a>
             </c:if>
             <c:if test="${menu.active == false}">
                 <a href="?changeStatus&id=${menu.id}&status=${menu.active}">
-                    <i class="fa fa-lock" style="color: green; font-size: 16px" title="Mở Khóa tài khoản"></i>
+                    <i class="fa fa-lock" style="color: green; font-size: 16px" title="Mở Khóa Menu"></i>
                 </a>
             </c:if>
             <a href="?edit&id=${menu.id}">
                 <i class="fa fa-edit" style="color: blue; font-size: 16px" title="Chỉnh sửa"></i>
             </a>
-            <a href="?delete&id=${menu.id}">
-                <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa tài khoản"></i>
+            <a href="?deleteMenu&id=${menu.id}">
+                <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa Menu"></i>
             </a>
             </td>
             </tr>

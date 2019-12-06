@@ -11,13 +11,21 @@ package com.poly.request;
  */
 public class MenuRequest {
 
+    private String id;
     private String parentId;
     private String name;
     private int position;
     private String createdBy;
-    private String url;
 
     public MenuRequest() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getParentId() {
@@ -50,14 +58,6 @@ public class MenuRequest {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
 }

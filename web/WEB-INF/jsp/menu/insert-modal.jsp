@@ -22,7 +22,6 @@
                     </div>
                     <div>
                         <label for="form-field-8">Vị trí Menu</label>
-                        <input hidden="" value="menu" name="url" />
                         <select id="txt_box" type="select" placeholder="Vai Trò"
                                 class="autosize-transition form-control" name="position"
                                 style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">

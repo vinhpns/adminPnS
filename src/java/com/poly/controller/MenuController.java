@@ -48,14 +48,11 @@ public class MenuController {
         return "subMenu";
     }
 
-    @RequestMapping(params = "insert", method = RequestMethod.POST)
+    @RequestMapping(params = "insertMenu", method = RequestMethod.POST)
     public String insert(ModelMap model, HttpSession session,
             @ModelAttribute("menu") MenuRequest menuRequest) {
         List<Menu> m = menuService.checkLastInsert();
         if (m.get(0).getName().equals(menuRequest.getName()) && m.get(0).getParentId().equals(menuRequest.getParentId())) {
-            if (menuRequest.getUrl() == null) {
-                return getSubMenu(model, session, menuRequest.getParentId());
-            }
             return initiate(model, session);
         }
         menuRequest.setCreatedBy((String) (session.getAttribute("accountId")));
@@ -64,13 +61,26 @@ public class MenuController {
         } else {
             model.put(ConstantManager.OK_POPUP, MenuConstant.INSERT_MENU_OK);
         }
-        if (menuRequest.getUrl() == null) {
-            return getSubMenu(model, session, menuRequest.getParentId());
-        }
         return initiate(model, session);
     }
 
-    @RequestMapping(params = "delete", method = RequestMethod.GET)
+    @RequestMapping(params = "insertSubMenu", method = RequestMethod.POST)
+    public String insertSub(ModelMap model, HttpSession session,
+            @ModelAttribute("menu") MenuRequest menuRequest) {
+        List<Menu> m = menuService.checkLastInsert();
+        if (m.get(0).getName().equals(menuRequest.getName()) && m.get(0).getParentId().equals(menuRequest.getParentId())) {
+            return getSubMenu(model, session, menuRequest.getParentId());
+        }
+        menuRequest.setCreatedBy((String) (session.getAttribute("accountId")));
+        if (Objects.equals(menuService.insertMenu(menuRequest), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, MenuConstant.INSERT_MENU_FAIL);
+        } else {
+            model.put(ConstantManager.OK_POPUP, MenuConstant.INSERT_MENU_OK);
+        }
+        return getSubMenu(model, session, menuRequest.getParentId());
+    }
+
+    @RequestMapping(params = "deleteMenu", method = RequestMethod.GET)
     public String delete(ModelMap model, HttpSession session,
             @RequestParam(MenuConstant.ID_PARAM) String id) {
         if (Objects.equals(menuService.deleteMenu(id), Boolean.FALSE)) {
@@ -80,32 +90,39 @@ public class MenuController {
         model.addAttribute(ConstantManager.OK_POPUP, MenuConstant.DELETE_MENU_OK);
         return initiate(model, session);
     }
-
-    @RequestMapping(params = "edit", method = RequestMethod.POST)
-    public String update(ModelMap model, HttpSession session,
-            @RequestParam(MenuConstant.ID_PARAM) String id,
-            @RequestParam(MenuConstant.NAME_PARAM) String name,
-            @RequestParam(MenuConstant.FATHER_ID_PARAM) int fatherId) {
-
-        Menu menu = menuService.getMenuByName(name);
-        if (menu == null) {
-            Objects.equals(menuService.updateMenu(menu), Boolean.FALSE);
-            model.put(ConstantManager.OK_POPUP, MenuConstant.UPDATE_MENU_OK);
+    
+    @RequestMapping(params = "deleteSubMenu", method = RequestMethod.GET)
+    public String deleteSub(ModelMap model, HttpSession session,
+            @RequestParam(MenuConstant.ID_PARAM) String id) {
+        Menu m = menuService.getMenuById(id);
+        String fatherId = m.getParentId();
+        if (Objects.equals(menuService.deleteMenu(id), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, MenuConstant.DELETE_MENU_FAIL);
             return initiate(model, session);
         }
-        if (menu.getName().equals(name) && menu.getId().equals(id)) {
-            Objects.equals(menuService.updateMenu(menu), Boolean.TRUE);
-            model.put(ConstantManager.OK_POPUP, MenuConstant.UPDATE_MENU_OK);
-            return initiate(model, session);
-        }
-        if (menu.getName().equals(name) && !menu.getId().equals(id)) {
-            Objects.equals(menuService.updateMenu(menu), Boolean.FALSE);
-            model.put(ConstantManager.ERROR_POPUP, "Đã tồn tại Menu trong hệ thống");
-            return initiate(model, session);
-        }
+        model.addAttribute(ConstantManager.OK_POPUP, MenuConstant.DELETE_MENU_OK);
+        return getSubMenu(model, session, fatherId);
+    }
 
+    @RequestMapping(params = "updateMenu", method = RequestMethod.POST)
+    public String updateMenu(ModelMap model, HttpSession session,
+            @ModelAttribute("menu") MenuRequest menu) {
+        
         model.put(ConstantManager.ERROR_POPUP, MenuConstant.UPDATE_MENU_FAIL);
         return initiate(model, session);
+    }
+    
+    @RequestMapping(params = "updateSubMenu", method = RequestMethod.POST)
+    public String updateSubMenu(ModelMap model, HttpSession session,
+            @ModelAttribute("sub") MenuRequest menu) {
+
+        menu.setCreatedBy((String) session.getAttribute("accountId"));
+        if(Objects.equals(menuService.updateMenu(menu), Boolean.FALSE)){
+            model.put(ConstantManager.ERROR_POPUP, "Update không thành công");
+            return getSubMenu(model, session, menu.getParentId());
+        }
+        model.put(ConstantManager.ERROR_POPUP, MenuConstant.UPDATE_MENU_FAIL);
+        return getSubMenu(model, session, menu.getParentId());
     }
 
     @RequestMapping(params = "changeStatus", method = RequestMethod.GET)

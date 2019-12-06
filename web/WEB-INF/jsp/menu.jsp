@@ -53,7 +53,7 @@
                                                     <%@include file="menu/insert-modal.jsp" %> 
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button class="btn btn-primary btn-lg" type="submit" name="insert">Cập Nhật</button>
+                                                    <button class="btn btn-primary btn-lg" type="submit" name="insertMenu">Cập Nhật</button>
                                                     <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
                                                 </div>
                                             </div>
