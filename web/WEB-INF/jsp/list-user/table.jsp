@@ -23,7 +23,7 @@
                 <c:if test="${role.id == user.role}">${role.name}</c:if>
             </c:forEach>
             </td>
-            <td><a href="news.htm?viewById&userId=${user.id}">3</a></td>
+            <td><a href="news.htm?viewByAccountId&userId=${user.id}">${user.post}</a></td>
             <td>
             <c:if test="${user.active == true}">
                 <a href="?changeStatus&id=${user.id}&status=${user.active}">

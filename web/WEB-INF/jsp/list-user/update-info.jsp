@@ -23,7 +23,7 @@
                                 <div class="widget-main">
                                     <div class="widget-main">
                                         <div>
-                                            <input value="${user.id}" name="id"/>
+                                            <input value="${user.id}" name="id" hidden=""/>
                                             <label for="form-field-8">Họ Và Tên *</label>
                                             <input id="txt_box" type="text" required="" placeholder="Họ và Tên"
                                                    class="autosize-transition form-control" name="fullName" value="${user.fullName}"
@@ -73,21 +73,21 @@
                                         <div>
                                             <label for="form-field-8">Số Điện Thoại</label>
                                             <input id="number" type="number" placeholder="Số Điện Thoại"
-                                                   class="autosize-transition form-control" name="phone"
+                                                   class="autosize-transition form-control" name="phone" value="${user.phone}"
                                                    style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                                         </div>
                                         <br>
                                         <div>
                                             <label for="form-field-8">Địa Chỉ</label>
                                             <input id="txt_box" type="text" placeholder="Địa Chỉ"
-                                                   class="autosize-transition form-control" name="address"
+                                                   class="autosize-transition form-control" name="address" value="${user.address}"
                                                    style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                                         </div>
                                         <br>
                                         <div>
                                             <label for="form-field-8">Ngày Tháng Năm Sinh</label>
-                                            <input id="start" type="date" placeholder="Ngày Tháng Năm Sinh" value="2020-12-31"  min="1990-01-01" max="2020-12-31"
-                                                   class="autosize-transition form-control" name="dob"
+                                            <input id="start" type="date" placeholder="Ngày Tháng Năm Sinh" min="1990-01-01" max="2020-12-31"
+                                                   class="autosize-transition form-control" name="dob" value="${user.dob}"
                                                    style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                                         </div>
                                     </div>

@@ -123,7 +123,7 @@ public class UserController {
             model.put(ConstantManager.ERROR_POPUP, "Update tài khoản không thành công");
             return initiate(model, session);
         }
-        model.put(ConstantManager.ERROR_POPUP, "Cập nhật không thành công");
+        model.put(ConstantManager.OK_POPUP, "Cập nhật thành công");
         return initiate(model, session);
     }
 }
