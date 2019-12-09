@@ -73,4 +73,10 @@ public class NewsService {
             }
         }
     }
+    public List<News> getAllByMenuId(){
+        return ndao.getAllByMenuId();
+    }
+    public List<News> getCreatBy(){
+        return ndao.getCreatBy();
+    }
 }

@@ -94,4 +94,14 @@ public class NewsController {
         model.put("newsList", newService.getListNewsByType(0));
         return "newsList";
     }
+    @RequestMapping(params = "menu", method = RequestMethod.GET)
+    public String getByMenuId(ModelMap model, HttpSession session){
+        model.put("newsList", newService.getAllByMenuId());
+        return "news";
+}
+    @RequestMapping(params = "account", method = RequestMethod.GET)
+    public String getCreatBy(ModelMap model, HttpSession session){
+        model.put("newsList", newService.getCreatBy());
+        return "news";
+}
 }

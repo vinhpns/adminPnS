@@ -127,4 +127,13 @@ public class NewsDAO {
             return Boolean.FALSE;
         }
     }
+    public List<News> getAllByMenuId(){{
+        String sql = "SELECT * FROM news WHERE menu_id = ? ";
+        return getBySql(sql);
+}
+    }
+    public List<News> getCreatBy(){
+          String sql = "SELECT * FROM news WHERE created_by = ? ";
+        return getBySql(sql);
+    }
 }
