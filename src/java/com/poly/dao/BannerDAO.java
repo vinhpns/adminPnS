@@ -27,8 +27,13 @@ public class BannerDAO {
     }
 
     public List<Banner> getBanner() {
-        String sql = "SELECT * FROM " + ConstantManager.DEFAULT_DB_NAME + ".banner ORDER BY id DESC";
-        return getBySql(sql);
+        try {
+            String sql = "SELECT * FROM " + ConstantManager.DEFAULT_DB_NAME + ".banner";
+            return getBySql(sql);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     public Boolean delete(String id) {

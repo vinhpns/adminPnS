@@ -6,9 +6,12 @@
 package com.poly.service;
 
 import com.poly.bean.Banner;
+import com.poly.constant.BannerConstant;
 import com.poly.dao.BannerDAO;
+import com.poly.request.BannerRequest;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +41,14 @@ public class BannerService {
         return !Objects.equals(banDAO.updateStatus(banner), Boolean.FALSE);
     }
 
-    public Boolean insertBanner(Banner ban) {
-        return !Objects.equals(banDAO.insert(ban), Boolean.FALSE);
+    public Boolean insertBanner(BannerRequest ban, String imgName) {
+        Banner banner = new Banner();
+        banner.setCreatedBy(ban.getCreatedBy());
+        banner.setId(UUID.randomUUID().toString());
+        banner.setImg(BannerConstant.URL_SERVER + imgName);
+        banner.setLink(ban.getLink());
+        banner.setType(ban.getType());
+        return !Objects.equals(banDAO.insert(banner), Boolean.FALSE);
     }
 
     public Boolean updateBanner(Banner ban) {
