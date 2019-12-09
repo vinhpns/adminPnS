@@ -10,14 +10,16 @@ package com.poly.bean;
  * @author HP
  */
 public class Video {
-    private String id;
-   private String link;
-   private String active;
-   private String title;
 
-   public Video(){
-       
-   }
+    private String id;
+    private String link;
+    private Boolean active;
+    private String title;
+
+    public Video() {
+
+    }
+
     public String getId() {
         return id;
     }
@@ -34,11 +36,11 @@ public class Video {
         this.link = link;
     }
 
-    public String getActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
@@ -49,5 +51,5 @@ public class Video {
     public void setTitle(String title) {
         this.title = title;
     }
-   
+
 }
