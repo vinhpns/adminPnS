@@ -14,7 +14,7 @@
         <c:forEach var="menu" items="${subMenu}">
             <tr>
                 <td>${menu.name}</td>
-                <td>${menuName}</td>
+                <td>${menuFatherName}</td>
                 <td><a href="news.htm?viewById&type=1&id=${menu.id}">${menu.news}</a></td>
                 <td>
             <c:if test="${menu.active == true}">
@@ -35,12 +35,12 @@
             </a>
             </td>
             </tr>
-            <input value="yes" name="sub" />
-            <input value="${menuFatherId}" name="id"/>
+            <input value="yes" name="sub" hidden="" />
+            <input value="${menuFatherId}" name="id" hidden=""/>
             <div class="modal fade" id="changeMenuInfo_${menu.id}" role="dialog">
                 <div class="modal-dialog">
                     Modal content
-                    <form action="ListFooterNews.htm" method="post" modelAttribute="ban" class="form-horizontal"
+                    <form action="menu.htm" method="post" modelAttribute="menu" class="form-horizontal"
                           role="form" enctype="multipart/form-data">
                         <div class="modal-content">
                             <div class="modal-header" style="display: inline">
@@ -51,7 +51,7 @@
                                 <%@include file="update-modal.jsp" %>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-primary btn-lg" type="submit" name="update">Cập Nhật</button>
+                                <button class="btn btn-primary btn-lg" type="submit" name="updateSubMenu">Cập Nhật</button>
                                 <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
                             </div>
                         </div>

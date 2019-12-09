@@ -44,11 +44,6 @@ public class MenuDAO {
         return getBySql(sql);
     }
 
-    public List<Menu> getSonOfFather(String id) {
-        String sql = "SELECT * FROM menu WHERE parent_id = '" + id + "'";
-        return getBySql(sql);
-    }
-
     public Menu getMenuById(String id) {
         String sql = "SELECT * FROM menu WHERE id = ?";
         return jdbc.queryForObject(sql, getRowMapper(), id);
@@ -59,11 +54,11 @@ public class MenuDAO {
         return jdbc.queryForObject(sql, getRowMapper(), name);
     }
 
-    public Boolean insertMenu(MenuRequest menu, String uuid) {
+    public Boolean insertMenu(MenuRequest menu) {
         try {
             String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".menu "
                     + "(id,name, parent_id, created_by, position) VALUES (?,?,?,?,?)";
-            jdbc.update(sql, uuid, menu.getName(), menu.getParentId(), menu.getCreatedBy(), menu.getPosition());
+            jdbc.update(sql, menu.getId(), menu.getName(), menu.getParentId(), menu.getCreatedBy(), menu.getPosition());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -124,6 +119,32 @@ public class MenuDAO {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return Boolean.FALSE;
+        }
+    }
+
+    public Menu getLastPosition() {
+        String sql = "SELECT * FROM menu WHERE parent_id = '0' ORDER BY position DESC LIMIT 1";
+        return jdbc.queryForObject(sql, getRowMapper());
+    }
+
+    public Boolean updatePosition(Menu m) {
+        try {
+            String sql = "UPDATE menu SET position = ? WHERE id = ?";
+            jdbc.update(sql, m.getPosition(), m.getId());
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
+        }
+    }
+    
+    public Menu findMenuByPosition(int position) {
+        try {
+            String sql = "SELECT * FROM menu WHERE position = ?";
+            return jdbc.queryForObject(sql, getRowMapper(), position);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 }

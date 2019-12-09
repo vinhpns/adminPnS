@@ -31,6 +31,7 @@ public class RegisterController {
     public String initiate(ModelMap model, HttpSession session) {
 //        List<Register> m = registerService.getFather();
 //        model.put("registerList", m);
+        model.put("link", "register.htm");
         return "register";
     }
 
@@ -40,6 +41,5 @@ public class RegisterController {
 //        model.put("Register", m);
 //        model.put("RegisterName", RegisterService.getRegisterById(id).getName());
         return "Register";
-    }    
+    }
 }
-

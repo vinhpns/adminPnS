@@ -43,6 +43,7 @@ public class NewsController {
         List<News> n = newService.getListNewsByType(type);
         model.put("newsList", n);
         model.put("type", type);
+        model.put("link", "news.htm");
         return "news";
     }
 

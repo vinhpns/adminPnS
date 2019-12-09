@@ -16,6 +16,7 @@ public class MenuRequest {
     private String name;
     private int position;
     private String createdBy;
+    private int count;
 
     public MenuRequest() {
     }
@@ -58,6 +59,14 @@ public class MenuRequest {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
 }

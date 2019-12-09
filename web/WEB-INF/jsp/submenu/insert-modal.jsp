@@ -22,7 +22,7 @@
                         <div>
                             <label for="form-field-8">Thuộc Menu</label>
                             <input id="txt_box" type="text" required="" placeholder="Tên Menu"
-                                   class="autosize-transition form-control" readonly="" value="${menuName}"
+                                   class="autosize-transition form-control" readonly="" value="${menuFatherName}"
                                    style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                             <input hidden="" value="0" name="postion">
                             <input hidden="" value="${menuFatherId}" name="parentId">

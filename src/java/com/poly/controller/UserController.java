@@ -40,6 +40,7 @@ public class UserController {
             model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
             return accController.initiate(model, session);
         }
+        model.put("link", "ListUser.htm");
         model.put(AccountConstant.ROLE_KEY, accSer.initListRole());
         model.put(AccountConstant.LISTUSER, accSer.getListAccount());
         return AccountConstant.LIST_USER_PAGE;

@@ -27,28 +27,5 @@ public class BannerController {
     public String initiate(ModelMap model, HttpSession session) { 
         model.put(BannerConstant.LIST_BANNER_KEY, banService.getListBanner());
         return BannerConstant.BANNER_RETURN_PAGE;
-    }
-
-    @RequestMapping(params = ConstantManager.LOCK_FUNCTION)
-    public String updateStatus(ModelMap model, HttpSession session,
-            @RequestParam(BannerConstant.ID_PARAM) String id,
-            @RequestParam(BannerConstant.STATUS_PARAM) Boolean active) {
-        
-        Boolean resultStatus = banService.updateStatus(id, active);
-        if (Objects.equals(resultStatus, Boolean.FALSE)) {
-            model.put(ConstantManager.ERROR_POPUP, BannerConstant.LOCK_BANNER_FAIL);
-        }
-        model.addAttribute(ConstantManager.OK_POPUP, BannerConstant.LOCK_BANNER_OK);
-        return initiate(model, session);
-    }
-    @RequestMapping(params = ConstantManager.DELETE_FUNCTION)
-    public String delete(ModelMap model, HttpSession session,
-            @RequestParam(BannerConstant.ID_PARAM) String id) {       
-        if (Objects.equals(banService.deleteBanner(id), Boolean.FALSE)) {
-            model.put(ConstantManager.ERROR_POPUP, BannerConstant.DELETE_BANNER_FAIL);
-            return initiate(model, session);
-        }
-        model.addAttribute(ConstantManager.OK_POPUP, BannerConstant.DELETE_BANNER_OK);
-        return initiate(model, session);
     }  
 }

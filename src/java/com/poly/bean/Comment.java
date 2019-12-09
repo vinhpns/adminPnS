@@ -18,6 +18,7 @@ public class Comment {
     private String content;
     private String reply;
     private Boolean isReply;
+    private Boolean active;
 
     public Comment() {
     }
@@ -76,6 +77,14 @@ public class Comment {
 
     public void setIsReply(Boolean isReply) {
         this.isReply = isReply;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
 }

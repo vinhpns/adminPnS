@@ -34,9 +34,16 @@ public class CommentService {
         c.setReply(reply);
         c.setId(id);
         c.setIsReply(Boolean.TRUE);
+        c.setActive(Boolean.TRUE);
         return !Objects.equals(commentDAO.updateReply(c), Boolean.FALSE);
     }
     public Boolean deleteComment(String id){
          return !Objects.equals(commentDAO.deleteComment(id), Boolean.FALSE);
+    }
+    public Boolean updateStatus(String id, Boolean status) {
+        Comment ac = new Comment();
+        ac.setActive(status);
+        ac.setId(id);
+        return !Objects.equals(commentDAO.updateStatus(ac), Boolean.FALSE);
     }
 }

@@ -33,6 +33,7 @@ public class CommentController {
     public String initiate(ModelMap model, HttpSession session) {
         List<Comment> list = commentService.getListComment();
         model.put("commentList", list);
+        model.put("link", "comment.htm");
         session.setAttribute("commentNotRead", commentService.countNotReply());
         return "comment";
     }
@@ -41,7 +42,6 @@ public class CommentController {
     public String update(ModelMap model, HttpSession session,
             @RequestParam("id") String id,
             @RequestParam("reply") String reply) {
-
         if (Objects.equals(commentService.updateReply(id, reply), Boolean.TRUE)) {
             model.put(ConstantManager.OK_POPUP, "Cập nhật thành công");
             return initiate(model, session);
@@ -57,6 +57,18 @@ public class CommentController {
             return initiate(model, session);
         }
         model.addAttribute(ConstantManager.OK_POPUP, "Xóa thành công");
+        return initiate(model, session);
+    }
+    
+    @RequestMapping(params = "updateStatus", method = RequestMethod.GET)
+    public String changeStatus (ModelMap model, HttpSession session, 
+            @RequestParam("id") String id,
+            @RequestParam("active") Boolean active){
+        if(Objects.equals(commentService.updateStatus(id, active), Boolean.FALSE)){
+            model.put(ConstantManager.ERROR_POPUP,"Đổi trạng thái không thành công");
+            return initiate(model, session);
+        }
+        model.put(ConstantManager.OK_POPUP, "Đổi trạng thái thành công");
         return initiate(model, session);
     }
 }

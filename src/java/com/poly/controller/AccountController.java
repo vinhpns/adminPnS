@@ -41,6 +41,7 @@ public class AccountController {
             String errors = ConstantManager.NO_ACCEPTED_LOGIN;
             return logout(session, model, errors);
         }
+        model.put("link", "index.htm");
         session.setAttribute("commentNotRead", commentService.countNotReply());
         model.put("newsCount", newService.getListNewsByType(0).size());
         model.put("commentCount", commentService.getListComment().size());

@@ -66,4 +66,13 @@ public class NewsService {
         }
         return Boolean.TRUE;
     }
+
+    public void deleteNewFollowMenu(String id) {
+        List<News> n = ndao.getNewsByMenuId(id);
+        if (n.size() > 0) {
+            for (int i = 0; i < n.size(); i++) {
+                ndao.updateTypeNews(n.get(i).getId());
+            }
+        }
+    }
 }
