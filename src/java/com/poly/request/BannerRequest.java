@@ -14,8 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class BannerRequest {
 
     private String id;
-    private MultipartFile img;
     private String link;
+    private MultipartFile img;
     private int type;
     private String createdBy;
 
@@ -28,14 +28,6 @@ public class BannerRequest {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public MultipartFile getImg() {
-        return img;
-    }
-
-    public void setImg(MultipartFile img) {
-        this.img = img;
     }
 
     public String getLink() {
@@ -61,4 +53,13 @@ public class BannerRequest {
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
+
+    public MultipartFile getImg() {
+        return img;
+    }
+
+    public void setImg(MultipartFile img) {
+        this.img = img;
+    }
+
 }

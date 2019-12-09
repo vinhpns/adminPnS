@@ -7,9 +7,14 @@ package com.poly.controller;
 
 import com.poly.bean.Banner;
 import com.poly.constant.BannerConstant;
+import com.poly.request.BannerRequest;
 import com.poly.service.BannerService;
 import com.poly.tool.ConstantManager;
+import com.poly.tool.Utils;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import org.eclipse.jdt.internal.compiler.impl.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +24,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("banner")
@@ -60,13 +66,25 @@ public class BannerController {
         model.put(ConstantManager.OK_POPUP, "Update thành công");
         return initiate(model, session);
     }
-    
+
     @RequestMapping(params = "insert", method = RequestMethod.POST)
-    public String insert (ModelMap model, HttpSession session, @ModelAttribute("banner") Banner banner){
-        if(Objects.equals(banService.insertBanner(banner), Boolean.FALSE)){
-            model.put(ConstantManager.ERROR_POPUP, "Thêm banner không thành công");
+    public String insert(ModelMap model, HttpSession session,
+            @ModelAttribute("banner") BannerRequest banner) {
+        List<String> listNames = new ArrayList<>();
+        List<MultipartFile> listFiles = new ArrayList<>();
+        String imgName = Utils.randomCodeImg() + banner.getImg().getOriginalFilename();
+        listNames.add(imgName);
+        listFiles.add(banner.getImg());
+        banner.setCreatedBy((String)session.getAttribute("accountId"));
+        Boolean checkUploadImg = Utils.uploadImg(listNames, listFiles, BannerConstant.URL_STORE_SERVER);
+        if (checkUploadImg == false) {
+            model.put(ConstantManager.ERROR_POPUP, BannerConstant.INSERT_BANNER_FAIL);
             return initiate(model, session);
         }
+//        if(Objects.equals(banService.insertBanner(banner, imgName), Boolean.FALSE)){
+//            model.put(ConstantManager.ERROR_POPUP, "Thêm banner không thành công");
+//            return initiate(model, session);
+//        }
         return initiate(model, session);
     }
 }
