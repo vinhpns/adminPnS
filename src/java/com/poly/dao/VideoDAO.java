@@ -6,6 +6,7 @@
 package com.poly.dao;
 
 import com.poly.bean.Video;
+import com.poly.request.VideoRequest;
 import com.poly.tool.ConstantManager;
 import java.util.List;
 import java.util.Objects;
@@ -34,7 +35,7 @@ public class VideoDAO {
     }
 
     public List<Video> getListVideo() {
-        String sql = "SELECT * FROM " + ConstantManager.DEFAULT_DB_NAME + ".video ORDER BY created_time";
+        String sql = "SELECT * FROM " + ConstantManager.DEFAULT_DB_NAME + ".video";
         return getBySql(sql);
     }
 
@@ -53,7 +54,7 @@ public class VideoDAO {
     public Boolean delete(String id) {
         try {
             String sql = "DELETE FROM " + ConstantManager.DEFAULT_DB_NAME + ".video "
-                    + "WHERE id=?";
+                    + "WHERE id = ?";
             jdbc.update(sql, id);
             return Boolean.TRUE;
         } catch (Exception e) {
@@ -62,17 +63,23 @@ public class VideoDAO {
         }
     }
 
-    public Boolean update(Video v) {
+    public Boolean update(Video video) {
         try {
-            String sql = "UPDATE" + ConstantManager.DEFAULT_DB_NAME + ".video "
-                    + "SET id  =?, link =?, title =? "
+            String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".video "
+                    + "SET link =?, title =? "
                     + "WHERE id =?";
-            jdbc.update(sql, v.getId(), v.getLink(), v.getTitle());
+            jdbc.update(sql, video.getLink(), video.getTitle(), video.getId());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return Boolean.FALSE;
         }
+    }
+    
+    public Video getById (String id) {
+        String sql = "SELECT * FROM " + ConstantManager.DEFAULT_DB_NAME + ".video "
+                + "WHERE id = ?";
+        return jdbc.queryForObject(sql, getRowMapper(), id);
     }
 
     public Boolean updateStatus(Video vi) {

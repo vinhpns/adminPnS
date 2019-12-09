@@ -32,23 +32,21 @@ public class VideoService {
         return !Objects.equals(vDAO.delete(id), Boolean.FALSE);
     }
 
-    public Boolean insert(VideoRequest video, String id) {
-        UUID uuid = UUID.randomUUID();
+    public Boolean insert(VideoRequest video) {
         Video vi = new Video();
-        vi.setId(uuid.toString());
-        vi.setLink(vi.getLink());
-        vi.setTitle(vi.getTitle());
+        vi.setId(UUID.randomUUID().toString());
+        vi.setLink(video.getLink());
+        vi.setTitle(video.getTitle());
         if (Objects.equals(vDAO.insert(vi), Boolean.FALSE)) {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;
     }
 
-    public Boolean update(VideoRequest video, String id) {
-        Video vi = new Video();
-        vi.setId(vi.getId());
-        vi.setLink(vi.getLink());
-        vi.setTitle(vi.getTitle());
+    public Boolean update(VideoRequest video) {
+        Video vi = vDAO.getById(video.getId());
+        vi.setLink(video.getLink());
+        vi.setTitle(video.getTitle());
         return !Objects.equals(vDAO.update(vi), Boolean.FALSE);
     }
 
@@ -58,6 +56,7 @@ public class VideoService {
         vi.setId(id);
         return !Objects.equals(vDAO.updateStatus(vi), Boolean.FALSE);
     }
+
     public List<Video> checkLastInsert() {
         return vDAO.getLastInsert();
     }

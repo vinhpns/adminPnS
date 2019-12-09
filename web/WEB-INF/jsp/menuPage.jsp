@@ -114,6 +114,14 @@
                                     </a>
                                 </li>
                             </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="video.htm" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Video</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </c:if>
                     <c:if test="${sessionScope.roleiz == 3}">

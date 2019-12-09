@@ -10,11 +10,13 @@ package com.poly.request;
  * @author HP
  */
 public class VideoRequest {
-     private String id;
+
+    private String id;
     private String link;
     private String title;
-    public VideoRequest(){
-        
+
+    public VideoRequest() {
+
     }
 
     public String getId() {
@@ -40,5 +42,5 @@ public class VideoRequest {
     public void setTitle(String title) {
         this.title = title;
     }
-    
+
 }
