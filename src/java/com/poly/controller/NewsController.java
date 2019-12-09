@@ -80,7 +80,7 @@ public class NewsController {
         }
         List<String> listNames = new ArrayList<>();
         List<MultipartFile> listFiles = new ArrayList<>();
-        if (n.getAvatar() == null) {
+        if (n.getAvatar().isEmpty()) {
             n.setLink("https://previews.123rf.com/images/varijanta/varijanta1602/varijanta160200058/52885027-thin-line-flat-design-for-news-web-page-information-on-events-activities-recent-company-information-.jpg");
         } else {
             String imgName = Utils.randomCodeImg() + n.getAvatar().getOriginalFilename();
@@ -106,5 +106,19 @@ public class NewsController {
     public String getFullNews(ModelMap model, HttpSession session) {
         model.put("newsList", newService.getListNewsByType(0));
         return "newsList";
+    }
+
+    @RequestMapping(params = "status", method = RequestMethod.GET)
+    public String updateStatus(ModelMap model, HttpSession session,
+            @RequestParam("id") String id,
+            @RequestParam("status") Boolean status,
+            @RequestParam("type") int type) {
+        if (Objects.equals(newService.updateStatus(id, status), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, "Đổi trạng thái không thành công");
+        } else {
+            model.put(ConstantManager.OK_POPUP, "Đổi trạng thái thành công");
+        }
+        return initiate(model, session, type);
+
     }
 }

@@ -24,7 +24,7 @@
                 <div class="col-md-6">
                     <div class="card-body">
                         <c:if test="${menuList == '0'}">
-                            <input  value="${menuList}" name="menuId"/>
+                            <input  value="${menuList}" hidden="" name="menuId"/>
                         </c:if>
                         <c:if test="${menuList != '0'}">
                             <label for="exampleInputEmail1">Thuộc Danh Mục</label>

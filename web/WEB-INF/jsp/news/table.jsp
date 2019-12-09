@@ -28,12 +28,12 @@
                     <td>${news.view}</td>
                     <td>
                         <c:if test="${news.active == true}">
-                            <a href="?changeStatus&id=${news.id}&status=${news.active}">
+                            <a href="?status&id=${news.id}&status=${news.active}&type=${type}">
                                 <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa tài khoản"></i>
                             </a>
                         </c:if>
                         <c:if test="${news.active == false}">
-                            <a href="?id=${news.id}&status=${news.active}">
+                            <a href="?id=${news.id}&status=${news.active}&&type=${type}">
                                 <i class="fa fa-lock" style="color: green; font-size: 16px" title="Mở Khóa tài khoản"></i>
                             </a>
                         </c:if>
