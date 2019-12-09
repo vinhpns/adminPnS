@@ -24,8 +24,8 @@ public class VideoService {
     @Autowired
     private VideoDAO vDAO;
 
-    public List<Video> getVideo() {
-        return vDAO.getVideo();
+    public List<Video> getListVideo() {
+        return vDAO.getListVideo();
     }
 
     public Boolean delete(String id) {

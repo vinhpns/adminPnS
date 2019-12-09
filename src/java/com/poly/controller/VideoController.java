@@ -6,6 +6,7 @@
 package com.poly.controller;
 
 import com.poly.bean.Video;
+import com.poly.constant.VideoConstant;
 import com.poly.request.VideoRequest;
 import com.poly.service.VideoService;
 import com.poly.tool.ConstantManager;
@@ -31,9 +32,8 @@ public class VideoController {
     VideoService videoService;
     @RequestMapping()
      public String initiate(ModelMap model, HttpSession session) {
-          List<Video> h = videoService.getVideo();
-         model.put("videoList", h);
-        return initiate(model, session);
+          model.put(VideoConstant.LIST_VIDEO_KEY, videoService.getListVideo());
+          return initiate(model, session);
      }
       @RequestMapping(params = "delete", method = RequestMethod.GET)
      public String delete(ModelMap model, HttpSession session,
@@ -68,4 +68,15 @@ public class VideoController {
         model.addAttribute(ConstantManager.OK_POPUP, "Thay đổi trạng thái thành công");
         return initiate(model, session);
       }
+      @RequestMapping(params = "insert", method = RequestMethod.POST)
+    public String insert (ModelMap model, HttpSession session,
+            @ModelAttribute("video") VideoRequest video,
+            @RequestParam("id") String id){
+        if(Objects.equals(videoService.insert(video, id), Boolean.FALSE)){
+            model.put(ConstantManager.ERROR_POPUP, "Thêm video không thành công");
+            return initiate(model, session);
+        }
+        model.put(ConstantManager.OK_POPUP, "Thêm video thành công");
+        return initiate(model, session);
+    }
 }

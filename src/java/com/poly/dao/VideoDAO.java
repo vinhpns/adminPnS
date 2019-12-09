@@ -33,7 +33,7 @@ public class VideoDAO {
         return new BeanPropertyRowMapper<>(Video.class);
     }
 
-    public List<Video> getVideo() {
+    public List<Video> getListVideo() {
         String sql = "SELECT * FROM " + ConstantManager.DEFAULT_DB_NAME + ".video ORDER BY created_time";
         return getBySql(sql);
     }
