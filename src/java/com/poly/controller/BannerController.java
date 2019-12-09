@@ -14,9 +14,7 @@ import com.poly.tool.Utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
-import org.eclipse.jdt.internal.compiler.impl.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -58,11 +56,17 @@ public class BannerController {
     }
 
     @RequestMapping(params = "update", method = RequestMethod.POST)
-    public String update(ModelMap model, HttpSession session, @ModelAttribute("banner") Banner ban) {
-        if (Objects.equals(banService.updateBanner(ban), Boolean.FALSE)) {
-            model.put(ConstantManager.ERROR_POPUP, "Update banner không thành công");
-            return initiate(model, session);
-        }
+    public String update(ModelMap model, HttpSession session, @ModelAttribute("banner") BannerRequest ban) {
+        List<String> listNames = new ArrayList<>();
+        List<MultipartFile> listFiles = new ArrayList<>();
+        String imgName = Utils.randomCodeImg() + ban.getImg().getOriginalFilename();
+        listNames.add(imgName);
+        listFiles.add(ban.getImg());
+        ban.setCreatedBy((String)session.getAttribute("accountId"));
+//        if (Objects.equals(banService.updateBanner(ban), Boolean.FALSE)) {
+//            model.put(ConstantManager.ERROR_POPUP, "Update banner không thành công");
+//            return initiate(model, session);
+//        }
         model.put(ConstantManager.OK_POPUP, "Update thành công");
         return initiate(model, session);
     }
@@ -81,10 +85,10 @@ public class BannerController {
             model.put(ConstantManager.ERROR_POPUP, BannerConstant.INSERT_BANNER_FAIL);
             return initiate(model, session);
         }
-//        if(Objects.equals(banService.insertBanner(banner, imgName), Boolean.FALSE)){
-//            model.put(ConstantManager.ERROR_POPUP, "Thêm banner không thành công");
-//            return initiate(model, session);
-//        }
+        if(Objects.equals(banService.insertBanner(banner, imgName), Boolean.FALSE)){
+            model.put(ConstantManager.ERROR_POPUP, "Thêm banner không thành công");
+            return initiate(model, session);
+        }
         return initiate(model, session);
     }
 }
