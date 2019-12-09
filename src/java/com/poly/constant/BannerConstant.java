@@ -39,7 +39,7 @@ public class BannerConstant {
     public static final String BANNER_BIG_HELP_TITLE = "Ảnh bìa hỗ trợ lớn";
     public static final String BANNER_SUB_HELP_TITLE = "Ảnh bìa hỗ trợ phụ";
     //path
-    public static final String BANNER_RETURN_PAGE = "Banner";
+    public static final String BANNER_RETURN_PAGE = "banner";
     public static final String CONTENT_WEB_PAGE = "Content";
     public static final String URL_SERVER = ConstantManager.URL_SHOW_IMG + "banner/";
     public static final String URL_STORE_SERVER = ConstantManager.FOLDER_CONTAIN_IMG + "banner/";
@@ -62,7 +62,7 @@ public class BannerConstant {
     public static final String ACTIVE_PARAM = "active";
 
     //Key Model
-    public static final String LIST_BANNER_KEY = "list";
+    public static final String LIST_BANNER_KEY = "bannerList";
 
     public static final String BANNER_FIND_KEY = "banner";
 

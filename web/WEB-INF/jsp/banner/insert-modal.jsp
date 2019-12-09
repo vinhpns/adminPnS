@@ -1,4 +1,10 @@
-    <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- 
+    Document   : insert-modal.jsp
+    Created on : Dec 2, 2019, 6:13:21 PM
+    Author     : hieuh
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <div class="col-xs-12 col-sm-12">
@@ -6,23 +12,13 @@
             <div class="widget-body">
                 <div class="widget-main">
                     <div>
-                        <label for="form-field-8">Link Banner</label>
-                        <input required="" type="url" id="form-field-11" placeholder="Link Banner"
-                               class="autosize-transition form-control" name="link"
+                        <label for="form-field-8">Tên Menu</label>
+                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
+                               class="autosize-transition form-control" name="name"
                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
-                    </div>
-                    <div>
-                        <label for="form-field-11">Ảnh Sản Phẩm</label>
-                        <input required="" multiple="" name="images" type="file" id="id-input-file-1"/>
-                    </div>
-                    <div>
-                        <label for="form-field-select-1">Loại Banner</label>
-                        <select id="form-field-1" class="autosize-transition form-control"
-                                name="typeId">
-                            <c:forEach var="typebanner" items="${sessionScope.type}">
-                                <option value="${typebanner.id}">${typebanner.name}</option>
-                            </c:forEach>
-                        </select>
+                        <input id="txt_box" type="text" required="" placeholder="Tên Menu"
+                               class="autosize-transition form-control" name="parentId" hidden="" value="0"
+                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                     </div>
                 </div>
             </div>

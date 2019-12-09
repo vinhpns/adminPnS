@@ -27,7 +27,7 @@ public class BannerDAO {
     }
 
     public List<Banner> getBanner() {
-        String sql = "SELECT * FROM " + ConstantManager.DEFAULT_DB_NAME + ".banner ODDER BY id DECS";
+        String sql = "SELECT * FROM " + ConstantManager.DEFAULT_DB_NAME + ".banner ORDER BY id DESC";
         return getBySql(sql);
     }
 

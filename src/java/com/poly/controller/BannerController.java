@@ -7,17 +7,14 @@ package com.poly.controller;
 
 import com.poly.constant.BannerConstant;
 import com.poly.service.BannerService;
-import com.poly.tool.ConstantManager;
-import java.util.Objects;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-
+@RequestMapping("banner")
 public class BannerController {
 
     @Autowired

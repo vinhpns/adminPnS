@@ -7,8 +7,6 @@ package com.poly.service;
 
 import com.poly.bean.Banner;
 import com.poly.dao.BannerDAO;
-import com.poly.tool.ConstantManager;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
