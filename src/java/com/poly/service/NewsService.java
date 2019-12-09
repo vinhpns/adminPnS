@@ -73,4 +73,11 @@ public class NewsService {
             }
         }
     }
+    
+    public Boolean updateStatus(String id, Boolean status){
+        News news = new News();
+        news.setActive(status);
+        news.setId(id);
+        return !Objects.equals(ndao.updateStatus(news), Boolean.FALSE);
+    }
 }

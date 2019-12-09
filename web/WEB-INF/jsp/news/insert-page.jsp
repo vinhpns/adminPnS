@@ -4,6 +4,7 @@
     Author     : SGDG Company
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,6 +26,25 @@
                         <c:if test="${menuList == '0'}">
                             <input  value="${menuList}" name="menuId"/>
                         </c:if>
+                        <c:if test="${menuList != '0'}">
+                            <label for="exampleInputEmail1">Thuộc Danh Mục</label>
+                            <select id="txt_box" type="select" placeholder="Loại Menu"
+                                    class="autosize-transition form-control" name="menuId"
+                                    style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                                <c:forEach var="menu" items="${menuList}">
+                                    <option value="${menu.id}">${menu.name}</option>
+                                </c:forEach>
+                            </select>
+                        </c:if>
+                        <br>
+                        <div style="margin-left:20px" class="form-group">
+                            <input name="registerForm" type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Form Đăng Ký</label>
+                        </div>
+                        <div style="margin-left:20px" class="form-group">
+                            <input value="false" name="vip" type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Bài Hot</label>
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tiêu Đề</label>
                             <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tiêu đề">

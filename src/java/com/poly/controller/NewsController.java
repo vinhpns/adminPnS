@@ -15,6 +15,7 @@ import com.poly.tool.ConstantManager;
 import com.poly.tool.Utils;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -70,23 +71,35 @@ public class NewsController {
 
     @RequestMapping(params = "insertNews", method = RequestMethod.POST)
     public String insert(ModelMap model, HttpSession session,
-            @ModelAttribute("ban") NewsRequestEntity n,
-            @RequestParam("type") int type) {
+            @ModelAttribute("ban") NewsRequestEntity n) {
+        if (n.getVip() == null) {
+            n.setVip(Boolean.FALSE);
+        }
+        if (n.getRegisterForm() == null) {
+            n.setRegisterForm(Boolean.FALSE);
+        }
         List<String> listNames = new ArrayList<>();
         List<MultipartFile> listFiles = new ArrayList<>();
-        String menuId = "0";
-        String imgName = Utils.randomCodeImg() + n.getAvatar().getOriginalFilename();
-        listNames.add(imgName);
-        listFiles.add(n.getAvatar());
-        Boolean checkUploadImg = Utils.uploadImg(listNames, listFiles, NewsConstant.URL_STORE_SERVER);
-        if (checkUploadImg == false) {
-            model.put(ConstantManager.ERROR_POPUP, NewsConstant.INSERT_NEWS_FAIL);
-            return redirectInsertPage(model, session, (int) session.getAttribute("type"));
+        if (n.getAvatar() == null) {
+            n.setLink("https://previews.123rf.com/images/varijanta/varijanta1602/varijanta160200058/52885027-thin-line-flat-design-for-news-web-page-information-on-events-activities-recent-company-information-.jpg");
+        } else {
+            String imgName = Utils.randomCodeImg() + n.getAvatar().getOriginalFilename();
+            listNames.add(imgName);
+            listFiles.add(n.getAvatar());
+            Boolean checkUploadImg = Utils.uploadImg(listNames, listFiles, NewsConstant.URL_STORE_SERVER);
+            if (checkUploadImg == false) {
+                model.put(ConstantManager.ERROR_POPUP, NewsConstant.INSERT_NEWS_FAIL);
+                return redirectInsertPage(model, session, n.getType());
+            }
+            n.setLink(NewsConstant.URL_SERVER + imgName);
         }
-        String link = NewsConstant.URL_SERVER + imgName;
-        String userId = (String) session.getAttribute("accountId");
-//        newService.insert(n, type, userId, menuId, link);
-        return initiate(model, session, 1);
+        n.setCreatedBy((String) session.getAttribute("accountId"));
+        if (Objects.equals(newService.insert(n), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, "Thêm tin mới không thành công");
+        } else {
+            model.put(ConstantManager.OK_POPUP, "Thêm tin mới thành công");
+        }
+        return initiate(model, session, n.getType());
     }
 
     @RequestMapping(params = "fullNews", method = RequestMethod.GET)
