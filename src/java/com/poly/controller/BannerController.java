@@ -10,6 +10,7 @@ import com.poly.constant.BannerConstant;
 import com.poly.service.BannerService;
 import com.poly.tool.ConstantManager;
 import java.util.Objects;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import org.eclipse.jdt.internal.compiler.impl.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("banner")
@@ -62,11 +64,13 @@ public class BannerController {
     }
     
     @RequestMapping(params = "insert", method = RequestMethod.POST)
-    public String insert (ModelMap model, HttpSession session, @ModelAttribute("banner") Banner banner){
-        if(Objects.equals(banService.insertBanner(banner), Boolean.FALSE)){
-            model.put(ConstantManager.ERROR_POPUP, "Thêm banner không thành công");
-            return initiate(model, session);
-        }
+    public String insert (ModelMap model, HttpSession session, 
+            @ModelAttribute("banner") Banner banner, 
+            @RequestParam("img") MultipartFile avatar){
+//        if(Objects.equals(banService.insertBanner(banner), Boolean.FALSE)){
+//            model.put(ConstantManager.ERROR_POPUP, "Thêm banner không thành công");
+//            return initiate(model, session);
+//        }
         return initiate(model, session);
     }
 }

@@ -44,7 +44,7 @@
                     <div>
                         <label for="form-field-8">Vị Trí</label>
                         <select id="txt_box" type="select" placeholder="Vai Trò"
-                                class="autosize-transition form-control" name="role"
+                                class="autosize-transition form-control" name="type"
                                 style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                             <option value="1">Banner Chính</option>
                             <option value="2">Banner Sub Chính</option>
@@ -64,13 +64,19 @@
                         <div class="input-group">
                             <span class="input-group-btn">
                                 <span class="btn btn-default btn-file">
-                                    Nhấn Chon… <input type="file" id="imgInp">
+                                    Nhấn Chon… <input type="file" name="img" id="imgInp">
                                 </span>
                             </span>
-                            <input type="text" class="form-control" readonly>
+                            <input multiple="" required="" readonly class="form-control">
                         </div>
                         <br>
                         <img id='img-upload'/>
+                    </div>
+                    <div>
+                        <label for="form-field-8">Link Hướng Đến</label>
+                        <input id="txt_box" type="url" required="" placeholder="Link Website Đích"
+                               class="autosize-transition form-control" name="link"
+                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                     </div>
                 </div>
             </div>

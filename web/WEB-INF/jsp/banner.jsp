@@ -42,7 +42,7 @@
                                     <div class="modal fade" id="myModal" role="dialog">
                                         <div class="modal-dialog">
                                             <!-- Modal content-->
-                                            <form action="menu.htm" method="post" modelAttribute="ban" class="form-horizontal"
+                                            <form action="banner.htm" method="post" modelAttribute="banner" class="form-horizontal"
                                                   role="form" enctype="multipart/form-data">
                                                 <div class="modal-content">
                                                     <div class="modal-header" style="display: inline">
