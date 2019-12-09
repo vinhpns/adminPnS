@@ -5,15 +5,12 @@
  */
 package com.poly.controller;
 
-import com.poly.bean.Video;
 import com.poly.constant.VideoConstant;
 import com.poly.request.VideoRequest;
 import com.poly.service.VideoService;
 import com.poly.tool.ConstantManager;
-import java.util.List;
 import java.util.Objects;
 import javax.servlet.http.HttpSession;
-import static jdk.nashorn.internal.runtime.Debug.id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -45,6 +42,7 @@ public class VideoController {
           model.addAttribute(ConstantManager.OK_POPUP, "Xóa thành công video");
         return initiate(model, session);
      }
+      @RequestMapping(params = "update", method = RequestMethod.GET)
      public String update(ModelMap model, HttpSession session,
             @ModelAttribute("video") VideoRequest video,
             @RequestParam("id") String id){
