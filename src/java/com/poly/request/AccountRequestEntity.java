@@ -22,6 +22,7 @@ public class AccountRequestEntity {
     private String phone;
     private String address;
     private String dob;
+    private String createdBy;
 
     public String getFullName() {
         return fullName;
@@ -95,4 +96,11 @@ public class AccountRequestEntity {
         this.dob = dob;
     }
 
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
 }

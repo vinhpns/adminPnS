@@ -8,6 +8,7 @@ package com.poly.dao;
 import com.poly.bean.Comment;
 import com.poly.tool.ConstantManager;
 import java.util.List;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -35,7 +36,7 @@ public class CommentDAO {
     public List<Comment> getListComment() {
         try {
             String sql = "SELECT comment.id, comment.name, comment.phone, "
-                    + "comment.email, comment.content, comment.reply, comment.is_reply as isReply "
+                    + "comment.email, comment.content, comment.reply, comment.is_reply as isReply, comment.active "
                     + "FROM " + ConstantManager.DEFAULT_DB_NAME + ".comment ";
             return getBySql(sql);
         } catch (Exception e) {
@@ -52,9 +53,9 @@ public class CommentDAO {
     public Boolean updateReply(Comment c) {
         try {
             String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".comment "
-                    + "SET reply = ?, is_reply = ? "
+                    + "SET reply = ?, is_reply = ?, active = ? "
                     + "WHERE id = ?";
-            jdbc.update(sql, c.getReply(), c.getIsReply(), c.getId());
+            jdbc.update(sql, c.getReply(), c.getIsReply(), c.getActive(), c.getId());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -66,6 +67,21 @@ public class CommentDAO {
             String sql = "DELETE FROM " + ConstantManager.DEFAULT_DB_NAME + ".comment "
                     + "WHERE id=?";
             jdbc.update(sql, id);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return Boolean.FALSE;
+        }
+    }
+    
+    public Boolean updateStatus(Comment comment) {
+        try {
+            Boolean status = Boolean.TRUE;
+            if (Objects.equals(comment.getActive(), Boolean.TRUE)) {
+                status = Boolean.FALSE;
+            }
+            String sql = "UPDATE comment SET active = " + status + " WHERE id = '" + comment.getId() + "'";
+            jdbc.update(sql);
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());

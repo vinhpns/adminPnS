@@ -24,6 +24,7 @@ public class Account {
     private Boolean deflg;
     private String createdBy;
     private String updatedBy;
+    private int post;
 
     public Account() {
     }
@@ -139,5 +140,12 @@ public class Account {
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
+    public int getPost() {
+        return post;
+    }
+
+    public void setPost(int post) {
+        this.post = post;
+    }
 }

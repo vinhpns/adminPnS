@@ -5,6 +5,7 @@
  */
 package com.poly.controller;
 
+import com.poly.bean.Account;
 import com.poly.constant.AccountConstant;
 import com.poly.request.AccountPassword;
 import com.poly.request.AccountRequestEntity;
@@ -15,6 +16,8 @@ import java.util.Objects;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,6 +40,7 @@ public class UserController {
             model.addAttribute(ConstantManager.ERROR_POPUP, ConstantManager.NO_ACCEPTED_LOGIN);
             return accController.initiate(model, session);
         }
+        model.put("link", "ListUser.htm");
         model.put(AccountConstant.ROLE_KEY, accSer.initListRole());
         model.put(AccountConstant.LISTUSER, accSer.getListAccount());
         return AccountConstant.LIST_USER_PAGE;
@@ -88,11 +92,12 @@ public class UserController {
         model.put(ConstantManager.OK_POPUP, AccountConstant.DELETE_OK);
         return initiate(model, session);
     }
-    
+
     @RequestMapping(params = "password", method = RequestMethod.POST)
     public String updatePassword(ModelMap model, HttpSession session,
             @ModelAttribute("account") AccountPassword ap) {
-        if (ap.getNewPassword().equalsIgnoreCase(ap.getOldPassword())) {
+        PasswordEncoder pw = new BCryptPasswordEncoder();
+        if(pw.matches(ap.getNewPassword(),ap.getOldPassword())){
             model.put(ConstantManager.ERROR_POPUP, "Mật khẩu mới không được trùng mật khẩu cũ");
             return initiate(model, session);
         }
@@ -103,15 +108,23 @@ public class UserController {
         model.put(ConstantManager.OK_POPUP, "Đổi mật khẩu thành công");
         return initiate(model, session);
     }
-    @RequestMapping(params = "edit", method = RequestMethod.POST )
-    public String updateInfo(HttpSession session , ModelMap model,
-            @RequestParam("id") String id,
-            @ModelAttribute("account") AccountPassword ap){
-//        if (Objects.equals(accSer.updateInfo(ap, id), Boolean.TRUE)) {
-//            model.put(ConstantManager.OK_POPUP, "Cập nhật thành công");
-//            return initiate(model, session);
-//        }
-        model.put(ConstantManager.ERROR_POPUP, "Cập nhật không thành công");
+
+    @RequestMapping(params = "update", method = RequestMethod.POST)
+    public String update(HttpSession session, ModelMap model,
+            @ModelAttribute("account") AccountRequestEntity accountRequestEntity,
+            @RequestParam("id") String id) {
+        accountRequestEntity.setCreatedBy((String) session.getAttribute("accountId"));
+        Account account = accSer.getAccountById(id);
+        if (account.getEmail().equals(accountRequestEntity.getEmail())
+                && !account.getId().equals(id)) {
+            model.put(ConstantManager.ERROR_POPUP, "Email vừa nhập đã tồn tại trong hệ thống!");
+            return initiate(model, session);
+        }
+        if (Objects.equals(accSer.updateInfo(accountRequestEntity, id), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, "Update tài khoản không thành công");
+            return initiate(model, session);
+        }
+        model.put(ConstantManager.OK_POPUP, "Cập nhật thành công");
         return initiate(model, session);
     }
 }

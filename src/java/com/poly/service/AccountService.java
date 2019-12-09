@@ -22,7 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author Vinh
@@ -85,6 +84,8 @@ public class AccountService {
     }
 
     public Boolean updatePass(AccountPassword ap) {
+        PasswordEncoder pw = new BCryptPasswordEncoder();
+        ap.setNewPassword(pw.encode(ap.getNewPassword()));
         return !Objects.equals(accDAO.updatePassword(ap), Boolean.FALSE);
     }
 
@@ -123,19 +124,18 @@ public class AccountService {
     public Boolean delete(String id) {
         return !Objects.equals(accDAO.delete(id), Boolean.FALSE);
     }
-public Boolean updateInfo( AccountRequestEntity acc , String createdBy) {
-    Account account = new Account();
-        account.setActive(Boolean.TRUE);
-        account.setAddress(acc.getAddress());
-        account.setCreatedBy(createdBy);
-        account.setDob(acc.getDob());
+
+    public Boolean updateInfo(AccountRequestEntity acc, String id) {
+        Account account = accDAO.getAccountById(id);
         account.setEmail(acc.getEmail());
         account.setFullName(acc.getFullName());
-        account.setGender(Boolean.TRUE);
-        account.setPassword(acc.getPassword());
-        account.setPhone(acc.getPhone());
-        account.setRole(acc.getRole());
         account.setUserName(acc.getUserName());
+        account.setGender(acc.getGender());
+        account.setPhone(acc.getPhone());
+        account.setAddress(acc.getAddress());
+        account.setDob(acc.getDob());
+        account.setRole(acc.getRole());
+        account.setUpdatedBy(acc.getCreatedBy());
         return !Objects.equals(accDAO.updateInfo(account), Boolean.FALSE);
     }
 }

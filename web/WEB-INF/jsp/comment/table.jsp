@@ -20,10 +20,24 @@
                     <td>${comment.phone}</td>
                     <td>${comment.email}</td>
                     <td>
-                        <i class="fa fa-eye" data-toggle="modal" data-target="#myModalUpdate_${comment.id}" style="color: blue"></i>
-                        <a data-toggle="modal" data-target="#edit_${comment.id}">
-                            <i class="fa fa-edit" style="color: orange; font-size: 16px" title="Chỉnh sửa nội dung câu trả lời"></i>
-                        </a>
+                        <c:if test="${comment.active == true}">
+                            <a href="?updateStatus&id=${comment.id}&active=${comment.active}">
+                                <i class="fa fa-unlock" style="color: green; font-size: 16px" title="Khóa Comment"></i>
+                            </a>
+                        </c:if>
+                        <c:if test="${comment.active == false}">
+                            <a href="?updateStatus&id=${comment.id}&active=${comment.active}">
+                                <i class="fa fa-lock" style="color: green; font-size: 16px" title="Mở Khóa Comment"></i>
+                            </a>
+                        </c:if>
+                        <c:if test="${comment.isReply == false}">
+                            <i class="fa fa-eye" data-toggle="modal" data-target="#myModalUpdate_${comment.id}" style="color: blue"></i>
+                        </c:if>
+                        <c:if test="${comment.isReply == true}">
+                            <a data-toggle="modal" data-target="#edit_${comment.id}">
+                                <i class="fa fa-edit" style="color: orange; font-size: 16px" title="Chỉnh sửa nội dung câu trả lời"></i>
+                            </a>
+                        </c:if>
                         <a href="?delete&id=${comment.id}">
                             <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa Menu"></i>
                         </a>

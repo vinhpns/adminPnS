@@ -10,7 +10,9 @@ import com.poly.bean.NewsImage;
 import com.poly.dao.NewsDAO;
 import com.poly.dao.NewsImageDAO;
 import com.poly.request.NewsRequestEntity;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,7 @@ import org.springframework.stereotype.Service;
  * @author SGDG Company
  */
 @Service
-public class NewService {
+public class NewsService {
 
     @Autowired
     NewsDAO ndao;
@@ -63,5 +65,14 @@ public class NewService {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;
+    }
+
+    public void deleteNewFollowMenu(String id) {
+        List<News> n = ndao.getNewsByMenuId(id);
+        if (n.size() > 0) {
+            for (int i = 0; i < n.size(); i++) {
+                ndao.updateTypeNews(n.get(i).getId());
+            }
+        }
     }
 }

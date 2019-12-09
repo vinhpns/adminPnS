@@ -50,7 +50,7 @@
                                                         <h3 class="modal-title">Thêm Menu</h3>
                                                     </div>
                                                     <div class="modal-body">
-                                                    <%@include file="menu/insert-modal.jsp" %> 
+                                                    <%@include file="banner/insert-modal.jsp" %> 
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-primary btn-lg" type="submit" name="insertMenu">Cập Nhật</button>
@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <%@include file="menu/table.jsp" %>
+                                    <%@include file="banner/table.jsp" %>
                                 </div>
                             </div>
                         </div>

@@ -26,40 +26,42 @@
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-pie-chart"></i>
-                            <p>
-                                Tài Khoản
-                                <i class="right fa fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="ListUser.htm" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Danh sách tài khoản</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-tree"></i>
-                            <p>
-                                Menu
-                                <i class="fa fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="menu.htm" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Danh sách Menu</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    <c:if test="${sessionScope.roleiz == 3}">
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-pie-chart"></i>
+                                <p>
+                                    Tài Khoản
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="ListUser.htm" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Danh sách tài khoản</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-tree"></i>
+                                <p>
+                                    Menu
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="menu.htm" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Danh sách Menu</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </c:if>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fa fa-edit"></i>
@@ -95,42 +97,46 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-table"></i>
-                            <p>
-                                Nội Dung Web
-                                <i class="fa fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/tables/simple.html" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Banner</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-header" style="font-size: 18px">Comment</li>
-                    <li class="nav-item">
-                        <a href="comment.htm" class="nav-link">
-                            <i class="nav-icon fa fa-calendar"></i>
-                            <p>
-                                Comment
-                                <span class="badge badge-info right">${sessionScope.commentNotRead}</span>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-header" style="font-size: 18px">Học Viên</li>
-                    <li class="nav-item">
-                        <a href="register.htm" class="nav-link">
-                            <i class="nav-icon fa fa-file"></i>
-                            <p>Danh sách đăng ký
-                                <span class="badge badge-info right">2</span>
-                            </p>
-                        </a>
-                    </li>
+                    <c:if test="${sessionScope.roleiz == 3 || sessionScope.roleiz == 2}">
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-table"></i>
+                                <p>
+                                    Nội Dung Web
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="banner.htm" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Banner</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </c:if>
+                    <c:if test="${sessionScope.roleiz == 3}">
+                        <li class="nav-header" style="font-size: 18px">Comment</li>
+                        <li class="nav-item">
+                            <a href="comment.htm" class="nav-link">
+                                <i class="nav-icon fa fa-calendar"></i>
+                                <p>
+                                    Comment
+                                    <span class="badge badge-info right">${sessionScope.commentNotRead}</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header" style="font-size: 18px">Học Viên</li>
+                        <li class="nav-item">
+                            <a href="register.htm" class="nav-link">
+                                <i class="nav-icon fa fa-file"></i>
+                                <p>Danh sách đăng ký
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                        </li>
+                    </c:if>
                 </ul>
             </nav>
         </div>

@@ -1,4 +1,3 @@
-
 package com.poly.dao;
 
 import com.poly.bean.Banner;
@@ -8,7 +7,6 @@ import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -17,9 +15,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BannerDAO {
 
-    @Autowired 
+    @Autowired
     protected JdbcTemplate jdbc;
-   
+
     protected List<Banner> getBySql(String sql) {
         return jdbc.query(sql, getRowMapper());
     }
@@ -27,10 +25,12 @@ public class BannerDAO {
     private RowMapper<Banner> getRowMapper() {
         return new BeanPropertyRowMapper<>(Banner.class);
     }
-    public List<Banner> getBanner(){
-        String sql = "SELECT * FROM "+ConstantManager.DEFAULT_DB_NAME+".banner ODDER BY in DECS";
+
+    public List<Banner> getBanner() {
+        String sql = "SELECT * FROM " + ConstantManager.DEFAULT_DB_NAME + ".banner ORDER BY id DESC";
         return getBySql(sql);
     }
+
     public Boolean delete(String id) {
         try {
             String sql = "DELETE FROM " + ConstantManager.DEFAULT_DB_NAME + ".banner WHERE id=?";
@@ -59,9 +59,8 @@ public class BannerDAO {
 
     public Boolean insert(Banner banner) {
         try {
-            String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".banner (active, img, link , type, createdBy, updatedBy ) VALUES (?,?,?,?,?,?)";
-            jdbc.update(sql,banner.getActive(), banner.getImg(), banner.getType(),
-                     banner.getLink(), banner.getCreatedBy(), banner.getUpdatedBy());
+            String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".banner (id, img, link , type, createdB) VALUES (?,?,?,?,?)";
+            jdbc.update(sql, banner.getId(), banner.getImg(), banner.getLink(), banner.getType(), banner.getCreatedBy());
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -71,13 +70,12 @@ public class BannerDAO {
 
     public Boolean update(Banner banner) {
         try {
-            String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".banner SET active=?, img=?,  link=?,type=?, createdBy =?, updatedBy=? WHERE id=?";
-            jdbc.update(sql, banner.getActive(), banner.getImg(), banner.getType(),
-                     banner.getLink(), banner.getCreatedBy(), banner.getUpdatedBy());
+            String sql = "UPDATE " + ConstantManager.DEFAULT_DB_NAME + ".banner SET img = ?,  link = ?,type = ?, updatedBy = ? WHERE id = ?";
+            jdbc.update(sql, banner.getImg(), banner.getLink(), banner.getType(), banner.getUpdatedBy(), banner.getId());
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
         }
-    }   
+    }
 }

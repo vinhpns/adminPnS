@@ -20,22 +20,6 @@
                                class="autosize-transition form-control" name="parentId" hidden="" value="0"
                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
                     </div>
-                    <div>
-                        <label for="form-field-8">Vị trí Menu</label>
-                        <input hidden="" value="menu" name="url" />
-                        <select id="txt_box" type="select" placeholder="Vai Trò"
-                                class="autosize-transition form-control" name="position"
-                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                        </select>
-                    </div>
                 </div>
             </div>
         </div>
