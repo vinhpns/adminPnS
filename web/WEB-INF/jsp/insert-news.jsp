@@ -26,8 +26,8 @@
                     </div>
                 <jsp:include page="news/insert-page.jsp"></jsp:include>
                 </div>
-            <jsp:include page="footer.jsp"></jsp:include>
-            <jsp:include page="loadScript.jsp"></jsp:include>
-        </div>
+            </div>
+        <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="loadScript.jsp"></jsp:include>
     </body>
 </html>

@@ -5,6 +5,7 @@
  */
 package com.poly.service;
 
+import com.poly.bean.Register;
 import com.poly.dao.RegisterDAO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class RegisterService {
      @Autowired
     RegisterDAO registerDAO;
     
-    public List<RegisterDAO> getListRegister() {
+    public List<Register> getListRegister() {
         return registerDAO.getListRegister();
     }
     

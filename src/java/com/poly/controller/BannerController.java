@@ -62,7 +62,7 @@ public class BannerController {
         String imgName = Utils.randomCodeImg() + ban.getImg().getOriginalFilename();
         listNames.add(imgName);
         listFiles.add(ban.getImg());
-        ban.setCreatedBy((String)session.getAttribute("accountId"));
+        ban.setCreatedBy((String) session.getAttribute("accountId"));
 //        if (Objects.equals(banService.updateBanner(ban), Boolean.FALSE)) {
 //            model.put(ConstantManager.ERROR_POPUP, "Update banner không thành công");
 //            return initiate(model, session);
@@ -79,16 +79,26 @@ public class BannerController {
         String imgName = Utils.randomCodeImg() + banner.getImg().getOriginalFilename();
         listNames.add(imgName);
         listFiles.add(banner.getImg());
-        banner.setCreatedBy((String)session.getAttribute("accountId"));
+        banner.setCreatedBy((String) session.getAttribute("accountId"));
         Boolean checkUploadImg = Utils.uploadImg(listNames, listFiles, BannerConstant.URL_STORE_SERVER);
         if (checkUploadImg == false) {
             model.put(ConstantManager.ERROR_POPUP, BannerConstant.INSERT_BANNER_FAIL);
             return initiate(model, session);
         }
-        if(Objects.equals(banService.insertBanner(banner, imgName), Boolean.FALSE)){
+        if (Objects.equals(banService.insertBanner(banner, imgName), Boolean.FALSE)) {
             model.put(ConstantManager.ERROR_POPUP, "Thêm banner không thành công");
             return initiate(model, session);
         }
+        return initiate(model, session);
+    }
+
+    @RequestMapping(params = "delete", method = RequestMethod.GET)
+    public String delete(ModelMap model, HttpSession session, @RequestParam("id") String id) {
+        if (Objects.equals(banService.deleteBanner(id), Boolean.FALSE)) {
+            model.put(ConstantManager.ERROR_POPUP, "Xóa banner không thành công");
+            return initiate(model, session);
+        }
+        model.put(ConstantManager.OK_POPUP, "Xóa banner thành công");
         return initiate(model, session);
     }
 }

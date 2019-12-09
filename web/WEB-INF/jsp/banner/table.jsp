@@ -30,7 +30,7 @@
             <a href="?edit&id=${banner.id}">
                 <i class="fa fa-edit" style="color: blue; font-size: 16px" title="Chỉnh sửa"></i>
             </a>
-            <a href="?deleteMenu&id=${banner.id}">
+            <a href="?delete&id=${banner.id}">
                 <i class="fa fa-remove" style="color: red; font-size: 16px" title="Xóa Menu"></i>
             </a>
             </td>

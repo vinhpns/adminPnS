@@ -5,6 +5,7 @@
  */
 package com.poly.dao;
 
+import com.poly.bean.Register;
 import com.poly.request.AccountPassword;
 import com.poly.tool.ConstantManager;
 import java.util.List;
@@ -20,17 +21,19 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class RegisterDAO {
-     @Autowired
+
+    @Autowired
     JdbcTemplate jdbc;
 
-    protected List<RegisterDAO> getBySql(String sql) {
+    protected List<Register> getBySql(String sql) {
         return jdbc.query(sql, getRowMapper());
     }
 
-    private RowMapper<RegisterDAO> getRowMapper() {
-        return new BeanPropertyRowMapper<>(RegisterDAO.class);
+    private RowMapper<Register> getRowMapper() {
+        return new BeanPropertyRowMapper<>(Register.class);
     }
- public List<RegisterDAO> getListRegister() {
+
+    public List<Register> getListRegister() {
         try {
             String sql = "SELECT register.id, register.full_name, register.email,  "
                     + "register.phone, register.speciaization, register.created_time "
@@ -39,17 +42,6 @@ public class RegisterDAO {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
-        }
- }
- public Boolean updatePassword(AccountPassword ap) {
-        try {
-            String sql = "UPDATE register SET password = '" + ap.getNewPassword() + "' "
-                    + "WHERE id = '" + ap.getId() + '"';
-            jdbc.update(sql);
-            return Boolean.TRUE;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return Boolean.FALSE;
         }
     }
 }

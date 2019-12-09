@@ -116,11 +116,11 @@ public class NewsDAO {
     public Boolean insert(News n) {
         try {
             String sql = "INSERT INTO news (id, title, meta, content, type, created_by, "
-                    + "updated_by, description, title_web, meta_description, menu_id ) "
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+                    + "description, title_web, meta_description, menu_id, vip, registerForm ) "
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
             jdbc.update(sql, n.getId(), n.getTitle(), n.getMeta(), n.getContent(),
-                    n.getType(), n.getCreatedBy(), n.getUpdatedBy(), n.getDescription(), n.getTitleWeb(),
-                    n.getMetaDescription(), n.getMenuId());
+                    n.getType(), n.getCreatedBy(), n.getDescription(), n.getTitleWeb(),
+                    n.getMetaDescription(), n.getMenuId(), n.getVip(), n.getRegisterForm());
             return Boolean.TRUE;
         } catch (Exception e) {
             System.out.println(e.getMessage());

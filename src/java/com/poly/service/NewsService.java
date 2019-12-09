@@ -10,9 +10,7 @@ import com.poly.bean.NewsImage;
 import com.poly.dao.NewsDAO;
 import com.poly.dao.NewsImageDAO;
 import com.poly.request.NewsRequestEntity;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,28 +37,28 @@ public class NewsService {
         return ndao.getNewsByMenuId(id);
     }
 
-    public Boolean insert(NewsRequestEntity news, int type, String userId, String menuId, String link) {
+    public Boolean insert(NewsRequestEntity news) {
         News n = new News();
-        UUID uuid = UUID.randomUUID();
-        n.setId(uuid.toString());
+        String id = UUID.randomUUID().toString();
+        n.setId(id);
         n.setTitle(news.getTitle());
         n.setMeta(news.getMeta());
         n.setContent(news.getContent());
-        n.setType(type);
-        n.setCreatedBy(userId);
-        n.setUpdatedBy(userId);
+        n.setType(news.getType());
+        n.setCreatedBy(news.getCreatedBy());
         n.setDescription(news.getDescription());
         n.setTitleWeb(news.getTitleWeb());
         n.setMetaDescription(news.getMetaDescription());
-        n.setMenuId(menuId);
+        n.setMenuId(news.getMenuId());
+        n.setVip(news.getVip());
+        n.setRegisterForm(news.getRegisterForm());
         if (Objects.equals(ndao.insert(n), Boolean.FALSE)) {
             return Boolean.FALSE;
         }
         NewsImage newsImage = new NewsImage();
-        newsImage.setNewsId(n.getId());
-        newsImage.setCreatedBy(userId);
-        newsImage.setUpdatedBy(userId);
-        newsImage.setLink(link);
+        newsImage.setNewsId(id);
+        newsImage.setCreatedBy(news.getCreatedBy());
+        newsImage.setLink(news.getLink());
         if (Objects.equals(newsImageDAO.insert(newsImage), Boolean.FALSE)) {
             return Boolean.FALSE;
         }

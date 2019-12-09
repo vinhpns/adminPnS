@@ -5,20 +5,46 @@
  */
 package com.poly.request;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  *
  * @author SGDG Company
  */
 public class NewsRequestEntity {
 
+    private String id;
     private String title;
     private String meta;
     private String content;
+    private int type;
+    private String createdBy;
     private String description;
     private String titleWeb;
     private String metaDescription;
+    private String menuId;
+    private Boolean vip;
+    private Boolean registerForm;
+    private String link;
+    private MultipartFile avatar;
 
     public NewsRequestEntity() {
+    }
+
+    public MultipartFile getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(MultipartFile avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -68,4 +94,53 @@ public class NewsRequestEntity {
     public void setMetaDescription(String metaDescription) {
         this.metaDescription = metaDescription;
     }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(String menuId) {
+        this.menuId = menuId;
+    }
+
+    public Boolean getVip() {
+        return vip;
+    }
+
+    public void setVip(Boolean vip) {
+        this.vip = vip;
+    }
+
+    public Boolean getRegisterForm() {
+        return registerForm;
+    }
+
+    public void setRegisterForm(Boolean registerForm) {
+        this.registerForm = registerForm;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
 }

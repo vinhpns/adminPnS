@@ -47,6 +47,10 @@ public class MenuService {
     public List<Menu> getFather() {
         return mDAO.getFather();
     }
+    
+    public List<Menu> getListSon() {
+        return mDAO.getAllSon();
+    }
 
     public List<Menu> getSon(String id) {
         return mDAO.getSon(id);

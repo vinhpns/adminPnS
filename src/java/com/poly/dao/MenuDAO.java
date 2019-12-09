@@ -38,6 +38,11 @@ public class MenuDAO {
         String sql = "SELECT * FROM menu WHERE parent_id = 0 ORDER BY position DESC";
         return getBySql(sql);
     }
+    
+    public List<Menu> getAllSon() {
+        String sql = "SELECT * FROM menu WHERE parent_id != 0 ORDER BY created_time DESC";
+        return getBySql(sql);
+    }
 
     public List<Menu> getSon(String id) {
         String sql = "SELECT * FROM menu WHERE parent_id = '" + id + "'";

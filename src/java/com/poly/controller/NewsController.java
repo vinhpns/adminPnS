@@ -9,6 +9,7 @@ import com.poly.bean.News;
 import com.poly.constant.NewsConstant;
 import com.poly.request.NewsRequestEntity;
 import com.poly.service.AccountService;
+import com.poly.service.MenuService;
 import com.poly.service.NewsService;
 import com.poly.tool.ConstantManager;
 import com.poly.tool.Utils;
@@ -36,7 +37,7 @@ public class NewsController {
     NewsService newService;
 
     @Autowired
-    AccountService accountService;
+    MenuService menuService;
 
     @RequestMapping()
     public String initiate(ModelMap model, HttpSession session, @RequestParam("type") int type) {
@@ -50,6 +51,11 @@ public class NewsController {
     @RequestMapping(params = "insert", method = RequestMethod.GET)
     public String redirectInsertPage(ModelMap model, HttpSession session, @RequestParam("type") int type) {
         model.put("type", type);
+        if (type == 1) {
+            model.put("menuList", menuService.getListSon());
+        } else {
+            model.put("menuList", "0");
+        }
         return "insert-news";
     }
 
@@ -63,29 +69,28 @@ public class NewsController {
     }
 
     @RequestMapping(params = "insertNews", method = RequestMethod.POST)
-    public String insert(ModelMap model, HttpSession session, 
+    public String insert(ModelMap model, HttpSession session,
             @ModelAttribute("ban") NewsRequestEntity n,
-            @RequestParam("avatar") MultipartFile avatar,
             @RequestParam("type") int type) {
         List<String> listNames = new ArrayList<>();
         List<MultipartFile> listFiles = new ArrayList<>();
         String menuId = "0";
-        String imgName = Utils.randomCodeImg() + avatar.getOriginalFilename();
+        String imgName = Utils.randomCodeImg() + n.getAvatar().getOriginalFilename();
         listNames.add(imgName);
-        listFiles.add(avatar);
+        listFiles.add(n.getAvatar());
         Boolean checkUploadImg = Utils.uploadImg(listNames, listFiles, NewsConstant.URL_STORE_SERVER);
         if (checkUploadImg == false) {
             model.put(ConstantManager.ERROR_POPUP, NewsConstant.INSERT_NEWS_FAIL);
-            return redirectInsertPage(model, session, (int)session.getAttribute("type"));
+            return redirectInsertPage(model, session, (int) session.getAttribute("type"));
         }
         String link = NewsConstant.URL_SERVER + imgName;
         String userId = (String) session.getAttribute("accountId");
-        newService.insert(n, type, userId, menuId, link);
+//        newService.insert(n, type, userId, menuId, link);
         return initiate(model, session, 1);
     }
-    
+
     @RequestMapping(params = "fullNews", method = RequestMethod.GET)
-    public String getFullNews (ModelMap model, HttpSession session){
+    public String getFullNews(ModelMap model, HttpSession session) {
         model.put("newsList", newService.getListNewsByType(0));
         return "newsList";
     }

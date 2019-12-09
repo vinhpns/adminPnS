@@ -26,6 +26,8 @@ public class News implements Serializable {
     private String menuId;
     private int view;
     private String avatar;
+    private Boolean registerForm;
+    private Boolean vip;
 
     public News() {
     }
@@ -140,6 +142,22 @@ public class News implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public Boolean getRegisterForm() {
+        return registerForm;
+    }
+
+    public void setRegisterForm(Boolean registerForm) {
+        this.registerForm = registerForm;
+    }
+
+    public Boolean getVip() {
+        return vip;
+    }
+
+    public void setVip(Boolean vip) {
+        this.vip = vip;
     }
 
 }
