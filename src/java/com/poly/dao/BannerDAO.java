@@ -64,7 +64,7 @@ public class BannerDAO {
 
     public Boolean insert(Banner banner) {
         try {
-            String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".banner (id, img, link , type, createdB) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO " + ConstantManager.DEFAULT_DB_NAME + ".banner (id, img, link , type, created_by) VALUES (?,?,?,?,?)";
             jdbc.update(sql, banner.getId(), banner.getImg(), banner.getLink(), banner.getType(), banner.getCreatedBy());
             return true;
         } catch (Exception e) {

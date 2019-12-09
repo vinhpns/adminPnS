@@ -59,9 +59,17 @@
                         </select>
                     </div>
                     <br>
-                    <div>
-                        <label>Ảnh Banner</label>
-                        <input type="file" name="img" />
+                    <div class="form-group">
+                        <label>Upload Image</label>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-default btn-file">
+                                    Browse… <input type="file" name="img" id="imgInp">
+                                </span>
+                            </span>
+                            <input type="text" class="form-control" readonly>
+                        </div>
+                        <img id='img-upload'/>
                     </div>
                     <div>
                         <label for="form-field-8">Link Hướng Đến</label>
