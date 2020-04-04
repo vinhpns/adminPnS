@@ -1,7 +1,7 @@
 <%-- 
     Document   : loadScript
     Created on : May 18, 2019, 1:59:58 PM
-    Author     : VinhNT
+    Author     : 
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>

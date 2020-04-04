@@ -42,8 +42,8 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>${registerCount}</h3>
-                            <p>Người Đăng Ký</p>
+                            <h3>${customerCount}</h3>
+                            <p>Khách Hàng</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>

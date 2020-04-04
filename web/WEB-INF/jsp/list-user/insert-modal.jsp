@@ -26,13 +26,6 @@
                     </div>
                     <br>
                     <div>
-                        <label for="form-field-8">Tên Đăng Nhập *</label>
-                        <input id="txt_box2" type="text" required="" placeholder="UserName"
-                               class="autosize-transition form-control" name="userName"
-                               style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
-                    </div>
-                    <br>
-                    <div>
                         <label for="form-field-8">Mật Khẩu *</label>
                         <input id="txt_box" type="password" required="" placeholder="UserName"
                                class="autosize-transition form-control" name="password"
@@ -49,16 +42,28 @@
                         </select>
                     </div>
                     <br>
-                    <div>
-                        <label for="form-field-8">Vai Trò *</label>
-                        <select id="txt_box4" type="select" placeholder="Vai Trò"
-                                class="autosize-transition form-control" name="role"
-                                style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
-                            <option value="3">Admin</option>
-                            <option value="1">Writer</option>
-                            <option value="2">Mod</option>
-                        </select>
-                    </div>
+                    <c:if test="${type == 1}">
+                        <div>
+                            <label for="form-field-8">Vai Trò *</label>
+                            <select id="txt_box4" type="select" placeholder="Vai Trò"
+                                    class="autosize-transition form-control" name="role"
+                                    style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                                <option value="3">Admin</option>
+                                <option value="4">Writer</option>
+                                <option value="5">Mod</option>
+                            </select>
+                        </div>
+                    </c:if>
+                    <c:if test="${type == 2}">
+                        <div>
+                            <label for="form-field-8">Vai Trò *</label>
+                            <select id="txt_box4" type="select" placeholder="Vai Trò"
+                                    class="autosize-transition form-control" name="role"
+                                    style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                                <option value="1">Khách Hàng</option>
+                            </select>
+                        </div>
+                    </c:if>
                     <br>
                     <div>
                         <label for="form-field-8">Số Điện Thoại</label>

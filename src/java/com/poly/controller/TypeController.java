@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
- * @author vinh1
+ * @author 1
  */
 @Controller
 @RequestMapping("type")

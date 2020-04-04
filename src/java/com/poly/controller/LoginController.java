@@ -15,7 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * @author Vinh
+ * @author 
  */
 @Controller
 @RequestMapping(value = "login")

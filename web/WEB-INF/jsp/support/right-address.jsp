@@ -1,7 +1,7 @@
 <%-- 
     Document   : right-address
     Created on : Mar 5, 2020, 4:14:11 PM
-    Author     : vinh1
+    Author     : 1
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

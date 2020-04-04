@@ -13,6 +13,8 @@ public class AccountRequestEntity {
 
     public AccountRequestEntity() {
     }
+
+    private String id;
     private String fullName;
     private String email;
     private String userName;
@@ -25,12 +27,12 @@ public class AccountRequestEntity {
     private String createdBy;
     private String companyId;
 
-    public String getCompanyId() {
-        return companyId;
+    public String getId() {
+        return id;
     }
 
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFullName() {
@@ -111,5 +113,13 @@ public class AccountRequestEntity {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 }

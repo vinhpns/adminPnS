@@ -1,7 +1,7 @@
 <%-- 
     Document   : news
     Created on : Mar 11, 2020, 10:47:40 AM
-    Author     : vinh1
+    Author     : 1
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

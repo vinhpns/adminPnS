@@ -8,7 +8,7 @@ package com.poly.constant;
 import com.poly.tool.ConstantManager;
 
 /**
- * @author VinhNT
+ * @author 
  */
 public class CustomerConstant {
 

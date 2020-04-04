@@ -14,6 +14,7 @@ public class AccountPassword {
     public String id;
     public String oldPassword;
     public String newPassword;
+    public int type;
 
     public AccountPassword() {
     }
@@ -40,5 +41,13 @@ public class AccountPassword {
 
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

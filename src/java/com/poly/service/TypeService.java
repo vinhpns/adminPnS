@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
- * @author vinh1
+ * @author 1
  */
 @Service
 public class TypeService {

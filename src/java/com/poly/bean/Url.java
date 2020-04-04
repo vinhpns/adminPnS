@@ -7,7 +7,7 @@ package com.poly.bean;
 
 /**
  *
- * @author vinh1
+ * @author 1
  */
 public class Url {
 

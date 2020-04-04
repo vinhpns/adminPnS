@@ -34,17 +34,17 @@ public class AccountController {
 
     @RequestMapping()
     public String initiate(ModelMap model, HttpSession session) {
-//        if (Objects.equals(checkLogin.checkLogin(session), Boolean.FALSE)) {
-//            String errors = ConstantManager.NO_ACCEPTED_LOGIN;
-//            return logout(session, model, errors);
-//        }
+        if (Objects.equals(checkLogin.checkLogin(session), Boolean.FALSE)) {
+            String errors = ConstantManager.NO_ACCEPTED_LOGIN;
+            return logout(session, model, errors);
+        }
         model.put("link", "index.htm");
         session.setAttribute("commentNotRead", 0);
         session.setAttribute("info", companyService.getInfo((String) session.getAttribute("companyId")));
         model.put("newsCount", 0);
         model.put("commentCount", 0);
-        model.put("registerCount", 0);
-        model.put("accountCount", accService.getListAccount((String)session.getAttribute("companyId")).size());
+        model.put("customerCount", accService.getListAccount((String)session.getAttribute("companyId"),2).size());
+        model.put("accountCount", accService.getListAccount((String)session.getAttribute("companyId"),1).size());
         return AccountConstant.INDEXPAGE;
     }
 
@@ -54,8 +54,7 @@ public class AccountController {
             @RequestParam(AccountConstant.PASSWORD_REQUESTPARAM) String password) {
         AccountResponse ac = accService.getAccountLogin(email);
         if (ac == null) {
-            model.put(ConstantManager.ERROR_POPUP, AccountConstant.NO_EMAIL_EXITS);
-            return AccountConstant.LOGINPAGE;
+            return logout(session, model, AccountConstant.NO_EMAIL_EXITS);
         }
         if (Objects.equals(ac.getIsActive(), Boolean.FALSE)) {
             String errors = AccountConstant.BLOCK_ACCOUNT;
@@ -76,6 +75,6 @@ public class AccountController {
     public String logout(HttpSession session, ModelMap model, String errors) {
         session.invalidate();
         model.put(ConstantManager.ERROR_POPUP, errors);
-        return AccountConstant.LOGINPAGE;
+        return ConstantManager.LOGIN_PAGE;
     }
 }

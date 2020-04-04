@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author vinh1
+ * @author 1
  */
 @Controller
 @RequestMapping("different")

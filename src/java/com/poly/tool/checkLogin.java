@@ -11,34 +11,27 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 /**
- * @author Vinh
+ * @author 
  */
 @Service
 public class checkLogin {
 
     public static Boolean checkLogin(HttpSession session) {
-//        if(session.equals("")){
-//            return false;
-//        }else if(session.get)
         if (session.getAttribute("loginName") != null) {
             return true;
         }
         return session.equals("");
     }
 
+    public static Boolean checkLoginRoleCustomer(int role) {
+        return role == ConstantManager.ROLE_CUSTOMER;
+    }
+
     public static Boolean checkLoginRoleAdmin(int role) {
-        return role == AccountConstant.ROLE_ADMIN;
+        return role == ConstantManager.ROLE_ADMIN;
     }
 
-    public static Boolean checkLoginRoleWriter(int role) {
-        return role == AccountConstant.ROLE_WRITER;
-    }
-
-    public static Boolean checkLoginRoleMod(int role) {
-        return role == AccountConstant.ROLE_MOD;
-    }
-    
-    public static Boolean checkLoginRoleSuperAdmin (int role) {
-        return role == AccountConstant.ROLE_SUPER_ADMIN;
+    public static Boolean checkLoginRoleSuperAdmin(int role) {
+        return role == ConstantManager.ROLE_SUPER_ADMIN;
     }
 }

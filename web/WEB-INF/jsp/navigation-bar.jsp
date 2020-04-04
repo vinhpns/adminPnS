@@ -24,7 +24,7 @@
             </div>
         </form>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
+<!--            <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="fa fa-comments-o"></i>
                     <span class="badge badge-danger navbar-badge">${sessionScope.commentNotRead}</span>
@@ -71,14 +71,14 @@
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
-            </li>
+            </li>-->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="fa fa-lock"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <div class="dropdown-divider"></div>
-                    <a href="ListUser.htm?logout" class="dropdown-item" style="text-align: center">Sign Out</a>
+                    <a href="index.htm?logout" class="dropdown-item" style="text-align: center">Sign Out</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

@@ -1,7 +1,7 @@
 <%-- 
     Document   : account
     Created on : Mar 11, 2020, 10:46:47 AM
-    Author     : vinh1
+    Author     : 1
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,9 +17,17 @@
         </a>
         <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="ListUser.htm" class="nav-link">
+                <a href="ListUser.htm?type=1" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
-                    <p>Danh sách tài khoản</p>
+                    <p>Tài Khoản Nhân Viên</p>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="ListUser.htm?type=2" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Tài Khoản Khách Hàng</p>
                 </a>
             </li>
         </ul>

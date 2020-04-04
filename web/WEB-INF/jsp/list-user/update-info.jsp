@@ -38,13 +38,6 @@
                                         </div>
                                         <br>
                                         <div>
-                                            <label for="form-field-8">Tên Đăng Nhập *</label>
-                                            <input id="txt_box" type="text" required="" placeholder="UserName"
-                                                   class="autosize-transition form-control" name="userName" value="${user.userName}"
-                                                   style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;" requires>
-                                        </div>
-                                        <br>
-                                        <div>
                                             <label for="form-field-8">Giới Tinh *</label>
                                             <select id="txt_box" type="select" required="" placeholder="Giới Tính"
                                                     class="autosize-transition form-control" name="gender"
@@ -72,9 +65,9 @@
                                         <br>
                                         <div>
                                             <label for="form-field-8">Số Điện Thoại</label>
-                                            <input id="number" type="number" placeholder="Số Điện Thoại"
+                                            <input id="txt_box" type="text" required="" placeholder="Phone"
                                                    class="autosize-transition form-control" name="phone" value="${user.phone}"
-                                                   style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;">
+                                                   style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 40px;" requires>
                                         </div>
                                         <br>
                                         <div>

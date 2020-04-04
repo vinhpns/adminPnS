@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author vinh1
+ * @author 1
  */
 @Repository
 public class UrlDAO {

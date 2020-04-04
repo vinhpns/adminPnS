@@ -1,7 +1,7 @@
 <%-- 
     Document   : img
     Created on : Mar 11, 2020, 10:48:47 AM
-    Author     : vinh1
+    Author     : 1
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
